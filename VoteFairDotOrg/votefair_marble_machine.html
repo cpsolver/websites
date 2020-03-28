@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta name="description" content="VoteFair marble machine" />
+   <meta name="keywords" content="VoteFair marble machine, Condorcet, Kemeny" />
+   <meta name="author" content="Richard Fobes" />
+   <meta http-equiv="copyright" content="2011-2018 Richard Fobes" />
+   <meta http-equiv="distribution" content="global" />
+   <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+   <title>VoteFair Marble Machine
+</title>
+</head>
+<!-- Begin top of page -->
+
+<body><a name="top"></a>
+
+<table align="left" border="0" rules="none" frame="void" class="headingbackgroundcolor" cellpadding="5" cellspacing="0" width="100%">
+<tr><td align="center">
+<a href="http://www.votefair.org/index.html"><img src="vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></a></td>
+
+<td align="left">
+<h1 class="fontserif"><font class="fontcolorondark">VoteFair&nbsp; ranking</font></h1>
+<p class="byline"><font class="fontcolorondark">Just one ballot mark isn't enough for fair results</font></p>
+</td><td align="right">
+
+<table align="left" border="1" rules="none" frame="void" class="yellowbackground" cellpadding="5" cellspacing="0">
+
+<tr><td width="5"></td><td><form method="post" name="formNewSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi"><input type="hidden" name="action" value="newsurvey" /><input type="submit" name="action-newsurvey" value="Create survey" /></form></td><td width="5"></td></tr>
+
+<tr><td width="5"></td><td><table border="1" cellpadding="3" cellspacing="2" rules="all"><tr align="left"><td align="left"><form method="post" name="formAccessExistingSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">Voting&nbsp;ID:<br /><input type="text" name="votingid" value ="" size="20" maxlength="20" /><br /><input type="hidden" name="javascriptballot" value="yes" /><input type="hidden" name="action" value="showactions" /><input type="submit" name="requestaccesssurvey" value="Access survey" /></form></td></tr></table></td><td width="5"></td></tr>
+
+</table>
+</td></tr></table>
+
+<!-- End top of page -->
+<!-- Begin navigation level one -->
+
+<div style="clear: both;"></div>
+<div class="navmenu1">
+<ul>
+<li><a href="http://www.VoteFair.org/surveys.html"><span class="fontbigred">Free</span> Survey/Poll/Election service</a></li>
+<li><a href="http://www.VoteFair.org/americanidol.html">American Idol poll</a></li>
+<li><a href="http://www.VoteFair.org/elections.html">Government elections</a></li>
+<li class="navtabcurrentli1"><a href="http://www.VoteFair.org/overview.html">About VoteFair ranking</a></li>
+<li><a href="http://www.VoteFair.org/testimonials.html">Testimonials &amp; Contact</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level one -->
+
+<h2 class="titlebetweenmenulevels">About VoteFair ranking</h2>
+
+<!-- Begin navigation level two -->
+
+<div class="navmenu2">
+<ul>
+<li><a href="http://www.VoteFair.org/overview.html">Overview</a></li>
+<li><a href="http://www.VoteFair.org/votefaq.html">FAQ</a></li>
+<li><a href="http://www.VoteFair.org/compare.html">Comparison</a></li>
+<li><a href="http://www.VoteFair.org/pressrelease.html">Press release</a></li>
+<li><a href="http://www.VoteFair.org/poem.html">Poem</a></li>
+<!-- NavigationCurrentPage votefair_marble_machine.html -->
+<li class="navtabcurrentli2"><div>Marble machine</div></li>
+<li><a href="http://www.VoteFair.org/calculation_details.html">Calculation details</a></li>
+<li><a href="http://www.VoteFair.org/instant_pairwise_elimination.html">Instant Pairwise Elimination</a></li>
+<li><a href="http://www.VoteFair.org/representative_instant_pairwise_elimination.html">RIPE</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level two -->
+<!-- Begin transition to top content -->
+
+<table width="100%">
+<tr>
+<td valign="top">
+<div class="content">
+
+<!-- End transition to top content -->
+
+<!-- ContentForPage votefair_marble_machine.html -->
+<!-- Begin top content -->
+
+<H1 align="center">
+VoteFair Marble Machine</h1>
+
+<H2 align="center">
+<font color="red">
+Watch marbles do Condorcet-Kemeny-VoteFair voting calculations</font></h2>
+
+<p>This marble machine does VoteFair popularity ranking (which is mathematically equivalent to Condorcet-Kemeny calculations) for three choices.</p>
+
+<h2>How the VoteFair marble machine works</h2>
+
+<p>One set of "voting" marbles &mdash; of a larger size &mdash; are used for the voting.&nbsp; A voter deposits their first voting marble into the opening that is marked with their first choice.&nbsp; When marbles stop moving, the voter deposits their second voting marble into the opening marked with their second choice.&nbsp; (Depositing the third marble can be done, but the third marble has no effect on the results.)</p>
+
+<p>Another set of "tally" marbles &mdash; of normal size &mdash; are the ones that are controlled by the voting marbles.&nbsp; Before each voter votes, a lever must be pulled.&nbsp; That action deposits nine tally marbles onto nine platforms, where they wait until the voting marbles are deposited.</p>
+
+<p>At the bottom of the machine there are six glass (or otherwise clear) jars.&nbsp; Each jar is labeled to indicate one of the six possible sequences.&nbsp; Each such sequence indicates which choice is most popular, which choice is second-most popular, and which choice is least popular.</p>
+
+<p>When a voting marble drops down through its predefined path, that larger marble hits some of the tally marbles.&nbsp; Each tally marble, when it is knocked off, travels into a tube that leads to one of the six jars.&nbsp; The knocking action chooses whether a tally marble goes left or right from its platform.&nbsp; After a tally marble has been knocked off, that marble is not available to be knocked off by a large-size marble that passes through on the opposite side.</p>
+
+<p>When all the voters have voted, visually look to see which jar has the most tally marbles.&nbsp; If two jars look like they might be tied (as having the most marbles), the marbles in those jars can be manually counted (or weighed, if all the marbles have the same weight) to identify which jar actually has more marbles.&nbsp; The jar with the most marbles has the label that indicates which choice is most popular, which choice is second-most popular, and which choice is the least popular.</p>
+
+<img src="marble_machine_version_2.png" border="0" alt="VoteFair marble machine marble paths" width="589" height="788"></img></ br>
+
+<p><b>Update</b>: To simplify the arrangement, shift all the marble-counting containers to the right, so they are to the right of the "modules."&nbsp; This version uses parallel (without any crossings) down-and-to-the-right paths that are in a plane that is closer to the viewer.&nbsp; This version uses parallel vertical paths that drop the marbles into the containers, and these vertical paths are in the same plane as the paths of the large marbles.&nbsp; The pattern of which path leads to which container is determined by having a different length for each down-and-to-the-right path.</p>
+
+<h2>Suggestions for building</h2>
+
+<p>Here are suggested instructions for building the VoteFair marble machine.&nbsp;  These instructions are being written without having actually built the marble machine, so do not blindly follow these suggestions in situations where something else makes more sense.</p>
+
+
+<p><b>Update</b>: A 3D file of the latest version of the &ldquo;pairwise-counting module,&rdquo; is <a href="http://www.votefair.org/VoteFair_marble_machine_module_after_subtracted.3mf">here</a>.&nbsp; (If edits are needed, <a href="http://www.votefair.org/VoteFair_marble_machine_module_paths_and_block.3mf">here</a> is a version before the marble paths are subtracted from the block shape.)</p>
+
+
+<ol>
+
+<li>Start by making one instance of a &ldquo;pairwise-counting module,&rdquo; which can be made by adding grooves and holes to a wooden or plastic block, or which can be designed digitally and then manufactured under computer control.&nbsp; This module has two channels &mdash; one on the left, and one on the right &mdash; through which a large-size marble can travel from an entrance at the top to an exit at the bottom.&nbsp; In the center of this module is a platform that holds a normal-size marble.&nbsp; When a large marble passes through the left or right channel, it knocks the normal-size marble off the platform, and into a special channel that is narrower than the large-marble channel.&nbsp; This deeper, narrower channel causes the normal-size marble to exit from one of the two side holes.&nbsp; The entrance holes at the top of each module need to line up with the exit holes at the bottom of a neighboring module, so that a large-size marble can travel through a series of connected modules.&nbsp; In the diagram below, the paths of the large-size marbles are shown in red, and the paths of the normal-size marbles are shown in blue.&nbsp; It does not show the platform in the center on which a normal-size marble rests (before it is knocked off).&nbsp; Test and refine this module before moving on to the next step.</li>
+
+<img src="marble_machine_one_module.png" border="0" alt="VoteFair marble machine module" width="270" height="270"></img>
+
+<li>Build nine of the above-described modules, and mount them in line with one another, leaving two gaps.&nbsp; In other words, there must be three groups, and each group has three adjacent modules.</li>
+
+<li>Build three funnel-like entrances into which the voter conveniently puts the large-size marbles.&nbsp; The openings can be square rather than round so that a mis-placed marble does not drop between the entrances.&nbsp; Each entrance will guide a large-size marble into a clear plastic tube.&nbsp; Label each entrance with the name of the choice, such as &ldquo;A&rdquo;, &ldquo;B&rdquo;, and &ldquo;C&rdquo;, or perhaps &ldquo;Chocolate&rdquo;, &ldquo;Strawberry&rdquo;, and &ldquo;Vanilla&rdquo; if ice-cream flavors will be the ballot choices.</li>
+
+<li>Place six glass jars (or clear plastic containers) at the bottom of the machine.&nbsp; Label each jar as shown in the large diagram above, or in a similar way.</li>
+
+<li>Place a container at the bottom of the bottom-most module.&nbsp; (Or a clear tube can deliver the marbles to a more convenient location.)&nbsp; This container will collect the large-size marbles, and make them available for the next voter.&nbsp; A rounded shape similar to a &rdquo;coin return&rdquo; makes grabbing the marbles more convenient.</li>
+
+<li>Using clear plastic tubes of two sizes, connect the modules and funnels and jars and container in the arrangement shown in the large diagram above.&nbsp; The large-size marbles travel through the clear tubes and modules along the paths shown as red lines, and the normal-size marbles travel through the clear tubes and modules along the paths shown as blue lines.</li>
+
+<li>Build a lever-activated mechanism that delivers nine normal-size marbles to the nine platforms.&nbsp; If made of wood, it can be a dowel that fits inside a long hole in a square length of wood.&nbsp; When the lever is at one end of its range, nine holes (each of which is the depth of one normal-size marble) allow the next marble from a stack of marbles to enter the dowel.&nbsp; When the lever is at the other end of its range, the nine marbles fall out of nine holes.&nbsp; A cross-section of this mechanism is shown below.&nbsp; (Other designs are also possible, and the mechanism could use an electric motor instead of a manually activated lever.)</li>
+
+<img src="marble_machine_feed_mech.png" border="0" alt="VoteFair marble machine sketch" width="200" height="280"></img></ br>
+
+<li>Connect clear plastic tubes between the lever-feed mechanism and the platforms in the modules.&nbsp; Ensure that the lever-feed mechanism (if used) is easy to access.&nbsp; Also ensure that all the marbles arrive at the platforms without excessive speed because that may cause some marbles to bounce off the module instead of resting on the platform.</li>
+
+<li>Test the machine.&nbsp; Start by looking at the left-most jar's label and insert the three large-size marbles in that sequence.&nbsp; Verify that after this vote there are three marbles in the jar that has the same sequence as the matching jar's label, there are no marbles in the jar that has the opposite (inverse) sequence, there are two marbles in two other jars, and there is one marble in each of the other two jars.&nbsp; Remove the marbles from the jars before the next test.&nbsp; Repeat this process using the label on each of the remaining five jars.&nbsp; If the results are not correct, compare the marble paths in your machine with the paths shown in the diagram.</li>
+
+<li>Try it out!&nbsp; Invite friends/classmates to use it to rank three choices.&nbsp; If needed, refine the design to increase reliability and ease of use.</li>
+
+<li>Finally, create a video of it, and post it on YouTube!&nbsp; Then, 
+<a href="http://www.votefair.org/testimonials.html">send the URL to this VoteFair.org website</a> so that a link to your video can be added to this page.</li>
+
+<li>Appreciate that you are helping to teach how voting should be done, namely by using &nbsp;pairwise&nbsp; counting &mdash; instead of trying to use simplistic two-choice counting for more than two choices.</li>
+
+</ol>
+
+
+<!-- End top content -->
+<!-- Begin transition to right sidebar -->
+
+</div></td>
+<td>&nbsp;</td>
+<td valign="top" align="right">
+<div class="rightsidebar">
+
+<!-- End transition to right sidebar -->
+<!-- Begin right sidebar -->
+
+<p>Open-source <b>VoteFair ranking software</b> at
+<a href="http://search.cpan.org/~fobes/Voting-VoteFairRanking-5.01/lib/Voting/VoteFairRanking.pm">CPAN</a>
+and
+<a href="http://github.com/cpsolver/VoteFair-ranking">GitHub</a></p>
+
+<p><a href="http://www.BanSingleMarkBallots.org">Declaration of Election-Method Reform Advocates</a></p>
+
+<p><a href="http://www.youtube.com/watch?v=4Wk3EHjfP4E">YouTube video of Richard's 2009 Ignite presentation titled <i>YIP movie rating and other creative solutions</i></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/ehu.html"><i>Ending The Hidden Unfairness In U.S. Elections</i><br /><img src="http://www.SolutionsCreative.com/ehufrontsm.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.amazon.com/Creative-Problem-Solving-Tips-ebook/dp/B002IT6RQM"><i>23 Creative Problem Solving Tips</i><br />(Kindle ebook)<br /><img src="http://www.votefair.org/cpst23frontsm.gif" alt="23 Creative Problem Solving Tips" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/cpst.html"><i>The Creative Problem Solver's Toolbox</i><br /><img src="http://www.SolutionsCreative.com/coverlow.jpg" alt="The Creative Problem Solver's Toolbox" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.NegotiationTool.com">NegotiationTool.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com">SolutionsCreative.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com/author.html#video">Video of Richard Fobes Zydeco dancing</a></p>
+
+<!-- End right sidebar -->
+<!-- Begin transition to wide content -->
+
+</div>
+</td></tr></table>
+<div class="content">
+
+<!-- End transition to wide content -->
+
+<!-- ContentForPage votefair_marble_machine.html -->
+<!-- Begin wide content -->
+
+
+
+<p>&nbsp;</p>
+
+<p>&copy; Copyright 2011 and 2013 and 2018 by Richard Fobes, the author of <i>The Creative Problem Solver's Toolbox</i> and the inventor of VoteFair ranking as described at www.VoteFair.org.&nbsp; You have permission to use these plans to create this marble machine if you include the word "VoteFair" in your machine's name, and your machine correctly calculates VoteFair ranking results.</p>
+
+
+<p>For archive purposes, here is a link to the <a href="http://www.VoteFair.org/votefair_marble_machine_version_original.html">original design, which is more complex</a>.</p>
+
+<!-- End wide content -->
+
+<!-- FooterForPage votefair_marble_machine.html -->
+<!-- Begin inserted footer -->
+
+<p>&nbsp;</p>
+
+
+<hr width="70%" align="center" />
+
+<p align="center">Send feedback to Richard Fobes at 
+<img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img><br />
+or use the <a href="http://www.VoteFair.org/testimonials.html">Testimonials page</a></p>
+
+<p align="center">&copy; Copyright 2011 through 2018, Richard Fobes at VoteFair.org</p>
+
+<p align="center"><a href="#top"><img src="bullet.gif" alt="Top of Page" width="20" height="20"></img></a> <a href="#top">Top of Page</a></p>
+</div>
+<p>&nbsp;</p>
+
+<!-- End inserted footer -->
+</body>
+</html>

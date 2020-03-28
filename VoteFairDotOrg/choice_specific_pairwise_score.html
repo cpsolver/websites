@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta name="description" content="Choice-Specific Pairwise-Score ranking />
+   <meta name="keywords" content="VoteFair ranking, Richard Fobes" />
+   <meta name="author" content="Richard Fobes" />
+   <meta http-equiv="copyright" content="2011 Richard Fobes" />
+   <meta http-equiv="distribution" content="global" />
+   <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+   <title>VoteFair Ranking Service
+</title>
+</head>
+<!-- Begin top of page -->
+
+<body><a name="top"></a>
+
+<table align="left" border="0" rules="none" frame="void" class="headingbackgroundcolor" cellpadding="5" cellspacing="0" width="100%">
+<tr><td align="center">
+<a href="http://www.votefair.org/index.html"><img src="vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></a></td>
+
+<td align="left">
+<h1 class="fontserif"><font class="fontcolorondark">VoteFair&nbsp; ranking</font></h1>
+<p class="byline"><font class="fontcolorondark">Just one ballot mark isn't enough for fair results</font></p>
+</td><td align="right">
+
+<table align="left" border="1" rules="none" frame="void" class="yellowbackground" cellpadding="5" cellspacing="0">
+
+<tr><td width="5"></td><td><form method="post" name="formNewSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi"><input type="hidden" name="action" value="newsurvey" /><input type="submit" name="action-newsurvey" value="Create survey" /></form></td><td width="5"></td></tr>
+
+<tr><td width="5"></td><td><table border="1" cellpadding="3" cellspacing="2" rules="all"><tr align="left"><td align="left"><form method="post" name="formAccessExistingSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">Voting&nbsp;ID:<br /><input type="text" name="votingid" value ="" size="20" maxlength="20" /><br /><input type="hidden" name="javascriptballot" value="yes" /><input type="hidden" name="action" value="showactions" /><input type="submit" name="requestaccesssurvey" value="Access survey" /></form></td></tr></table></td><td width="5"></td></tr>
+
+</table>
+</td></tr></table>
+
+<!-- End top of page -->
+<!-- Begin navigation level one -->
+
+<div style="clear: both;"></div>
+<div class="navlevel1of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/surveys.html"><span class="fontbigred">Free</span> Survey/Poll/Election service</a></li>
+<li><a href="http://www.VoteFair.org/americanidol.html">American Idol poll</a></li>
+<li><a href="http://www.VoteFair.org/elections.html">Government elections</a></li>
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/overview.html">About VoteFair ranking</a></li>
+<li><a href="http://www.VoteFair.org/testimonials.html">Testimonials &amp; Contact</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level one -->
+
+<h2 class="titlebetweenmenulevels">About VoteFair ranking</h2>
+
+<!-- Begin navigation level two -->
+
+</div>
+<div class="navlevel2of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/overview.html">Overview</a></li>
+<li><a href="http://www.VoteFair.org/votefaq.html">FAQ</a></li>
+<li><a href="http://www.VoteFair.org/compare.html">Comparison</a></li>
+<li><a href="http://www.VoteFair.org/pressrelease.html">Press release</a></li>
+<li><a href="http://www.VoteFair.org/poem.html">Poem</a></li>
+<li><a href="http://www.VoteFair.org/votefair_marble_machine.html">Marble machine</a></li>
+<!-- NavigationCurrentPage calculation_details.html -->
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/calculation_details.html">Calculation details</a></li>
+<li><a href="http://www.VoteFair.org/instant_pairwise_elimination.html">Instant Pairwise Elimination</a></li>
+<li><a href="http://www.VoteFair.org/representative_instant_pairwise_elimination.html">RIPE</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level two -->
+
+<h2 class="titlebetweenmenulevels">Calculation details</h2>
+
+<!-- Begin navigation level three -->
+
+</div>
+<div class="navlevel3of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/overview.html">Calculation overview</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_popularity.html">Popularity</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_representation.html">Representation</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_party.html">Party</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_partial_proportional.html">Partial proportional</a></li>
+<!-- NavigationCurrentPage choice_specific_pairwise_score.html -->
+<li class="navtabcurrentli"><div>Estimated</div></li>
+<li><a href="http://www.VoteFair.org/insertion_sort_ranking.html">Insertion sort</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+</div>
+
+<!-- End navigation level three -->
+<!-- Begin transition to top content -->
+
+<table width="100%">
+<tr>
+<td valign="top">
+<div class="content">
+
+<!-- End transition to top content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin top content -->
+
+<h2>Estimated ranking using Choice-Specific Pairwise-Score (CSPS) ranking</h2>
+
+<p>Choice-specific pairwise-score (CSPS)
+ranking is a simple and mostly fair way to
+estimate the popularity ranking of choices in
+an election or survey.</p>
+
+<h3>Characteristics</h3>
+
+<p><b>Easy to count and calculate</b>:&nbsp;The
+calculation of results can be done using pen
+and paper and a calculator.</p>
+
+<p><b>Handles hundreds of choices</b>:&nbsp; It
+is useful for quickly calculating a full,
+reasonably fair ranking of many choices, such
+as when many voters indicate their top 10 and
+bottom 10 choices within a list of hundreds of
+songs or movies.</p>
+
+<p><b>Reasonably fair</b>:&nbsp; This method is
+not intended for use alone.&nbsp; Yet if it
+were used alone, with a simple refinement, the results are fairer than
+top-choice methods because this method uses
+pairwise counts.&nbsp; The results do not meet
+the Condorcet criteria.&nbsp; However, the Condorcet
+winner &mdash; if there is one &mdash; can be
+identified easily after this ranking method has been
+done.&nbsp; </p>
+
+<h3>Example</h3>
+
+<p>(A concise description follows this
+example.&nbsp; The description is easier to
+understand after you have read this example.)</p>
+
+<p>Consider an election (or survey) in which
+there are five choices: A, B, C, D, E, and the
+final ranking order is this <b>alphabetical
+order</b>.</p>
+
+<p>In this example the notation <b>A&gt;B
+refers to how many voters pairwise prefer
+choice A over choice B</b>, and the notation
+B&gt;A refers to how many voters pairwise
+prefer choice B over choice A.&nbsp; This
+notation always uses the "greater-than" symbol
+"&gt;", and never uses the "less-than" symbol
+"&lt;" &mdash; because, for example, B&gt;A is
+used instead of A&lt;B.</p>
+
+<p>At the beginning of this ranking example,
+suppose that the choices are arranged in the
+order C, E, A, D, B.&nbsp; The pairwise counts
+for this arrangement are shown in this pairwise
+matrix.</p>
+
+<pre>
+      |       |       |       |       |       |
+      |   C   |   E   |   A   |   D   |   B   |
+      |       |       |       |       |       |
+ -----+-------+-------+-------+-------+-------+
+      | \     |       |       |       |       |
+  C   |   \   |  C>E  |  C>A  |  C>D  |  C>B  |
+      |     \ |       |       |       |       |
+ -----+-------+-------+-------+-------+-------+
+      |       | \     |       |       |       |
+  E   |  E>C  |   \   |  E>A  |  E>D  |  E>B  |
+      |       |     \ |       |       |       |
+ -----+-------+-------+-------+-------+-------+
+      |       |       | \     |       |       |
+  A   |  A>C  |  A>E  |   \   |  A>D  |  A>B  |
+      |       |       |     \ |       |       |
+ -----+-------+-------+-------+-------+-------+
+      |       |       |       | \     |       |
+  D   |  D>C  |  D>E  |  D>A  |   \   |  D>B  |
+      |       |       |       |     \ |       |
+ -----+-------+-------+-------+-------+-------+
+      |       |       |       |       | \     |
+  B   |  B>C  |  B>E  |  B>A  |  B>D  |   \   |
+      |       |       |       |       |     \ |
+ -----+-------+-------+-------+-------+-------+
+</pre>
+
+<p>The diagonal line passes through empty
+cells.&nbsp; These cells are empty because they
+would represent a choice's comparison with
+itself, such as A&gt;A.</p>
+
+<p>The goal of these calculations is to change
+the sequence so that the largest pairwise
+counts move into the upper-right triangular
+area, leaving the smallest pairwise counts in
+the lower-left triangular area.&nbsp; (This is
+similar to the goal of VoteFair popularity
+ranking.)</p>
+
+<p>The first step is to calculate
+choice-specific scores, with each choice having
+a <b>row score</b> and a <b>column
+score</b>.&nbsp; For choice A, its row score
+equals the <b>sum of the pairwise counts in the
+row</b> labeled A, which equals A&gt;B +
+A&gt;C + A&gt;D + A&gt;E.&nbsp; The column
+score for choice A is the <b>sum of the
+pairwise counts in the column</b> labeled A,
+which equals B&gt;A + C&gt;A + D&gt;A +
+E&gt;A.&nbsp; The row scores and column scores
+for choices B, C, D, and E are calculated
+similarly.</p>
+
+<p>Next, all the row scores are compared to
+determine which choice has the <b>largest row
+score</b>.&nbsp; In this example that score
+would be the row score for choice A (because it
+is first in alphabetical order).&nbsp;
+Therefore choice A is moved into first
+place.&nbsp; The other choices remain in the
+same order.&nbsp; The resulting sequence is A,
+C, E, D, B.&nbsp; Here is the pairwise matrix
+for the new sequence.&nbsp; The pairwise counts
+for the ranked choice (A) are surrounded by
+asterisks:</p>
+
+<pre>
+      |       |       |       |       |       |
+      |   A   |   C   |   E   |   D   |   B   |
+      |       |       |       |       |       |
+ -----*****************************************
+      * \     |       |       |       |       *
+  A   *   \   |  A>C  |  A>E  |  A>D  |  A>B  *
+      *     \ |       |       |       |       *
+ -----*-------*********************************
+      *       * \     |       |       |       |
+  C   *  C>A  *   \   |  C>E  |  C>D  |  C>B  |
+      *       *     \ |       |       |       |
+ -----*-------*-------+-------+-------+-------+
+      *       *       | \     |       |       |
+  E   *  E>A  *  E>C  |   \   |  E>D  |  E>B  |
+      *       *       |     \ |       |       |
+ -----*-------*-------+-------+-------+-------+
+      *       *       |       | \     |       |
+  D   *  D>A  *  D>C  |  D>E  |   \   |  D>B  |
+      *       *       |       |     \ |       |
+ -----*-------*-------+-------+-------+-------+
+      *       *       |       |       | \     |
+  B   *  B>A  *  B>C  |  B>E  |  B>D  |   \   |
+      *       *       |       |       |     \ |
+ -----*********-------+-------+-------+-------+
+</pre>
+
+<p>The row scores and column scores for the
+remaining (unranked) choices are <b>adjusted to
+remove the pairwise counts that involve the
+just-ranked choice</b> (A).&nbsp; The removed
+pairwise counts are the ones surrounded by
+asterisks.&nbsp; Specifically, after
+subtracting B&gt;A, the row score for choice B
+becomes B&gt;C + B&gt;D + B&gt;E, and after
+subtracting A&gt;B, the column score for choice
+B becomes C&gt;B + D&gt;B + E&gt;B.</p>
+
+<p>From among the remaining row scores the
+highest score is found.&nbsp; At this point
+let's assume that both choice B and choice C
+have the same highest row score.</p>
+
+<p><b>In the case of a row-score tie, the
+choice with the smallest column score &mdash;
+from among the choices that have the same
+largest row score &mdash; is ranked
+next</b>.&nbsp; This would be choice B.&nbsp;
+Therefore, choice B is moved to the sequence
+position just after choice A.&nbsp; The
+resulting sequence is A, B, C, E, D.</p>
+<p>Below is the pairwise matrix for the new
+sequence.&nbsp; The pairwise counts for the
+ranked choices are surrounded by asterisks.</p>
+
+ <pre>
+      |       |       |       |       |       |
+      |   A   |   B   |   C   |   E   |   D   |
+      |       |       |       |       |       |
+ -----*****************************************
+      * \     |       |       |       |       *
+  A   *   \   |  A>B  |  A>C  |  A>E  |  A>D  *
+      *     \ |       |       |       |       *
+ -----*-------+-------+-------+-------+-------*
+      *       | \     |       |       |       *
+  B   *  B>A  |   \   |  B>C  |  B>E  |  B>D  *
+      *       |     \ |       |       |       *
+ -----*-------+--------************************
+      *       |       * \     |       |       |
+  C   *  C>A  |  C>B  *   \   |  C>E  |  C>D  |
+      *       |       *     \ |       |       |
+ -----*-------+-------*-------+-------+-------+
+      *       |       *       | \     |       |
+  E   *  E>A  |  E>B  *  E>C  |   \   |  E>D  |
+      *       |       *       |     \ |       |
+ -----*-------+-------*-------+-------+-------+
+      *       |       *       |       | \     |
+  D   *  D>A  |  D>B  *  D>C  |  D>E  |   \   |
+      *       |       *       |       |     \ |
+ -----*****************-------+-------+-------+
+</pre>
+
+<p>The same ranking process is repeated.&nbsp;
+The next choice to be ranked would be choice
+C.&nbsp;  It would have the highest row score
+-- and the smallest column score if there is a
+row-score tie.&nbsp;  So choice C would be
+identified as the next choice in the ranked
+sequence.&nbsp;  After that, choice D would
+have the highest row score, and would be ranked
+next.&nbsp; Finally the only remaining choice,
+choice E, would be ranked at the last (lowest)
+position.</p>
+
+<p>Here is the final pairwise matrix.</p>
+
+<pre>
+      |       |       |       |       |       |
+      |   A   |   B   |   C   |   D   |   E   |
+      |       |       |       |       |       |
+ -----*****************************************
+      * \     |       |       |       |       *
+  A   *   \   |  A>B  |  A>C  |  A>D  |  A>E  *
+      *     \ |       |       |       |       *
+ -----*-------+-------+-------+-------+-------*
+      *       | \     |       |       |       *
+  B   *  B>A  |   \   |  B>C  |  B>D  |  B>E  *
+      *       |     \ |       |       |       *
+ -----*-------+-------+-------+-------+-------*
+      *       |       | \     |       |       *
+  C   *  C>A  |  C>B  |   \   |  C>D  |  C>E  *
+      *       |       |     \ |       |       *
+ -----*-------+-------+-------+-------+-------*
+      *       |       |       | \     |       *
+  D   *  D>A  |  D>B  |  D>C  |   \   |  D>E  *
+      *       |       |       |     \ |       *
+ -----*-------+-------+-------+-------+-------*
+      *       |       |       |       | \     *
+  E   *  E>A  |  E>B  |  E>C  |  E>D  |   \   *
+      *       |       |       |       |     \ *
+ -----*****************************************
+</pre>
+
+<p>The choices are now fully ranked according
+to the Choice-Specific Pairwise-Count
+method.</p>
+
+<p>If only a single winner is needed, the
+first-ranked choice should not necessarily be
+selected as the winner.&nbsp; Instead, the
+pairwise counts should be checked for a
+possible Condorcet winner, which may be second
+or third in the CSPS ranking result.</p>
+
+<h3>Concise description of the calculation method</h3>
+
+<p>A <b>row score</b> and a <b>column score</b>
+is calculated for <b>each choice</b>.&nbsp; The
+row score is the sum of the pairwise counts in
+which the specified choice is preferred over
+each of the other choices.&nbsp; The column
+score is the sum of the pairwise counts in
+which each other choice is preferred over the
+specified choice.</p>
+
+<p>For the choices that have not yet been
+ranked, all the row scores are compared to find
+the <b>highest row score</b>.&nbsp; The choice
+that has the highest row score is moved to the
+most-popular or next-most popular position in
+the ranking results.</p>
+
+<p><b>If</b> more than one choice is
+<b>tied</b> with the highest row score, the
+choice with the <b>smallest column score</b> is
+chosen.&nbsp; If more than one choice has the
+same row score and the same column score, the
+choices are regarded as tied.</p>
+
+<p>After each choice has been ranked, the
+scores for the remaining (unranked) choices are
+<b>adjusted</b> by subtracting from all the
+remaining scores the pairwise counts that
+involve the just-ranked choice.</p>
+
+<p>The process of ranking each choice and
+adjusting the remaining scores is
+<b>repeated</b> until only one choice remains,
+and it is ranked in the bottom (least-popular)
+position.</p>
+
+<p>&nbsp;</p>
+
+<p>&copy; Copyright 2011 by Richard Fobes at
+VoteFair.org.&nbsp; This copyright applies to
+this description.&nbsp; The choice-specific
+pairwise-score (CSPS) calculation method is in
+the public domain.</p>
+
+<!-- End top content -->
+<!-- Begin transition to right sidebar -->
+
+</div></td>
+<td>&nbsp;</td>
+<td valign="top" align="right">
+<div class="rightsidebar">
+
+<!-- End transition to right sidebar -->
+<!-- Begin right sidebar -->
+
+<p>Open-source <b>VoteFair ranking software</b> at
+<a href="http://search.cpan.org/~fobes/Voting-VoteFairRanking-5.01/lib/Voting/VoteFairRanking.pm">CPAN</a>
+and
+<a href="http://github.com/cpsolver/VoteFair-ranking">GitHub</a></p>
+
+<p><a href="http://www.BanSingleMarkBallots.org">Declaration of Election-Method Reform Advocates</a></p>
+
+<p><a href="http://www.youtube.com/watch?v=4Wk3EHjfP4E">YouTube video of Richard's 2009 Ignite presentation titled <i>YIP movie rating and other creative solutions</i></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/ehu.html"><i>Ending The Hidden Unfairness In U.S. Elections</i><br /><img src="http://www.SolutionsCreative.com/ehufrontsm.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.amazon.com/Creative-Problem-Solving-Tips-ebook/dp/B002IT6RQM"><i>23 Creative Problem Solving Tips</i><br />(Kindle ebook)<br /><img src="http://www.votefair.org/cpst23frontsm.gif" alt="23 Creative Problem Solving Tips" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/cpst.html"><i>The Creative Problem Solver's Toolbox</i><br /><img src="http://www.SolutionsCreative.com/coverlow.jpg" alt="The Creative Problem Solver's Toolbox" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.NegotiationTool.com">NegotiationTool.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com">SolutionsCreative.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com/author.html#video">Video of Richard Fobes Zydeco dancing</a></p>
+
+<!-- End right sidebar -->
+<!-- Begin transition to wide content -->
+
+</div>
+</td></tr></table>
+<div class="content">
+
+<!-- End transition to wide content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin wide content -->
+
+<br />
+
+
+<p>&nbsp;</p>
+
+
+<!-- End wide content -->
+
+<!-- FooterForPage overview.html -->
+<!-- Begin inserted footer -->
+
+<p>&nbsp;</p>
+
+
+<hr width="70%" align="center" />
+
+<p align="center">Send feedback to Richard Fobes at
+<img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img><br />
+or use the <a href="http://www.VoteFair.org/testimonials.html">Testimonials page</a></p>
+
+<p align="center">&copy; Copyright 2011, Richard Fobes at VoteFair.org</p>
+
+<p align="center"><a href="#top"><img src="bullet.gif" alt="Top of Page" width="20" height="20"></img></a> <a href="#top">Top of Page</a></p>
+</div>
+<p>&nbsp;</p>
+
+<!-- End inserted footer -->
+</body>
+</html>

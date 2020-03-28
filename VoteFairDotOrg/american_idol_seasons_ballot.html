@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta name="description" content="VoteFair ranking, designed by Richard Fobes" />
+   <meta name="keywords" content="American Idol voting, VoteFair ranking, vote fair, order of preference ballots" />
+   <meta name="author" content="Richard Fobes" />
+   <meta http-equiv="copyright" content="2005 Richard Fobes" />
+   <meta http-equiv="distribution" content="global" />
+   <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+   <title>American Idol voting the VoteFair way</title>
+
+
+
+
+<script language="javascript" type="text/javascript">
+<!--
+var copyright = '(c) Copyright 2006 Solutions Through Innovation at www.VoteFair.org -- ALL RIGHTS RESERVED' ;
+var numberOfQuestions;
+var voteInfo;
+var ovalLocation = "http://www.VoteFair.org/";
+var numberOfChoicesForQuestion = Array(1);
+var numberOfPreferenceLevelsForQuestion = Array(1);
+var maximumNumberOfChoices =11;
+var actualMarkNumberForQuestionAndChoice = Array(12);
+var markNumberForQuestionAndChoice = Array(12);
+numberOfQuestions = 1;
+numberOfChoicesForQuestion[ 1 ] = 11;
+numberOfPreferenceLevelsForQuestion[ 1 ] = 11;
+for ( question = 1 ; question <= numberOfQuestions ; question ++ ) {
+var question;
+var choice;
+var numberOfChoices = numberOfChoicesForQuestion[ question ];
+var pointerForQuestionAndChoice;
+for ( choice = 1 ; choice <= numberOfChoices ; choice ++ ) {
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = 0;
+actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = 0;
+}
+}
+var load_oval_graphic_marked = new Image();
+load_oval_graphic_marked.src = ovalLocation + 'ovalmarked.gif';
+var load_oval_graphic_emptyempty = new Image();
+load_oval_graphic_emptyempty.src = ovalLocation + 'ovalempty.gif';
+var load_oval_graphic_empty = new Array(11);
+var load_oval_graphic_gray = new Array(11);
+var oval;
+for ( oval = 1 ; oval <=11; oval ++ ) {
+load_oval_graphic_gray[ oval ] = new Image();
+load_oval_graphic_gray[ oval ].src = ovalLocation + 'oval' + oval + 'gray.gif';
+load_oval_graphic_empty[ oval ] = new Image();
+load_oval_graphic_empty[ oval ].src = ovalLocation + 'oval' + oval + 'empty.gif';
+}
+function copyActualArrayToMarkArrayForQuestion( question ) {
+var question;
+var choice;
+var numberOfChoices = numberOfChoicesForQuestion[ question ];
+var pointerForQuestionAndChoice;
+for ( choice = 1 ; choice <= numberOfChoices ; choice ++ ) {
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ];
+}
+}
+function copyMarkArrayToActualArrayForQuestion( question ) {
+var question;
+var choice;
+var numberOfChoices = numberOfChoicesForQuestion[ question ];
+var pointerForQuestionAndChoice;
+for ( choice = 1 ; choice <= numberOfChoices ; choice ++ ) {
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ];
+}
+}
+function updateOvalForQuestionChoiceOvalState( question, choice, oval, state ){
+var question;
+var choice;
+var oval;
+var state;
+var stateEmpty = 0;
+var stateGray = 1;
+var stateMarked = 2;
+var objectName;
+var imageName;
+var numberOfPreferenceLevels = numberOfPreferenceLevelsForQuestion[ question ];
+imageName = ovalLocation + 'ovalmarked.gif';
+if ( state == stateEmpty ) {
+if ( numberOfPreferenceLevels == 1 ) {
+imageName = ovalLocation + 'ovalempty.gif';
+} else {
+imageName = ovalLocation + 'oval' + oval + 'empty.gif';
+}
+}
+if ( state == stateGray ) {
+if ( numberOfPreferenceLevels == 1 ) {
+imageName = ovalLocation + 'ovalgray.gif';
+} else {
+imageName = ovalLocation + 'oval' + oval + 'gray.gif';
+}
+}
+objectName = 'oval_' + question + '_' + choice + '_' + oval;
+if ( document[objectName].src != imageName ) {
+document[objectName].src = imageName;
+}
+}
+function updateOvalsForQuestion( question ) {
+var statusCheck = '';
+var objectName;
+var question;
+var choice;
+var oval;
+var state;
+var stateEmpty = 0;
+var stateGray = 1;
+var stateMarked = 2;
+var numberOfChoices = numberOfChoicesForQuestion[ question ];
+var numberOfOvals = numberOfPreferenceLevelsForQuestion[ question ];
+var numberOfPreferenceLevels = numberOfPreferenceLevelsForQuestion[ question ];
+var pointerForQuestionAndChoice;
+for ( choice = 1 ; choice <= numberOfChoices ; choice ++ ) {
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+if ( numberOfPreferenceLevels == 1 ) {
+oval = 1;
+state = stateEmpty;
+if ( markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] == 1 ) {
+if ( actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] == 1 ) {
+state = stateMarked;
+} else {
+state = stateGray;
+}
+}
+updateOvalForQuestionChoiceOvalState( question, choice, oval, state );
+} else {
+for ( oval = 1 ; oval <= numberOfOvals ; oval ++ ) {
+state = stateEmpty;
+if ( ( markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] > 0 ) && ( markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] <= numberOfOvals ) ) {
+if ( markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] == oval ) {
+if ( actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] == markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] ) {
+state = stateMarked;
+} else {
+state = stateGray;
+}
+}
+}
+updateOvalForQuestionChoiceOvalState( question, choice, oval, state );
+}
+}
+}
+}
+function debug( ) {
+var question;
+var choice;
+var statusCheck = 'status: ';
+var pointerForQuestionAndChoice;
+for ( question = 1 ; question <= numberOfQuestions ; question ++ ) {
+statusCheck += ' ' + question + ':';
+numberOfChoices = numberOfChoicesForQuestion[ question ];
+for ( choice = 1 ; choice <= numberOfChoices ; choice ++ ) {
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+statusCheck += actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ];
+}
+}
+window.status = statusCheck;
+}
+function cursorLeavingQuestion( question ) {
+var question;
+copyActualArrayToMarkArrayForQuestion( question );
+updateOvalsForQuestion( question );
+}
+function calculateNonrankedQuestionForChoice( question, choice ){
+var question;
+var choice;
+var otherChoice;
+var indicateEmpty = 0;
+var indicateMarked = 1;
+var pointerForQuestionAndChoice;
+var numberOfChoices = numberOfChoicesForQuestion[ question ];
+for ( otherChoice = 1 ; otherChoice <= numberOfChoices ; otherChoice ++ ) {
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + otherChoice;
+markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = indicateEmpty;
+}
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = indicateMarked;
+}
+function cursorOverOval( question, choice, oval ){
+var question;
+var choice;
+var oval;
+var stateGray = 1;
+var pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+if ( actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] != oval ) {
+updateOvalForQuestionChoiceOvalState( question, choice, oval, stateGray );
+}
+markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = oval;
+updateOvalsForQuestion( question );
+}
+function clickOval( question, choice, oval ){
+var question;
+var choice;
+var oval;
+var pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = oval;
+copyActualArrayToMarkArrayForQuestion( question );
+updateOvalsForQuestion( question );
+}
+function cursorOverNonrankedOval( question, choice ){
+var question;
+var choice;
+calculateNonrankedQuestionForChoice( question, choice );
+updateOvalsForQuestion( question );
+copyActualArrayToMarkArrayForQuestion( question );
+}
+function clickNonrankedOval( question, choice ){
+var question;
+var choice;
+calculateNonrankedQuestionForChoice( question, choice );
+copyMarkArrayToActualArrayForQuestion( question );
+updateOvalsForQuestion( question );
+}
+function highestAvailableRankingForQuestion( question ) {
+var question;
+var choice;
+var numberOfChoices = numberOfChoicesForQuestion[ question ];
+var rankingLevel = 1;
+var pointerForQuestionAndChoice;
+while ( true ) {
+if ( rankingLevel == numberOfChoices ) {
+return rankingLevel;
+}
+var levelIsEmpty = true;
+for ( choice = 1 ; choice <= numberOfChoices ; choice ++ ) {
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+if ( rankingLevel == markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] ) {
+levelIsEmpty = false;
+break;
+}
+}
+if ( levelIsEmpty == true ) {
+return rankingLevel;
+}
+rankingLevel ++;
+}
+}
+function cursorOverChoice( question, choice ) {
+var question;
+var choice;
+var highestAvailableRanking = highestAvailableRankingForQuestion( question );
+var pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+var markNumber = markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ];
+if ( ( markNumber == 0 ) || ( highestAvailableRanking < markNumber ) ) {
+markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = highestAvailableRanking;
+updateOvalsForQuestion( question );
+copyActualArrayToMarkArrayForQuestion( question );
+}
+}
+function clickChoice( question, choice ) {
+var question;
+var choice;
+var highestAvailableRanking = highestAvailableRankingForQuestion( question );
+var pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+var markNumber = markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ];
+if ( ( markNumber == 0 ) || ( highestAvailableRanking < markNumber ) ) {
+markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = highestAvailableRanking;
+copyMarkArrayToActualArrayForQuestion( question );
+updateOvalsForQuestion( question );
+}
+}
+function cursorOverNonrankedChoice( question, choice ) {
+var question;
+var choice;
+calculateNonrankedQuestionForChoice( question, choice );
+updateOvalsForQuestion( question );
+copyActualArrayToMarkArrayForQuestion( question );
+}
+function clickNonrankedChoice( question, choice ) {
+var question;
+var choice;
+calculateNonrankedQuestionForChoice( question, choice );
+copyMarkArrayToActualArrayForQuestion( question );
+updateOvalsForQuestion( question );
+}
+function calculateClearQuestion( question ) {
+var question;
+var choice;
+var numberOfChoices = numberOfChoicesForQuestion[ question ];
+var pointerForQuestionAndChoice;
+for ( choice = 1 ; choice <= numberOfChoices ; choice ++ ) {
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+markNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = 0;
+}
+}
+function showClearQuestion( question ) {
+var question;
+calculateClearQuestion( question );
+updateOvalsForQuestion( question );
+}
+function clearQuestion( question ) {
+var question;
+calculateClearQuestion( question );
+copyMarkArrayToActualArrayForQuestion( question );
+updateOvalsForQuestion( question );
+}
+function showClearAllQuestions( ) {
+var question;
+for ( question = 1 ; question <= numberOfQuestions ; question ++ ) {
+showClearQuestion( question );
+}
+}
+function stopShowingClearAllQuestions( ) {
+var question;
+for ( question = 1 ; question <= numberOfQuestions ; question ++ ) {
+cursorLeavingQuestion( question ) ;
+}
+}
+function clearAllQuestions( ) {
+var question;
+for ( question = 1 ; question <= numberOfQuestions ; question ++ ) {
+clearQuestion( question ) ;
+}
+}
+function ignoreBallot( ){
+document.formIgnore.javascriptstatus.value = 'enabled';
+clearAllQuestions( );
+document.formIgnore.voteInfo.value = 'ignore';
+document.formIgnore.submit();
+}
+function assignFinalValues( ){
+var question;
+var choice;
+var objectName;
+var pointerForQuestionAndChoice;
+for ( question = 1 ; question <= numberOfQuestions ; question ++ ) {
+var numberOfChoices = numberOfChoicesForQuestion[ question ];
+for ( choice = 1 ; choice <= numberOfChoices ; choice ++ ) {
+pointerForQuestionAndChoice = ( ( question - 1 ) * maximumNumberOfChoices ) + choice;
+if ( actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] == 0 ) {
+actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] = numberOfPreferenceLevelsForQuestion[ question ] + 1;
+}
+objectName = 'selectionForQuestion' + question + 'Choice' + choice;
+document.formBallot[objectName].value = actualMarkNumberForQuestionAndChoice[ pointerForQuestionAndChoice ] + "" ;
+}
+}
+}
+function castBallot( ){
+document.formBallot.javascriptstatus.value = 'enabled';
+assignFinalValues( );
+document.formBallot.submit();
+}
+// -->
+</script>
+
+
+
+
+
+</head>
+<!-- Begin top of page -->
+
+<body><a name="top"></a>
+
+<table align="left" border="0" rules="none" frame="void" class="headingbackgroundcolor" cellpadding="5" cellspacing="0" width="100%">
+<tr><td align="center">
+<a href="http://www.votefair.org/index.html"><img src="vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></a></td>
+
+<td align="left">
+<h1 class="fontserif"><font class="fontcolorondark">VoteFair&nbsp; ranking</font></h1>
+<p class="byline"><font class="fontcolorondark">Just one ballot mark isn't enough for fair results</font></p>
+</td><td align="right">
+
+<table align="left" border="1" rules="none" frame="void" class="yellowbackground" cellpadding="5" cellspacing="0">
+
+<tr><td width="5"></td><td><form method="post" name="formNewSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi"><input type="hidden" name="action" value="newsurvey" /><input type="submit" name="action-newsurvey" value="Create survey" /></form></td><td width="5"></td></tr>
+
+<tr><td width="5"></td><td><table border="1" cellpadding="3" cellspacing="2" rules="all"><tr align="left"><td align="left"><form method="post" name="formAccessExistingSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">Voting&nbsp;ID:<br /><input type="text" name="votingid" value ="" size="20" maxlength="20" /><br /><input type="hidden" name="javascriptballot" value="yes" /><input type="hidden" name="action" value="showactions" /><input type="submit" name="requestaccesssurvey" value="Access survey" /></form></td></tr></table></td><td width="5"></td></tr>
+
+</table>
+</td></tr></table>
+
+<!-- End top of page -->
+<!-- Begin navigation level one -->
+
+<div style="clear: both;"></div>
+<div class="navmenu1">
+<ul>
+<li><a href="http://www.VoteFair.org/surveys.html"><span class="fontbigred">Free</span> Survey/Poll/Election service</a></li>
+<li class="navtabcurrentli1"><a href="http://www.VoteFair.org/americanidol.html">American Idol poll</a></li>
+<li><a href="http://www.VoteFair.org/elections.html">Government elections</a></li>
+<li><a href="http://www.VoteFair.org/overview.html">About VoteFair ranking</a></li>
+<li><a href="http://www.VoteFair.org/testimonials.html">Testimonials &amp; Contact</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level one -->
+
+<h2 class="titlebetweenmenulevels">VoteFair American Idol poll</h2>
+
+<!-- Begin navigation level two -->
+
+<div class="navmenu2">
+<ul>
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level two -->
+<!-- Begin transition to top content -->
+
+<table width="100%">
+<tr>
+<td valign="top">
+<div class="content">
+
+<!-- End transition to top content -->
+
+<!-- ContentForPage american_idol_seasons_ballot.html -->
+<!-- Begin top content -->
+
+<center>
+<h2>Top singers from past five seasons of American Idol</h2></center>
+
+<br />
+<br />
+
+Express your overall order of preference for
+the top singers from the past five seasons.
+Just click on the names in sequence.
+(Unmarked choices are tied as least-favorite.)
+
+<br />
+
+(Or skip to the <a href="http://www.VoteFair.org/cgi-bin/votefairrank.cgi?votingid=idolseasons&action=showresults">results</a>.)
+
+
+<br />
+<br />
+
+
+
+
+
+
+<form method="post"
+name="formBallot"
+action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">
+<table border="0" cellpadding="3" cellspacing="2" rules="none" summary="none">
+<tr align="left">
+<td align="left">
+
+<table border="0" cellpadding="3" cellspacing="2" rules="none" summary="none">
+<tr align="left">
+<td align="left">&nbsp;&nbsp;</td>
+<td align="left">
+<table border="1" cellpadding="3" cellspacing="2" rules="all" summary="none">
+<tr align="left">
+<td align="left">
+<table border="0" cellpadding="3" cellspacing="2" rules="none" summary="none">
+<tr align="left">
+<td align="left">
+<p>
+Order of preference for top American Idol singers</p></td></tr>
+<tr align="left">
+<td align="left">
+<table border="0" cellpadding="3" cellspacing="2" rules="none" summary="none">
+<tr align="left">
+
+<td align="left">&nbsp;&nbsp;</td>
+<td align="left">
+<table border="1" cellpadding="5" cellspacing="2" rules="rows" summary="none">
+<tr align="left">
+<td align="left"></td>
+<td align="left">
+<b>
+First<br />
+choice</b></td>
+<td align="left">
+<b>
+Second<br />
+choice</b></td>
+
+<td align="left">
+<b>
+Third<br />
+choice</b></td>
+<td align="left">
+<b>
+Fourth<br />
+choice</b></td>
+<td align="left">
+<b>
+Fifth<br />
+choice</b></td>
+
+<td align="left">
+<b>
+Sixth<br />
+choice</b></td>
+<td align="left">
+<b>
+Seventh<br />
+choice</b></td>
+<td align="left">
+<b>
+Eighth<br />
+choice</b></td>
+
+<td align="left">
+<b>
+Ninth<br />
+choice</b></td>
+<td align="left">
+<b>
+Tenth<br />
+choice</b></td>
+<td align="left">
+<b>
+Eleventh<br />
+choice</b></td></tr>
+
+<tr align="left">
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,1)">
+Taylor Hicks</a>
+<input type="hidden" name="selectionForQuestion1Choice1" value="0"></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,1)"><img name="oval_1_1_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,2)"><img name="oval_1_1_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,3)"><img name="oval_1_1_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,4)"><img name="oval_1_1_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,5)"><img name="oval_1_1_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,6)"><img name="oval_1_1_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,7)"><img name="oval_1_1_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,8)"><img name="oval_1_1_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,9)"><img name="oval_1_1_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,10)"><img name="oval_1_1_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,1,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,1,11)"><img name="oval_1_1_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,2)">
+Katharine McPhee</a>
+<input type="hidden" name="selectionForQuestion1Choice2" value="0"></td>
+
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,1)"><img name="oval_1_2_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,2)"><img name="oval_1_2_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,3)"><img name="oval_1_2_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,4)"><img name="oval_1_2_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,5)"><img name="oval_1_2_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,6)"><img name="oval_1_2_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,7)"><img name="oval_1_2_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,8)"><img name="oval_1_2_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,9)"><img name="oval_1_2_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,10)"><img name="oval_1_2_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,2,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,2,11)"><img name="oval_1_2_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,3)">
+Elliott Yamin</a>
+<input type="hidden" name="selectionForQuestion1Choice3" value="0"></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,1)"><img name="oval_1_3_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,2)"><img name="oval_1_3_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,3)"><img name="oval_1_3_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,4)"><img name="oval_1_3_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,5)"><img name="oval_1_3_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,6)"><img name="oval_1_3_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,7)"><img name="oval_1_3_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,8)"><img name="oval_1_3_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,9)"><img name="oval_1_3_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,10)"><img name="oval_1_3_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,3,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,3,11)"><img name="oval_1_3_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,4)">
+Chris Daughtry</a>
+<input type="hidden" name="selectionForQuestion1Choice4" value="0"></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,1)"><img name="oval_1_4_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,2)"><img name="oval_1_4_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,3)"><img name="oval_1_4_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,4)"><img name="oval_1_4_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,5)"><img name="oval_1_4_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,6)"><img name="oval_1_4_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,7)"><img name="oval_1_4_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,8)"><img name="oval_1_4_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,9)"><img name="oval_1_4_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,10)"><img name="oval_1_4_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,4,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,4,11)"><img name="oval_1_4_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,5)">
+Carrie Underwood</a>
+<input type="hidden" name="selectionForQuestion1Choice5" value="0"></td>
+<td align="left">
+
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,1)"><img name="oval_1_5_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,2)"><img name="oval_1_5_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,3)"><img name="oval_1_5_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,4)"><img name="oval_1_5_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,5)"><img name="oval_1_5_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,6)"><img name="oval_1_5_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,7)"><img name="oval_1_5_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,8)"><img name="oval_1_5_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,9)"><img name="oval_1_5_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,10)"><img name="oval_1_5_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,5,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,5,11)"><img name="oval_1_5_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,6)">
+Bo Bice</a>
+<input type="hidden" name="selectionForQuestion1Choice6" value="0"></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,1)"><img name="oval_1_6_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,2)"><img name="oval_1_6_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,3)"><img name="oval_1_6_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,4)"><img name="oval_1_6_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,5)"><img name="oval_1_6_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,6)"><img name="oval_1_6_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,7)"><img name="oval_1_6_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,8)"><img name="oval_1_6_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,9)"><img name="oval_1_6_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,10)"><img name="oval_1_6_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,6,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,6,11)"><img name="oval_1_6_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+<td align="left">
+
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,7)">
+Constantine Maroulis</a>
+<input type="hidden" name="selectionForQuestion1Choice7" value="0"></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,1)"><img name="oval_1_7_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,2)"><img name="oval_1_7_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,3)"><img name="oval_1_7_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,4)"><img name="oval_1_7_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,5)"><img name="oval_1_7_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,6)"><img name="oval_1_7_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,7)"><img name="oval_1_7_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,8)"><img name="oval_1_7_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,9)"><img name="oval_1_7_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,10)"><img name="oval_1_7_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,7,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,7,11)"><img name="oval_1_7_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,8)">
+Fantasia Barrino</a>
+<input type="hidden" name="selectionForQuestion1Choice8" value="0"></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,1)"><img name="oval_1_8_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,2)"><img name="oval_1_8_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,3)"><img name="oval_1_8_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,4)"><img name="oval_1_8_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,5)"><img name="oval_1_8_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,6)"><img name="oval_1_8_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,7)"><img name="oval_1_8_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,8)"><img name="oval_1_8_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,9)"><img name="oval_1_8_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,10)"><img name="oval_1_8_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,8,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,8,11)"><img name="oval_1_8_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,9)">
+Ruben Studdard</a>
+<input type="hidden" name="selectionForQuestion1Choice9" value="0"></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,1)"><img name="oval_1_9_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,2)"><img name="oval_1_9_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,3)"><img name="oval_1_9_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,4)"><img name="oval_1_9_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,5)"><img name="oval_1_9_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,6)"><img name="oval_1_9_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,7)"><img name="oval_1_9_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,8)"><img name="oval_1_9_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,9)"><img name="oval_1_9_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,10)"><img name="oval_1_9_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,9,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,9,11)"><img name="oval_1_9_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,10)">
+
+Clay Aiken</a>
+<input type="hidden" name="selectionForQuestion1Choice10" value="0"></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,1)"><img name="oval_1_10_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,2)"><img name="oval_1_10_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,3)"><img name="oval_1_10_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,4)"><img name="oval_1_10_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,5)"><img name="oval_1_10_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,6)"><img name="oval_1_10_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,7)"><img name="oval_1_10_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,8)"><img name="oval_1_10_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,9)"><img name="oval_1_10_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,10)"><img name="oval_1_10_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,10,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,10,11)"><img name="oval_1_10_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr>
+<tr align="left">
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverChoice(1,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickChoice(1,11)">
+Kelly Clarkson</a>
+<input type="hidden" name="selectionForQuestion1Choice11" value="0"></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,1)"><img name="oval_1_11_1" src="http://www.VoteFair.org/oval1empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,2)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,2)"><img name="oval_1_11_2" src="http://www.VoteFair.org/oval2empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,3)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,3)"><img name="oval_1_11_3" src="http://www.VoteFair.org/oval3empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,4)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,4)"><img name="oval_1_11_4" src="http://www.VoteFair.org/oval4empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,5)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,5)"><img name="oval_1_11_5" src="http://www.VoteFair.org/oval5empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,6)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,6)"><img name="oval_1_11_6" src="http://www.VoteFair.org/oval6empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,7)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,7)"><img name="oval_1_11_7" src="http://www.VoteFair.org/oval7empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,8)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,8)"><img name="oval_1_11_8" src="http://www.VoteFair.org/oval8empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,9)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,9)"><img name="oval_1_11_9" src="http://www.VoteFair.org/oval9empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,10)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,10)"><img name="oval_1_11_10" src="http://www.VoteFair.org/oval10empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td>
+
+<td align="left">
+<a href="javascript:void(0)" onMouseOver="cursorOverOval(1,11,11)" onMouseOut="cursorLeavingQuestion(1)" onClick="clickOval(1,11,11)"><img name="oval_1_11_11" src="http://www.VoteFair.org/oval11empty.gif" alt="Click to mark" vspace="0" hspace="0" border="0" align="middle" width="32" height="18"></img></a></td></tr></table></td></tr></table></td></tr>
+<tr align="left">
+<td align="right">
+<a href="javascript:void(0)" onMouseOver="showClearQuestion(1)" onMouseOut="cursorLeavingQuestion(1)" onClick="clearQuestion(1)">
+Clear</a></td></tr></table></td></tr></table></td></tr></table>
+<input type="hidden" name="action" value="castvote">
+<input type="hidden" name="votingid" value="idolseasons">
+<input type="hidden" name="sk" value="">
+<input type="hidden" name="confirmation-number" value="861940">
+<input type="hidden" name="javascriptballot" value="yes" /><br />
+<center>
+<input type="submit"
+name="castvote"
+value="Cast ballot"
+onMouseOver="assignFinalValues()"
+onClick="castBallot()"></center></td></tr></table></form>
+
+
+
+
+<br />
+
+
+<form method="post"
+name="separateForm"
+action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">
+<input type="hidden" name="votingid" value="idolsseasons">
+<input type="hidden" name="javascriptballot" value="no">
+<input type="hidden" name="action" value="usenonjavascript">
+<br />
+If the ovals and choice names do not respond to mouse clicks: 
+<input type="submit"
+name="tryNonJavaScript" value="Give me the non-JavaScript ballot">
+</form>
+
+
+
+<br />
+
+Skip to the <a href="http://www.VoteFair.org/cgi-bin/votefairrank.cgi?votingid=idolseasons&action=showresults">results</a> for this survey.
+
+
+
+
+<!-- End top content -->
+<!-- Begin transition to right sidebar -->
+
+</div></td>
+<td>&nbsp;</td>
+<td valign="top" align="right">
+<div class="rightsidebar">
+
+<!-- End transition to right sidebar -->
+<!-- Begin right sidebar -->
+
+<p><a href="http://www.youtube.com/watch?v=4Wk3EHjfP4E">YouTube video of Richard's 2009 Ignite presentation titled <i>YIP movie rating and other creative solutions</i></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/ehu.html"><i>Ending The Hidden Unfairness In U.S. Elections</i><br /><img src="http://www.SolutionsCreative.com/ehufrontsm.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.amazon.com/Creative-Problem-Solving-Tips-ebook/dp/B002IT6RQM"><i>23 Creative Problem Solving Tips</i><br />(Kindle ebook)<br /><img src="http://www.votefair.org/cpst23frontsm.gif" alt="23 Creative Problem Solving Tips" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/cpst.html"><i>The Creative Problem Solver's Toolbox</i><br /><img src="http://www.SolutionsCreative.com/coverlow.jpg" alt="The Creative Problem Solver's Toolbox" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.NegotiationTool.com">NegotiationTool.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com">SolutionsCreative.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com/author.html#video">Video of Richard Fobes Zydeco dancing</a></p>
+
+<!-- End right sidebar -->
+<!-- Begin transition to wide content -->
+
+</div>
+</td></tr></table>
+<div class="content">
+
+<!-- End transition to wide content -->
+
+<!-- ContentForPage american_idol_seasons_ballot.html -->
+<!-- Begin wide content -->
+
+
+<p>&nbsp;</p>
+
+
+<!-- End wide content -->
+
+<!-- FooterForPage american_idol_seasons_ballot.html -->
+<!-- Begin inserted footer -->
+
+<p>&nbsp;</p>
+
+
+<hr width="70%" align="center" />
+
+<p align="center">Send feedback to Richard Fobes at 
+<img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img><br />
+or use the <a href="http://www.VoteFair.org/testimonials.html">Testimonials page</a></p>
+
+<p align="center">&copy; Copyright 2004 through 2011, Richard Fobes at VoteFair.org</p>
+
+<p align="center"><a href="#top"><img src="bullet.gif" alt="Top of Page" width="20" height="20"></img></a> <a href="#top">Top of Page</a></p>
+</div>
+<p>&nbsp;</p>
+
+<!-- End inserted footer -->
+</body>
+</html>

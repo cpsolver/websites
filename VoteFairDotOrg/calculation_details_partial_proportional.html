@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta name="description" content="Choice-Specific Pairwise-Score ranking />
+   <meta name="keywords" content="VoteFair ranking, Richard Fobes" />
+   <meta name="author" content="Richard Fobes" />
+   <meta http-equiv="copyright" content="2011 Richard Fobes" />
+   <meta http-equiv="distribution" content="global" />
+   <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+   <title>VoteFair Ranking Service
+</title>
+</head>
+<!-- Begin top of page -->
+
+<body><a name="top"></a>
+
+<table align="left" border="0" rules="none" frame="void" class="headingbackgroundcolor" cellpadding="5" cellspacing="0" width="100%">
+<tr><td align="center">
+<a href="http://www.votefair.org/index.html"><img src="vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></a></td>
+
+<td align="left">
+<h1 class="fontserif"><font class="fontcolorondark">VoteFair&nbsp; ranking</font></h1>
+<p class="byline"><font class="fontcolorondark">Just one ballot mark isn't enough for fair results</font></p>
+</td><td align="right">
+
+<table align="left" border="1" rules="none" frame="void" class="yellowbackground" cellpadding="5" cellspacing="0">
+
+<tr><td width="5"></td><td><form method="post" name="formNewSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi"><input type="hidden" name="action" value="newsurvey" /><input type="submit" name="action-newsurvey" value="Create survey" /></form></td><td width="5"></td></tr>
+
+<tr><td width="5"></td><td><table border="1" cellpadding="3" cellspacing="2" rules="all"><tr align="left"><td align="left"><form method="post" name="formAccessExistingSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">Voting&nbsp;ID:<br /><input type="text" name="votingid" value ="" size="20" maxlength="20" /><br /><input type="hidden" name="javascriptballot" value="yes" /><input type="hidden" name="action" value="showactions" /><input type="submit" name="requestaccesssurvey" value="Access survey" /></form></td></tr></table></td><td width="5"></td></tr>
+
+</table>
+</td></tr></table>
+
+<!-- End top of page -->
+<!-- Begin navigation level one -->
+
+<div style="clear: both;"></div>
+<div class="navlevel1of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/surveys.html"><span class="fontbigred">Free</span> Survey/Poll/Election service</a></li>
+<li><a href="http://www.VoteFair.org/americanidol.html">American Idol poll</a></li>
+<li><a href="http://www.VoteFair.org/elections.html">Government elections</a></li>
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/overview.html">About VoteFair ranking</a></li>
+<li><a href="http://www.VoteFair.org/testimonials.html">Testimonials &amp; Contact</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level one -->
+
+<h2 class="titlebetweenmenulevels">About VoteFair ranking</h2>
+
+<!-- Begin navigation level two -->
+
+</div>
+<div class="navlevel2of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/overview.html">Overview</a></li>
+<li><a href="http://www.VoteFair.org/votefaq.html">FAQ</a></li>
+<li><a href="http://www.VoteFair.org/compare.html">Comparison</a></li>
+<li><a href="http://www.VoteFair.org/pressrelease.html">Press release</a></li>
+<li><a href="http://www.VoteFair.org/poem.html">Poem</a></li>
+<li><a href="http://www.VoteFair.org/votefair_marble_machine.html">Marble machine</a></li>
+<!-- NavigationCurrentPage calculation_details.html -->
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/calculation_details.html">Calculation details</a></li>
+<li><a href="http://www.VoteFair.org/instant_pairwise_elimination.html">Instant Pairwise Elimination</a></li>
+<li><a href="http://www.VoteFair.org/representative_instant_pairwise_elimination.html">RIPE</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level two -->
+
+<h2 class="titlebetweenmenulevels">Calculation details</h2>
+
+<!-- Begin navigation level three -->
+
+</div>
+<div class="navlevel3of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/calculation_details.html">Calculation overview</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_popularity.html">Popularity</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_representation.html">Representation</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_party.html">Party</a></li>
+<!-- NavigationCurrentPage calculation_details_partial_proportional.html -->
+<li class="navtabcurrentli"><div>Partial proportional</div></li>
+<li><a href="http://www.VoteFair.org/choice_specific_pairwise_score.html">Estimated</a></li>
+<li><a href="http://www.VoteFair.org/insertion_sort.html">Insertion sort</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+</div>
+
+<!-- End navigation level three -->
+<!-- Begin transition to top content -->
+
+<table width="100%">
+<tr>
+<td valign="top">
+<div class="content">
+
+<!-- End transition to top content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin top content -->
+
+<h2>Purpose of VoteFair partial-proportional ranking</h2>
+
+<p>VoteFair <b>partial-proportional</b> ranking identifies candidates who failed to win
+a legislative seat in their district, yet deserve to win special legislative seats
+for the purpose of compensating for unfair district boundaries,
+and making it possible to elect legislators from "third" political parties
+(especially when the main political parties fail to fully represent their political priorities).</p>
+
+<h2>Overview of VoteFair partial-proportional ranking</h2>
+
+<p>VoteFair partial-proportional ranking is an adjustment that fills extra legislative seats after first filling most of the legislative seats in the following way:</p>
+
+<ul>
+
+<li>Identify districts from which two legislators (or Members of Parliament, or Congressmen) are elected.<br />&nbsp;</li>
+
+<li>Within each district, use VoteFair <b>representation</b> ranking to fill these two seats.<br />&nbsp;</li>
+
+</ul>
+
+<p>The extra legislative seats, which are called statewide (or nationwide) representative seats, are filled based on VoteFair <b>partial-proportional</b> ranking, which uses the following steps:</p>
+
+<ol>
+
+<li>In an earlier election, ask voters to rank their preference for political parties.&nbsp; (This already would have been done as part of VoteFair <b>party</b> ranking.)&nbsp; From these party preferences regard each voter's top choice as their <b>preferred party</b>.&nbsp; (If a voter indicates a first-place tie, split their single vote into an equal amount for each of the tied political parties.)<br />&nbsp;</li>
+
+<li>Use the top-ranked political-party preferences (from step 1) to calculate <b>target numbers</b> that indicate, ideally, how many seats each political party deserves to win.&nbsp; These calculations are describe below in the section titled
+<a href="#TARGET">Calculating target numbers</a>.<br />&nbsp;</li>
+
+<li>Identify <b>how many statewide seats each political party actually deserves to win</b>.&nbsp; These calculations are describe below in the section titled
+<a href="#PARTYWIN">Calculating party orientations of statewide seats</a>.<br />&nbsp;</li>
+
+<li>Use VoteFair <b>cross-district</b> ranking to identify which district-losing candidates deserve to win the statewide seats.&nbsp; These calculations are describe below in the section titled
+<a href="#CANDIDATEWIN">Calculating which candidate fills each statewide seat</a>.<br />&nbsp;</li>
+
+</ol>
+
+
+<a name="TARGET"></a>
+<h2>Calculating target numbers</h2>
+
+<p>Each party's target number equals the number of voters who rank that party as their first choice, multiplied times the total number of legislative seats (both districtwide and statewide), and then divided by the total number of voters, without rounding off the results.&nbsp; As a simple example, if there are 100 voters, and 30 of them rank the Blue party as their first choice, and there are 10 legislative seats, the Blue party's target number would be 3 (based on 30 x 10 / 100 ).</p>
+
+
+<a name="PARTYWIN"></a>
+<h2>Calculating party orientations of statewide seats</h2>
+
+<p>The party orientations of statewide representatives are determined &mdash; one seat at a time &mdash; using the following steps:</p>
+
+<ol>
+
+<li>Count the number of statewide and districtwide representative seats that, so far, have been won by each political party.<br />&nbsp;</li>
+
+<li>For each political party, subtract the numbers from step 1 from the target numbers.<br />&nbsp;</li>
+
+<li>Ignore any negative numbers produced in step 2, and ignore any zero values.&#160; From among the remaining numbers, identify the largest number and identify the party associated with this largest number.&nbsp; (If there is a tie, a judicial court or a random approach can resolve the tie.)<br />&nbsp;</li>
+
+<li>The political party identified in step 3 wins the next statewide representative seat.<br />&nbsp;</li>
+
+</ol>
+
+
+<a name="CANDIDATEWIN"></a>
+<h2>Calculating which candidate fills each statewide seat</h2>
+
+<p>These steps implement VoteFair <b>cross-district</b> ranking, which determines which candidate fills each statewide representative seat:</p>
+
+<ol>
+
+<li>Consider only the candidates who competed for their district's two seats, but failed to win (using VoteFair representation ranking).<br />&nbsp;</li>
+
+<li>Consider only the candidates who are from the target party, which is the political party that has won the statewide seat being filled.&#160; These are called <b>same-party candidates</b>.<br />&nbsp;</li>
+
+<li>Identify the ballots of what are called <b>same-party voters</b>.&#160; A same-party voter is someone whose most-preferred party is the target party.&#160; Ballots on which a voter indicates a first-choice preference for any other political party, and ballots on which a voter indicates a tie as their first choice, do not fit this requirement.<br />&nbsp;</li>
+
+<li>Count the number of same-party voters who prefer each same-party candidate as their first choice.<br />&nbsp;</li>
+
+<li>From among the same-party candidates who have not yet won a seat, identify the candidate who is preferred by the highest number of same-party voters.&#160; This candidate wins the statewide representative seat.<br />&nbsp;</li>
+
+<li>Repeat these steps for the next statewide representative seat that needs to be filled.<br />&nbsp;</li>
+
+</ol>
+
+<p>If the steps seem confusing, consider that from a voter's perspective it simply amounts to marking candidate preferences for one race in the primary election, and marking candidate preferences for another race in the general election, and also marking political-party preferences in the general election.</p>
+
+
+
+<p>&nbsp;</p>
+
+<p>The VoteFair ranking calculation methods are in the public domain,
+but copyright protection (see below) applies to the above description
+and to the software that implements VoteFair ranking.</p>
+
+<!-- End top content -->
+<!-- Begin transition to right sidebar -->
+
+</div></td>
+<td>&nbsp;</td>
+<td valign="top" align="right">
+<div class="rightsidebar">
+
+<!-- End transition to right sidebar -->
+<!-- Begin right sidebar -->
+
+<p>Open-source <b>VoteFair ranking software</b> at
+<a href="http://search.cpan.org/~fobes/Voting-VoteFairRanking-5.01/lib/Voting/VoteFairRanking.pm">CPAN</a>
+and
+<a href="http://github.com/cpsolver/VoteFair-ranking">GitHub</a></p>
+
+<p><a href="http://www.BanSingleMarkBallots.org">Declaration of Election-Method Reform Advocates</a></p>
+
+<p><a href="http://www.youtube.com/watch?v=4Wk3EHjfP4E">YouTube video of Richard's 2009 Ignite presentation titled <i>YIP movie rating and other creative solutions</i></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/ehu.html"><i>Ending The Hidden Unfairness In U.S. Elections</i><br /><img src="http://www.SolutionsCreative.com/ehufrontsm.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.amazon.com/Creative-Problem-Solving-Tips-ebook/dp/B002IT6RQM"><i>23 Creative Problem Solving Tips</i><br />(Kindle ebook)<br /><img src="http://www.votefair.org/cpst23frontsm.gif" alt="23 Creative Problem Solving Tips" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/cpst.html"><i>The Creative Problem Solver's Toolbox</i><br /><img src="http://www.SolutionsCreative.com/coverlow.jpg" alt="The Creative Problem Solver's Toolbox" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.NegotiationTool.com">NegotiationTool.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com">SolutionsCreative.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com/author.html#video">Video of Richard Fobes Zydeco dancing</a></p>
+
+<!-- End right sidebar -->
+<!-- Begin transition to wide content -->
+
+</div>
+</td></tr></table>
+<div class="content">
+
+<!-- End transition to wide content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin wide content -->
+
+<br />
+
+
+<p>&nbsp;</p>
+
+
+<!-- End wide content -->
+
+<!-- FooterForPage overview.html -->
+<!-- Begin inserted footer -->
+
+<p>&nbsp;</p>
+
+
+<hr width="70%" align="center" />
+
+<p align="center">Send feedback to Richard Fobes at
+<img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img><br />
+or use the <a href="http://www.VoteFair.org/testimonials.html">Testimonials page</a></p>
+
+<p align="center">&copy; Copyright 2011, Richard Fobes at VoteFair.org</p>
+
+<p align="center"><a href="#top"><img src="bullet.gif" alt="Top of Page" width="20" height="20"></img></a> <a href="#top">Top of Page</a></p>
+</div>
+<p>&nbsp;</p>
+
+<!-- End inserted footer -->
+</body>
+</html>

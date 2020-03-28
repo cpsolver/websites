@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta name="description" content="VoteFair popularity ranking calculation method />
+   <meta name="keywords" content="VoteFair ranking, Richard Fobes" />
+   <meta name="author" content="Richard Fobes" />
+   <meta http-equiv="copyright" content="2011 Richard Fobes" />
+   <meta http-equiv="distribution" content="global" />
+   <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+   <title>VoteFair Ranking Service
+</title>
+</head>
+<!-- Begin top of page -->
+
+<body><a name="top"></a>
+
+<table align="left" border="0" rules="none" frame="void" class="headingbackgroundcolor" cellpadding="5" cellspacing="0" width="100%">
+<tr><td align="center">
+<a href="http://www.votefair.org/index.html"><img src="vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></a></td>
+
+<td align="left">
+<h1 class="fontserif"><font class="fontcolorondark">VoteFair&nbsp; ranking</font></h1>
+<p class="byline"><font class="fontcolorondark">Just one ballot mark isn't enough for fair results</font></p>
+</td><td align="right">
+
+<table align="left" border="1" rules="none" frame="void" class="yellowbackground" cellpadding="5" cellspacing="0">
+
+<tr><td width="5"></td><td><form method="post" name="formNewSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi"><input type="hidden" name="action" value="newsurvey" /><input type="submit" name="action-newsurvey" value="Create survey" /></form></td><td width="5"></td></tr>
+
+<tr><td width="5"></td><td><table border="1" cellpadding="3" cellspacing="2" rules="all"><tr align="left"><td align="left"><form method="post" name="formAccessExistingSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">Voting&nbsp;ID:<br /><input type="text" name="votingid" value ="" size="20" maxlength="20" /><br /><input type="hidden" name="javascriptballot" value="yes" /><input type="hidden" name="action" value="showactions" /><input type="submit" name="requestaccesssurvey" value="Access survey" /></form></td></tr></table></td><td width="5"></td></tr>
+
+</table>
+</td></tr></table>
+
+<!-- End top of page -->
+<!-- Begin navigation level one -->
+
+<div style="clear: both;"></div>
+<div class="navlevel1of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/surveys.html"><span class="fontbigred">Free</span> Survey/Poll/Election service</a></li>
+<li><a href="http://www.VoteFair.org/americanidol.html">American Idol poll</a></li>
+<li><a href="http://www.VoteFair.org/elections.html">Government elections</a></li>
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/overview.html">About VoteFair ranking</a></li>
+<li><a href="http://www.VoteFair.org/testimonials.html">Testimonials &amp; Contact</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level one -->
+
+<h2 class="titlebetweenmenulevels">About VoteFair ranking</h2>
+
+<!-- Begin navigation level two -->
+
+</div>
+<div class="navlevel2of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/overview.html">Overview</a></li>
+<li><a href="http://www.VoteFair.org/votefaq.html">FAQ</a></li>
+<li><a href="http://www.VoteFair.org/compare.html">Comparison</a></li>
+<li><a href="http://www.VoteFair.org/pressrelease.html">Press release</a></li>
+<li><a href="http://www.VoteFair.org/poem.html">Poem</a></li>
+<li><a href="http://www.VoteFair.org/votefair_marble_machine.html">Marble machine</a></li>
+<!-- NavigationCurrentPage calculation_details.html -->
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/calculation_details.html">Calculation details</a></li>
+<li><a href="http://www.VoteFair.org/instant_pairwise_elimination.html">Instant Pairwise Elimination</a></li>
+<li><a href="http://www.VoteFair.org/representative_instant_pairwise_elimination.html">RIPE</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level two -->
+
+<h2 class="titlebetweenmenulevels">Calculation details</h2>
+
+<!-- Begin navigation level three -->
+
+</div>
+<div class="navlevel3of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/overview.html">Calculation overview</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_popularity.html">Popularity</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_representation.html">Representation</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_party.html">Party</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_partial_proportional.html">Partial proportional</a></li>
+<li><a href="http://www.VoteFair.org/choice_specific_pairwise_score.html">Estimated</a></li>
+<!-- NavigationCurrentPage insertion_sort_ranking.html -->
+<li class="navtabcurrentli"><div>Insertion sort</div></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+</div>
+
+<!-- End navigation level three -->
+
+<!-- Begin transition to top content -->
+
+<table width="100%">
+<tr>
+<td valign="top">
+<div class="content">
+
+<!-- End transition to top content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin top content -->
+
+<h2>Insertion-sort algorithm applied to finding maximum sequence score</h2>
+
+<p>This explanation clarifies how the
+well-known insertion-sort algorithm is applied
+to VoteFair popularity ranking in a way that
+greatly reduces the number of calculations
+needed to find maximum sequence scores.&nbsp;
+(This  method is just part of the full
+algorithm, which is explained in the
+<a href="http://www.VoteFair.org/calculation_details_popularity.html">full calculation details for VoteFair popularity ranking</a>.)</p>  
+
+<p>(The algorithm described here assumes that
+the choices already have been pre-sorted using
+the Choice-Specific Pairwise-Score (CSPS)
+algorithm.)</p>   
+
+<p>Consider an example in which there are five
+choices named A, B, C, D, and E, with a final
+sort order that matches this alphabetical
+order.</p>  
+
+<p>Notation: The notation A&gt;B refers to how
+many voters pairwise prefer choice A over
+choice B, and the notation B&gt;A refers to how
+many voters pairwise prefer choice B over
+choice A.&nbsp; This notation always uses the
+"greater-than" symbol "&gt;", and never uses
+the "less-than" symbol "&lt;".</p>
+
+<p>At an intermediate stage in this sorting
+example, suppose that the choices A, C, and E
+have been sorted &mdash; into this correct
+order &mdash; and choice B is about to be
+sorted, and choice D remains unsorted.&nbsp;
+The pairwise counts for this arrangement are
+shown below.&nbsp; The asterisks show the
+separation between sorted choices and unsorted
+choices.</p>  
+
+<pre>
+      |       |       |       |       |       |
+      |   A   |   C   |   E   |   B   |   D   |
+      |       |       |       |       |       |
+ -----*************************-------+-------+
+      * \     |       |       *       |       |
+  A   *   \   |  A>C  |  A>E  *  A>B  |  A>D  |
+      *     \ |       |       *       |       |
+ -----+-------+-------+-------+-------+-------+
+      *       | \     |       *       |       |
+  C   *  C>A  |   \   |  C>E  *  C>B  |  C>D  |
+      *       |     \ |       *       |       |
+ -----+-------+-------+-------+-------+-------+
+      *       |       | \     *       |       |
+  E   *  E>A  |  E>C  |   \   *  E>B  |  E>D  |
+      *       |       |     \ *       |       |
+ -----*************************-------+-------+
+      |       |       |       | \     |       |
+  B   |  B>A  |  B>C  |  B>E  |   \   |  B>D  |
+      |       |       |       |     \ |       |
+ -----+-------+-------+-------+-------+-------+
+      |       |       |       |       | \     |
+  D   |  D>A  |  D>C  |  D>E  |  D>B  |   \   |
+      |       |       |       |       |     \ |
+ -----+-------+-------+-------+-------+-------+
+</pre>
+
+<p>The diagonal line passes through empty cells
+&mdash; that would otherwise represent a
+choice's comparison with itself, such as
+A&gt;A.</p>  
+
+<p>The diagonal line also is the border between
+the upper-right triangular area and the
+lower-left triangular area.&nbsp; The sequence
+score for the current sequence is the sum of
+all the pairwise counts in the upper-right
+triangular area (currently A&gt;C + A&gt;E +
+A&gt;B + A&gt;D + C&gt;E + C&gt;B + C&gt;D +
+E&gt;B + E&gt;D + B&gt;D).</p>  
+
+<p>The goal of these calculations is to find
+the maximum sequence score, which means the
+goal is to change the sequence so that the
+largest pairwise counts move into the
+upper-right triangular area, leaving the
+smallest pairwise counts in the lower-left
+triangular area.</p>  
+
+<p>The first step in sorting choice B is to
+consider the possibility of moving it to the
+left of choice E, which would form the sequence
+A, C, B, E.&nbsp; Here is the pairwise-count
+matrix for this sequence.&nbsp; The asterisks
+now include choice B because this is a possible
+sort order.</p> 
+
+<pre>
+      |       |       |       |       |       |
+      |   A   |   C   |   B   |   E   |   D   |
+      |       |       |       |       |       |
+ -----*********************************-------+
+      * \     |       |       |       *       |
+  A   *   \   |  A>C  |  A>B  |  A>E  *  A>D  |
+      *     \ |       |       |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       | \     |       |       *       |
+  C   *  C>A  |   \   |  C>B  |  C>E  *  C>D  |
+      *       |     \ |       |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       |       | \     |       *       |
+  B   *  B>A  |  B>C  |   \   |  B>E  *  B>D  |
+      *       |       |     \ |  ---  *       |
+ -----*-------+-------+-------+-------*-------+
+      *       |       |       | \     *       |
+  E   *  E>A  |  E>C  |  E>B  |   \   *  E>D  |
+      *       |       |  ---  |     \ *       |
+ -----*********************************-------+
+      |       |       |       |       | \     |
+  D   |  D>A  |  D>C  |  D>B  |  D>E  |   \   |
+      |       |       |       |       |     \ |
+ -----+-------+-------+-------+-------+-------+
+</pre>
+
+<p>The only pairwise counts that crossed the
+diagonal line are the (underlined) counts
+B&gt;E and E&gt;B, which swapped places.&nbsp;
+All the other pairwise counts that move do not
+cross the diagonal line; they stay on the same
+side of the diagonal line.</p> 
+
+<p>As a result, the score for this sequence,
+compared to the score for the previous
+sequence, increases (or decreases if negative)
+by the amount B&gt;E minus E&gt;B.&nbsp; In
+this case (assuming there are no complications
+that are explained later) the sequence score
+has increased because in the final
+(alphabetical) sort order, choice B appears
+before choice E.</p>  
+
+<p>The next step in sorting choice B is to
+consider the possibility of moving it to the
+left of choice C, which would form the sequence
+A, B, C, E.&nbsp; Here is the pairwise-count
+matrix for this sequence.</p> 
+
+<pre>
+      |       |       |       |       |       |
+      |   A   |   B   |   C   |   E   |   D   |
+      |       |       |       |       |       |
+ -----*********************************-------+
+      * \     |       |       |       *       |
+  A   *   \   |  A>B  |  A>C  |  A>E  *  A>D  |
+      *     \ |       |       |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       | \     |       |       *       |
+  B   *  B>A  |   \   |  B>C  |  B>E  *  B>D  |
+      *       |     \ |  ---  |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       |       | \     |       *       |
+  C   *  C>A  |  C>B  |   \   |  C>E  *  C>D  |
+      *       |  ---  |     \ |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       |       |       | \     *       |
+  E   *  E>A  |  E>B  |  E>C  |   \   *  E>D  |
+      *       |       |       |     \ *       |
+ -----*********************************-------+
+      |       |       |       |       | \     |
+  D   |  D>A  |  D>B  |  D>C  |  D>E  |   \   |
+      |       |       |       |       |     \ |
+ -----+-------+-------+-------+-------+-------+
+</pre>
+
+<p>The only pairwise counts that crossed the
+diagonal line are the (underlined) counts
+B&gt;C and C&gt;B, which swapped places.&nbsp;
+The other pairwise counts that moved remained
+on the same side of the diagonal line.</p> 
+
+<p>The score for this sequence increases (or
+decreases if negative) by the amount B&gt;C
+minus C&gt;B.&nbsp; In this case the sequence
+score has increased because (in the final
+alphabetical order) choice B appears before
+choice C.</p>  
+
+<p>The final step in sorting choice B is to
+consider the possibility of moving it to the
+left of choice A, which would form the sequence
+B, A, C, E.&nbsp; Here is the matrix for this
+sequence.</p> 
+
+<pre>
+      |       |       |       |       |       |
+      |   B   |   A   |   C   |   E   |   D   |
+      |       |       |       |       |       |
+ -----*********************************-------+
+      * \     |       |       |       *       |
+  B   *   \   |  B>A  |  B>C  |  B>E  *  B>D  |
+      *     \ |  ---  |       |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       | \     |       |       *       |
+  A   *  A>B  |   \   |  A>C  |  A>E  *  A>D  |
+      *  ---  |     \ |       |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       |       | \     |       *       |
+  C   *  C>B  |  C>A  |   \   |  C>E  *  C>D  |
+      *       |       |     \ |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       |       |       | \     *       |
+  E   *  E>B  |  E>A  |  E>C  |   \   *  E>D  |
+      *       |       |       |     \ *       |
+ -----*********************************-------+
+      |       |       |       |       | \     |
+  D   |  D>B  |  D>A  |  D>C  |  D>E  |   \   |
+      |       |       |       |       |     \ |
+ -----+-------+-------+-------+-------+-------+
+</pre>
+
+<p>The only pairwise counts that crossed the
+diagonal line are the (underlined) counts
+B&gt;A and A&gt;B, which swapped places.&nbsp;
+The other pairwise counts that moved remained
+on the same side of the diagonal line.</p> 
+
+<p>The score for this sequence increases (or
+decreases if negative) by the amount B&gt;A
+minus A&gt;B.&nbsp; In this case the sequence
+score has decreased because (in the final
+alphabetical order) choice B appears after, not
+before, choice A.</p> 
+
+<p>At this point choice B has been tested at
+each position within the sorted portion.&nbsp;
+The  maximum sequence score (for the sorted
+portion) occurred when it was between choices A
+and C.&nbsp; As a result, choice B will be
+moved to the position between choices A and
+C</p>   
+
+<p>Notice that the full sequence score did not
+need to be calculated in order to find this
+"local" maximum.&nbsp; These calculations only
+need to keep track of increases and decreases
+that occur as the being-sorted choice swaps
+places with successive already-sorted
+choices.</p>  
+
+<p>The pairwise-count matrix with choice B in
+the second sort-order position (between A and
+C) is shown below.&nbsp; Now choice D is the
+only unsorted choice.</p> 
+
+<pre>
+      |       |       |       |       |       |
+      |   A   |   B   |   C   |   E   |   D   |
+      |       |       |       |       |       |
+ -----*********************************-------+
+      * \     |       |       |       *       |
+  A   *   \   |  A>B  |  A>C  |  A>E  *  A>D  |
+      *     \ |       |       |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       | \     |       |       *       |
+  B   *  B>A  |   \   |  B>C  |  B>E  *  B>D  |
+      *       |     \ |       |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       |       | \     |       *       |
+  C   *  C>A  |  C>B  |   \   |  C>E  *  C>D  |
+      *       |       |     \ |       *       |
+ -----*-------+-------+-------+-------*-------+
+      *       |       |       | \     *       |
+  E   *  E>A  |  E>B  |  E>C  |   \   *  E>D  |
+      *       |       |       |     \ *       |
+ -----*********************************-------+
+      |       |       |       |       | \     |
+  D   |  D>A  |  D>B  |  D>C  |  D>E  |   \   |
+      |       |       |       |       |     \ |
+ -----+-------+-------+-------+-------+-------+
+</pre>
+
+<p>Choice D would be sorted in the same
+way.&nbsp; Of course the maximum sequence score
+would occur when choice D is between choices C
+and E, so D is moved there.</p> 
+
+<pre>
+      |       |       |       |       |       |
+      |   A   |   B   |   C   |   D   |   E   |
+      |       |       |       |       |       |
+ -----*****************************************
+      * \     |       |       |       |       *
+  A   *   \   |  A>B  |  A>C  |  A>D  |  A>E  *
+      *     \ |       |       |       |       *
+ -----*-------+-------+-------+-------+-------*
+      *       | \     |       |       |       *
+  B   *  B>A  |   \   |  B>C  |  B>D  |  B>E  *
+      *       |     \ |       |       |       *
+ -----*-------+-------+-------+-------+-------*
+      *       |       | \     |       |       *
+  C   *  C>A  |  C>B  |   \   |  C>D  |  C>E  *
+      *       |       |     \ |       |       *
+ -----*-------+-------+-------+-------+-------*
+      *       |       |       | \     |       *
+  D   *  D>A  |  D>B  |  D>C  |   \   |  D>E  *
+      *       |       |       |     \ |       *
+ -----*-------+-------+-------+-------+-------*
+      *       |       |       |       | \     *
+  E   *  E>A  |  E>B  |  E>C  |  E>D  |   \   *
+      *       |       |       |       |     \ *
+ -----*****************************************
+</pre>
+
+<p>Now there are no more choices to sort, so
+the resulting sequence is A, B, C, D, E.&nbsp;
+In this sequence the full sequence score
+&mdash; which equals A&gt;B + A&gt;C + A&gt;D +
+A&gt;E + B&gt;C + B&gt;D + B&gt;E + C&gt;D +
+C&gt;E + D&gt;E &mdash; is likely to be the
+highest possible sequence score.</p>  
+
+<p>Additional calculations, which are described in the
+<a href="http://www.VoteFair.org/calculation_details_popularity.html">full calculation details for VoteFair popularity ranking</a>,
+are needed because in rare cases it is possible
+that moving two or more choices at the same
+time could produce a higher sequence
+score.&nbsp; This concept is analogous to
+climbing a mountain in foggy conditions by
+always heading in the locally higher direction
+and ending up at the top of a peak and then,
+when the fog clears, seeing a higher peak.</p>  
+
+<p>&nbsp;</p>
+
+<p>The VoteFair ranking calculation methods are in the public domain,
+but copyright protection (see below) applies to the above description
+and to the software that implements VoteFair ranking.</p>
+
+<!-- End top content -->
+<!-- Begin transition to right sidebar -->
+
+</div></td>
+<td>&nbsp;</td>
+<td valign="top" align="right">
+<div class="rightsidebar">
+
+<!-- End transition to right sidebar -->
+<!-- Begin right sidebar -->
+
+<p>Open-source <b>VoteFair ranking software</b> at
+<a href="http://search.cpan.org/~fobes/Voting-VoteFairRanking-5.01/lib/Voting/VoteFairRanking.pm">CPAN</a>
+and
+<a href="http://github.com/cpsolver/VoteFair-ranking">GitHub</a></p>
+
+<p><a href="http://www.BanSingleMarkBallots.org">Declaration of Election-Method Reform Advocates</a></p>
+
+<p><a href="http://www.youtube.com/watch?v=4Wk3EHjfP4E">YouTube video of Richard's 2009 Ignite presentation titled <i>YIP movie rating and other creative solutions</i></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/ehu.html"><i>Ending The Hidden Unfairness In U.S. Elections</i><br /><img src="http://www.SolutionsCreative.com/ehufrontsm.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.amazon.com/Creative-Problem-Solving-Tips-ebook/dp/B002IT6RQM"><i>23 Creative Problem Solving Tips</i><br />(Kindle ebook)<br /><img src="http://www.votefair.org/cpst23frontsm.gif" alt="23 Creative Problem Solving Tips" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/cpst.html"><i>The Creative Problem Solver's Toolbox</i><br /><img src="http://www.SolutionsCreative.com/coverlow.jpg" alt="The Creative Problem Solver's Toolbox" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.NegotiationTool.com">NegotiationTool.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com">SolutionsCreative.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com/author.html#video">Video of Richard Fobes Zydeco dancing</a></p>
+
+<!-- End right sidebar -->
+<!-- Begin transition to wide content -->
+
+</div>
+</td></tr></table>
+<div class="content">
+
+<!-- End transition to wide content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin wide content -->
+
+<br />
+
+
+<p>&nbsp;</p>
+
+
+<!-- End wide content -->
+
+<!-- FooterForPage overview.html -->
+<!-- Begin inserted footer -->
+
+<p>&nbsp;</p>
+
+
+<hr width="70%" align="center" />
+
+<p align="center">Send feedback to Richard Fobes at
+<img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img><br />
+or use the <a href="http://www.VoteFair.org/testimonials.html">Testimonials page</a></p>
+
+<p align="center">&copy; Copyright 2011, Richard Fobes at VoteFair.org</p>
+
+<p align="center"><a href="#top"><img src="bullet.gif" alt="Top of Page" width="20" height="20"></img></a> <a href="#top">Top of Page</a></p>
+</div>
+<p>&nbsp;</p>
+
+<!-- End inserted footer -->
+</body>
+</html>

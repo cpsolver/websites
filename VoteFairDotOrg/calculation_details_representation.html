@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta name="description" content="Choice-Specific Pairwise-Score ranking />
+   <meta name="keywords" content="VoteFair ranking, Richard Fobes" />
+   <meta name="author" content="Richard Fobes" />
+   <meta http-equiv="copyright" content="2011 Richard Fobes" />
+   <meta http-equiv="distribution" content="global" />
+   <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+   <title>VoteFair Ranking Service
+</title>
+</head>
+<!-- Begin top of page -->
+
+<body><a name="top"></a>
+
+<table align="left" border="0" rules="none" frame="void" class="headingbackgroundcolor" cellpadding="5" cellspacing="0" width="100%">
+<tr><td align="center">
+<a href="http://www.votefair.org/index.html"><img src="vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></a></td>
+
+<td align="left">
+<h1 class="fontserif"><font class="fontcolorondark">VoteFair&nbsp; ranking</font></h1>
+<p class="byline"><font class="fontcolorondark">Just one ballot mark isn't enough for fair results</font></p>
+</td><td align="right">
+
+<table align="left" border="1" rules="none" frame="void" class="yellowbackground" cellpadding="5" cellspacing="0">
+
+<tr><td width="5"></td><td><form method="post" name="formNewSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi"><input type="hidden" name="action" value="newsurvey" /><input type="submit" name="action-newsurvey" value="Create survey" /></form></td><td width="5"></td></tr>
+
+<tr><td width="5"></td><td><table border="1" cellpadding="3" cellspacing="2" rules="all"><tr align="left"><td align="left"><form method="post" name="formAccessExistingSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">Voting&nbsp;ID:<br /><input type="text" name="votingid" value ="" size="20" maxlength="20" /><br /><input type="hidden" name="javascriptballot" value="yes" /><input type="hidden" name="action" value="showactions" /><input type="submit" name="requestaccesssurvey" value="Access survey" /></form></td></tr></table></td><td width="5"></td></tr>
+
+</table>
+</td></tr></table>
+
+<!-- End top of page -->
+<!-- Begin navigation level one -->
+
+<div style="clear: both;"></div>
+<div class="navlevel1of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/surveys.html"><span class="fontbigred">Free</span> Survey/Poll/Election service</a></li>
+<li><a href="http://www.VoteFair.org/americanidol.html">American Idol poll</a></li>
+<li><a href="http://www.VoteFair.org/elections.html">Government elections</a></li>
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/overview.html">About VoteFair ranking</a></li>
+<li><a href="http://www.VoteFair.org/testimonials.html">Testimonials &amp; Contact</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level one -->
+
+<h2 class="titlebetweenmenulevels">About VoteFair ranking</h2>
+
+<!-- Begin navigation level two -->
+
+</div>
+<div class="navlevel2of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/overview.html">Overview</a></li>
+<li><a href="http://www.VoteFair.org/votefaq.html">FAQ</a></li>
+<li><a href="http://www.VoteFair.org/compare.html">Comparison</a></li>
+<li><a href="http://www.VoteFair.org/pressrelease.html">Press release</a></li>
+<li><a href="http://www.VoteFair.org/poem.html">Poem</a></li>
+<li><a href="http://www.VoteFair.org/votefair_marble_machine.html">Marble machine</a></li>
+<!-- NavigationCurrentPage calculation_details.html -->
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/calculation_details.html">Calculation details</a></li>
+<li><a href="http://www.VoteFair.org/instant_pairwise_elimination.html">Instant Pairwise Elimination</a></li>
+<li><a href="http://www.VoteFair.org/representative_instant_pairwise_elimination.html">RIPE</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level two -->
+
+<h2 class="titlebetweenmenulevels">Calculation details</h2>
+
+<!-- Begin navigation level three -->
+
+</div>
+<div class="navlevel3of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/calculation_details.html">Calculation overview</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_popularity.html">Popularity</a></li>
+<!-- NavigationCurrentPage calculation_details_representation.html -->
+<li class="navtabcurrentli"><div>Representation</div></li>
+<li><a href="http://www.VoteFair.org/calculation_details_party.html">Party</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_partial_proportional.html">Partial proportional</a></li>
+<li><a href="http://www.VoteFair.org/choice_specific_pairwise_score.html">Estimated</a></li>
+<li><a href="http://www.VoteFair.org/insertion_sort.html">Insertion sort</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+</div>
+
+<!-- End navigation level three -->
+<!-- Begin transition to top content -->
+
+<table width="100%">
+<tr>
+<td valign="top">
+<div class="content">
+
+<!-- End transition to top content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin top content -->
+
+<h2>Purpose of VoteFair representation ranking</h2>
+
+<p>VoteFair <b>representation</b> ranking identifies the most-representative choice
+(which is the same as the most popular choice according to VoteFair popularity ranking),
+the second-most representative choice, and additional representation levels.&nbsp; The
+second-most representative choice is identified after appropriately reducing the influence
+of the voters who are well represented by the most-popular (and most-representative)
+choice.&nbsp; Without this adjustment the same voters who are well-represented by
+the most popular choice could also determine the second-place winner.</p>
+
+
+<h2>Calculation details for VoteFair representation ranking</h2>
+
+<p>This is a description of the full algorithm
+used to calculate VoteFair <b>representation</b> ranking
+results.</p>
+
+<p>Here are the steps for calculating the first-most representative
+and second-most representative choices:</p>
+
+<ol>
+
+<li>Identify the most popular choice using VoteFair <b>popularity</b> ranking.&nbsp; This choice is the first-most representative choice.<br />&nbsp;</li>
+
+<li>Identify the ballots that rank the first-most representative choice as their first (highest-ranked) choice.<br />&nbsp;</li>
+
+<li>Completely ignore the ballots identified in step 2, and then use VoteFair <b>popularity</b> ranking to identify the most popular choice based on the remaining ballots.&nbsp; This choice will not necessarily be second-most representative.&nbsp; Instead, this choice is used in step 5 to identify which ballots are from voters who are well-represented by the first-most representative choice.<br />&nbsp;</li>
+
+<li>Again consider all the ballots.<br />&nbsp;</li>
+
+<li>Identify the ballots in which the first-most representative choice is preferred over the choice identified in step 3.&nbsp; This step identifies the ballots from voters who are well-represented by the first-most representative choice.&nbsp; With this criteria the only way for a voter to avoid having his or her ballot identified in this step is to express a preference that significantly reduces the chances that the preferred choice will be ranked as the most popular.<br />&nbsp;</li>
+
+<li>Proportionally reduce the influence of the ballots identified in step 5.&nbsp; (This step reduces the influence of the voters who are well-represented by the first-most representative choice.)&nbsp; This calculation uses the following sub-steps:<br />&nbsp;</li>
+
+<ol style="list-style-type:lower-alpha">
+
+<li>Start with the number of ballots that were identified in step 5.<br />&nbsp;</li>
+
+<li>Subtract half the number of total ballots.<br />&nbsp;</li>
+
+<li>The result represents the ballot-number-based influence deserved for the ballots identified in step 5.<br />&nbsp;</li>
+
+<li>Divide the ballot-number-based influence number by the number of ballots identified in step 5.<br />&nbsp;</li>
+
+<li>The result is the fraction of a vote that is allowed for each ballot identified in step 5.<br />&nbsp;</li>
+
+</ol>
+
+<li>Based on all the ballots, but with reduced influence for the ballots identified in step 5, use VoteFair <b>popularity ranking</b> to identify the most popular choice among the remaining choices.&nbsp; This choice is the second-most representative choice.<br />&nbsp;</li>
+
+</ol>
+
+<p>If additional levels of VoteFair representation ranking are needed, these steps are repeated using the remaining choices.</p>
+
+<p>To clarify the nature of the results, if VoteFair <b>representation</b> ranking is used in an election that involves voters who are somewhat equally balanced in their preference for Republican and Democratic candidates, and if the first-most representative candidate is a Republican, then the second-most representative candidate is likely to be a Democrat, the third-most representative candidate is likely to be another Republican, and the fourth-most representative candidate is likely to be another Democrat.&nbsp; In other words, the results basically alternate back and forth in terms of which voters get represented.</p>
+
+
+<p>&nbsp;</p>
+
+<p>The VoteFair ranking calculation methods are in the public domain,
+but copyright protection (see below) applies to the above description.</p>
+
+<!-- End top content -->
+<!-- Begin transition to right sidebar -->
+
+</div></td>
+<td>&nbsp;</td>
+<td valign="top" align="right">
+<div class="rightsidebar">
+
+<!-- End transition to right sidebar -->
+<!-- Begin right sidebar -->
+
+<p>Open-source <b>VoteFair ranking software</b> at
+<a href="http://search.cpan.org/~fobes/Voting-VoteFairRanking-5.01/lib/Voting/VoteFairRanking.pm">CPAN</a>
+and
+<a href="http://github.com/cpsolver/VoteFair-ranking">GitHub</a></p>
+
+<p><a href="http://www.BanSingleMarkBallots.org">Declaration of Election-Method Reform Advocates</a></p>
+
+<p><a href="http://www.youtube.com/watch?v=4Wk3EHjfP4E">YouTube video of Richard's 2009 Ignite presentation titled <i>YIP movie rating and other creative solutions</i></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/ehu.html"><i>Ending The Hidden Unfairness In U.S. Elections</i><br /><img src="http://www.SolutionsCreative.com/ehufrontsm.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.amazon.com/Creative-Problem-Solving-Tips-ebook/dp/B002IT6RQM"><i>23 Creative Problem Solving Tips</i><br />(Kindle ebook)<br /><img src="http://www.votefair.org/cpst23frontsm.gif" alt="23 Creative Problem Solving Tips" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/cpst.html"><i>The Creative Problem Solver's Toolbox</i><br /><img src="http://www.SolutionsCreative.com/coverlow.jpg" alt="The Creative Problem Solver's Toolbox" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.NegotiationTool.com">NegotiationTool.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com">SolutionsCreative.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com/author.html#video">Video of Richard Fobes Zydeco dancing</a></p>
+
+<!-- End right sidebar -->
+<!-- Begin transition to wide content -->
+
+</div>
+</td></tr></table>
+<div class="content">
+
+<!-- End transition to wide content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin wide content -->
+
+<br />
+
+
+<p>&nbsp;</p>
+
+
+<!-- End wide content -->
+
+<!-- FooterForPage overview.html -->
+<!-- Begin inserted footer -->
+
+<p>&nbsp;</p>
+
+
+<hr width="70%" align="center" />
+
+<p align="center">Send feedback to Richard Fobes at
+<img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img><br />
+or use the <a href="http://www.VoteFair.org/testimonials.html">Testimonials page</a></p>
+
+<p align="center">&copy; Copyright 2011, Richard Fobes at VoteFair.org</p>
+
+<p align="center"><a href="#top"><img src="bullet.gif" alt="Top of Page" width="20" height="20"></img></a> <a href="#top">Top of Page</a></p>
+</div>
+<p>&nbsp;</p>
+
+<!-- End inserted footer -->
+</body>
+</html>

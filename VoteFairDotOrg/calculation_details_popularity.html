@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta name="description" content="Choice-Specific Pairwise-Score ranking />
+   <meta name="keywords" content="VoteFair ranking, Richard Fobes" />
+   <meta name="author" content="Richard Fobes" />
+   <meta http-equiv="copyright" content="2011 Richard Fobes" />
+   <meta http-equiv="distribution" content="global" />
+   <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+   <title>VoteFair Ranking Service
+</title>
+</head>
+<!-- Begin top of page -->
+
+<body><a name="top"></a>
+
+<table align="left" border="0" rules="none" frame="void" class="headingbackgroundcolor" cellpadding="5" cellspacing="0" width="100%">
+<tr><td align="center">
+<a href="http://www.votefair.org/index.html"><img src="vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></a></td>
+
+<td align="left">
+<h1 class="fontserif"><font class="fontcolorondark">VoteFair&nbsp; ranking</font></h1>
+<p class="byline"><font class="fontcolorondark">Just one ballot mark isn't enough for fair results</font></p>
+</td><td align="right">
+
+<table align="left" border="1" rules="none" frame="void" class="yellowbackground" cellpadding="5" cellspacing="0">
+
+<tr><td width="5"></td><td><form method="post" name="formNewSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi"><input type="hidden" name="action" value="newsurvey" /><input type="submit" name="action-newsurvey" value="Create survey" /></form></td><td width="5"></td></tr>
+
+<tr><td width="5"></td><td><table border="1" cellpadding="3" cellspacing="2" rules="all"><tr align="left"><td align="left"><form method="post" name="formAccessExistingSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">Voting&nbsp;ID:<br /><input type="text" name="votingid" value ="" size="20" maxlength="20" /><br /><input type="hidden" name="javascriptballot" value="yes" /><input type="hidden" name="action" value="showactions" /><input type="submit" name="requestaccesssurvey" value="Access survey" /></form></td></tr></table></td><td width="5"></td></tr>
+
+</table>
+</td></tr></table>
+
+<!-- End top of page -->
+<!-- Begin navigation level one -->
+
+<div style="clear: both;"></div>
+<div class="navlevel1of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/surveys.html"><span class="fontbigred">Free</span> Survey/Poll/Election service</a></li>
+<li><a href="http://www.VoteFair.org/americanidol.html">American Idol poll</a></li>
+<li><a href="http://www.VoteFair.org/elections.html">Government elections</a></li>
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/overview.html">About VoteFair ranking</a></li>
+<li><a href="http://www.VoteFair.org/testimonials.html">Testimonials &amp; Contact</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level one -->
+
+<h2 class="titlebetweenmenulevels">About VoteFair ranking</h2>
+
+<!-- Begin navigation level two -->
+
+</div>
+<div class="navlevel2of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/overview.html">Overview</a></li>
+<li><a href="http://www.VoteFair.org/votefaq.html">FAQ</a></li>
+<li><a href="http://www.VoteFair.org/compare.html">Comparison</a></li>
+<li><a href="http://www.VoteFair.org/pressrelease.html">Press release</a></li>
+<li><a href="http://www.VoteFair.org/poem.html">Poem</a></li>
+<li><a href="http://www.VoteFair.org/votefair_marble_machine.html">Marble machine</a></li>
+<!-- NavigationCurrentPage calculation_details.html -->
+<li class="navtabcurrentli"><a href="http://www.VoteFair.org/calculation_details.html">Calculation details</a></li>
+<li><a href="http://www.VoteFair.org/instant_pairwise_elimination.html">Instant Pairwise Elimination</a></li>
+<li><a href="http://www.VoteFair.org/representative_instant_pairwise_elimination.html">RIPE</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level two -->
+
+<h2 class="titlebetweenmenulevels">Calculation details</h2>
+
+<!-- Begin navigation level three -->
+
+</div>
+<div class="navlevel3of3">
+<div class="navmenu">
+<ul>
+<li><a href="http://www.VoteFair.org/calculation_details.html">Calculation overview</a></li>
+<!-- NavigationCurrentPage calculation_details_popularity.html -->
+<li class="navtabcurrentli"><div>Popularity</div></li>
+<li><a href="http://www.VoteFair.org/calculation_details_representation.html">Representation</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_party.html">Party</a></li>
+<li><a href="http://www.VoteFair.org/calculation_details_partial_proportional.html">Partial proportional</a></li>
+<li><a href="http://www.VoteFair.org/choice_specific_pairwise_score.html">Estimated</a></li>
+<li><a href="http://www.VoteFair.org/insertion_sort_ranking.html">Insertion sort</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+</div>
+
+<!-- End navigation level three -->
+<!-- Begin transition to top content -->
+
+<table width="100%">
+<tr>
+<td valign="top">
+<div class="content">
+
+<!-- End transition to top content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin top content -->
+
+<h2>Purpose of VoteFair popularity ranking</h2>
+
+<p>VoteFair <b>popularity</b> ranking identifies the most popular choice, the second-most popular choice,
+the third-most popular choice, and so on down to the least popular choice.</p>
+
+<h2>Calculation details for VoteFair popularity ranking</h2>
+
+<p>The VoteFair popularity ranking method is described in the
+<a href="http://en.wikipedia.org/wiki/VoteFair_ranking">VoteFair ranking Wikipedia article</a> (which redirects to
+the article about the mathematically equivalent "Kemeny-Young method").&nbsp;
+The <a href="http://www.VoteFair.org/votefair_marble_machine.html">VoteFair marble machine</a>
+entertainingly demonstrates VoteFair popularity ranking for three choices.</p>
+
+<p>Briefly, here are the main points about VoteFair popularity ranking:</p>
+
+<ul>
+
+<li>The ballots are counted using pairwise counting.&nbsp; This counting method is described in the Wikipedia article
+and it is demonstrated in the
+<a href="http://www.VoteFair.org/pairwise_counting_skit.html">Pairwise Counting Skit</a>.<br />&nbsp;</li>
+
+<li>The method considers every possible sequence of choices in terms of which choice might be most popular, which choice might be second-most popular, and so on down to which choice might be least popular.<br />&nbsp;</li>
+
+<li>Each such sequence is associated with a sequence score that is equal to the sum of the pairwise counts that apply to the specified sequence.&nbsp;
+(As explained below, these sequence scores do not need to be calculated.)<br />&nbsp;</li>
+
+<li>The sequence with the highest score is identified as the overall ranking, from most popular to least popular.<br />&nbsp;</li>
+</ul>
+
+<p>Another way to understand VoteFair popularity ranking is to look at a matrix of pairwise counts,
+as shown below, and consider that the goal is to maximize the sum of the pairwise counts in the upper-right, triangular half of the matrix
+(which minimizes the sum of the pairwise counts in the lower-left half).</p>
+
+<table cellpadding="10" cellspacing="0" border="1px">
+<tr>
+<td>&nbsp;</td>
+<td style="font-weight:bold;font-size:120%;">... B</td>
+<td style="font-weight:bold;font-size:120%;">... C</td>
+<td style="font-weight:bold;font-size:120%;">... E</td>
+<td style="font-weight:bold;font-size:120%;">... F</td>
+<td style="font-weight:bold;font-size:120%;">... A</td>
+<td style="font-weight:bold;font-size:120%;">... D</td>
+</tr>
+<tr>
+<td style="font-weight:bold;font-size:120%;">B preferred over ...</td>
+<td>&mdash;</td>
+<td style="background-color:#ccffcc;">56</td>
+<td style="background-color:#ccffcc;">65</td>
+<td style="background-color:#ccffcc;">74</td>
+<td style="background-color:#ccffcc;">79</td>
+<td style="background-color:#ccffcc;">84</td>
+</tr>
+<tr>
+<td style="font-weight:bold;font-size:120%;">C preferred over ...</td>
+<td style="background-color:#ffcccc;">37</td>
+<td>&mdash;</td>
+<td style="background-color:#ccffcc;">60</td>
+<td style="background-color:#ccffcc;">70</td>
+<td style="background-color:#ccffcc;">75</td>
+<td style="background-color:#ccffcc;">76</td>
+</tr>
+<tr>
+<td style="font-weight:bold;font-size:120%;">E preferred over ...</td>
+<td style="background-color:#ffcccc;">29</td>
+<td style="background-color:#ffcccc;">35</td>
+<td>&mdash;</td>
+<td style="background-color:#ccffcc;">64</td>
+<td style="background-color:#ccffcc;">66</td>
+<td style="background-color:#ccffcc;">72</td>
+</tr>
+<tr>
+<td style="font-weight:bold;font-size:120%;">F preferred over ...</td>
+<td style="background-color:#ffcccc;">19</td>
+<td style="background-color:#ffcccc;">23</td>
+<td style="background-color:#ffcccc;">30</td>
+<td>&mdash;</td>
+<td style="background-color:#ccffcc;">55</td>
+<td style="background-color:#ccffcc;">62</td>
+</tr>
+<tr>
+<td style="font-weight:bold;font-size:120%;">A preferred over ...</td>
+<td style="background-color:#ffcccc;">14</td>
+<td style="background-color:#ffcccc;">18</td>
+<td style="background-color:#ffcccc;">28</td>
+<td style="background-color:#ffcccc;">37</td>
+<td>&mdash;</td>
+<td style="background-color:#ccffcc;">50</td>
+</tr>
+<tr>
+<td style="font-weight:bold;font-size:120%;">D preferred over ...</td>
+<td style="background-color:#ffcccc;">9</td>
+<td style="background-color:#ffcccc;">17</td>
+<td style="background-color:#ffcccc;">21</td>
+<td style="background-color:#ffcccc;">30</td>
+<td style="background-color:#ffcccc;">41</td>
+<td>&mdash;</td>
+</tr>
+</table>
+
+<p>Although the goal of VoteFair popularity
+ranking is to find the sequence that has the
+highest sequence score, the scores themselves
+do not need to be calculated.&nbsp; This
+concept is similar to not needing to know the
+elevation of every point in a region in order
+to know that a specific mountain peak  is the
+highest elevation in that region.&nbsp; By not
+calculating all the sequence scores, the
+calculation time can be greatly reduced
+compared to the method that calculates all the
+sequence scores.</p>    
+
+<h3>Full calculation method for VoteFair popularity ranking</h3>
+
+<p>This is a description of the full algorithm
+used to calculate VoteFair popularity ranking
+results.</p> 
+
+<p>The algorithm begins by calculating the
+<a href="http://www.VoteFair.org/choice_specific_pairwise_score.html">Choice-Specific Pairwise-Score (CSPS) ranking</a>.&nbsp;
+This pre-sort is a required part of the
+process.&nbsp; Without it, some unusual cases
+can cause the calculations to fail to find the
+sequence with the highest score.&nbsp; This
+pre-sort is analogous to starting a search for
+the highest mountain peak within a mountain
+range instead of starting the search within a
+large valley.</p>    
+
+<p>The next step is to apply the
+<a href="http://www.VoteFair.org/insertion_sort_ranking.html">VoteFair-specific variation of the insertion-sort method</a>,
+including starting at the left/highest end.</p>
+ 
+<p>To ensure that all possible moves of each
+choice are considered, the insertion-sort
+method is done in both directions.&nbsp;
+Sorting in both directions means that in some
+sorting passes sorting moves choices to the
+left.&nbsp;
+In other sorting passes sorting starts by
+considering the right-most choice as the first
+sorted choice, and choices move to the right,
+into the sorted portion.&nbsp; This convention
+ensures movement for choices that need to move
+right, instead of left, in order to cause an
+increase in the score.</p>  
+
+<p>Complications can arise when there is
+"circular ambiguity", so additional steps are
+used.&nbsp; The most common cases of circular
+ambiguity involve several choices that are tied
+for the same sort-order position.</p> 
+
+<p>A key part of dealing with circular
+ambiguity is to follow this convention:
+whenever a choice can produce the same,
+highest, sequence score at more than one
+position, the choice is moved to the farthest
+of those highest-sequence-score positions.</p>
+ 
+<p>Another part of dealing with these
+complications is to sort the sequence multiple
+times.</p> 
+
+<p>During the second sorting pass, if there is
+no circular ambiguity, the sequence of the
+choices in the pairwise matrix remains the
+same.&nbsp; This lack of movement (when there
+is no circular ambiguity) occurs because the
+sorted and unsorted portions are
+adjacent.&nbsp; Specifically, each choice to be
+sorted is already at the top (for left-movement
+sorting) or bottom (for right-movement sorting)
+of the "unsorted" portion, and it is being
+moved to the bottom (for left-movement sorting)
+or top (for right-movement sorting) of
+the "sorted" portion.&nbsp; In such cases
+the only thing that moves is the boundary
+between the sorted choices and unsorted
+choices.</p> 
+
+<p>However, in cases that involve circular
+ambiguity, the positions of some choices will
+change during the second and later sorting
+passes.&nbsp; This happens because the
+convention (as explained above) is to move each
+choice as far as it will go, within the limits
+of maximizing the sequence score.</p> 
+
+<p>During the sorting passes the highest
+sort-order (sequence) position of each choice
+is tracked, and the lowest sort-order position
+of each choice is tracked.&nbsp; These highest
+and lowest positions are reset (to current
+positions) whenever the sequence score
+increases to a higher score.&nbsp; At the end
+of the sorting process the highest and lowest
+positions reveal which choices are tied at the
+same popularity ranking level.</p> 
+
+<p>Using the insertion-sort example, if choices
+B, C, and D can be in any order and still
+produce the same highest sequence score, then
+each of these choices would move to the left of
+the other two each time it is sorted, and each
+of these choices would have the same
+highest-ranked position of second place, and
+each would have the same lowest-ranked position
+of fourth place. Because these three choices
+have the same highest and lowest positions,
+they are easily identified as tied (at the same
+popularity ranking).</p>
+
+<p>More complex cases of circular ambiguity can
+occur.&nbsp; To deal with these cases, and to
+ensure the correctness of the "winner" (the
+most popular choice), the sorting process is
+repeated for the top half (plus one) of the
+highest-ranked choices, and this sub-set
+sorting is repeated until there are just three
+choices.&nbsp; For example, if there are 12
+choices, the sorting process is done for 12
+choices, then the top 7 choices, then the top 4
+choices, and finally the top 3 choices.&nbsp;
+Then the highest-ranked choice (or the choices
+that are tied at the top) is kept at the
+highest rank while the other choices are sorted
+a final time.&nbsp; (If, instead, the
+least-popular choice is the most important one
+to identify correctly, the data supplied to
+this algorithm can be inverted according to
+preference levels, and then the calculated
+ranking can be reversed.)</p>   
+
+<p>As a clarification, the extra sub-set
+sorting is done only if more than one sequence
+has the same highest sequence score.&nbsp; This
+point is significant if the distinction between
+VoteFair popularity ranking and the
+Condorcet-Kemeny method is relevant.&nbsp;
+Specifically, the Condorcet-Kemeny method does
+not indicate how such "tied" sequence scores
+should be resolved, whereas VoteFair popularity
+ranking resolves such "tied" sequence scores as
+part of its calculation process.</p>
+
+<p>After all the sorting has been done, the
+highest and lowest ranking levels are used to
+determine the results.&nbsp; For each choice
+its highest and lowest ranking levels
+are added together (which equals twice their
+average) and then multiplied times a
+constant.&nbsp; The constant equals 10 times
+the number of choices minus one.&nbsp; These
+numbers are converted to integers, and then
+these "averaged scaled integerized" values are
+used as the non-normalized ranking
+levels.&nbsp; Two or more choices are ranked at
+the same level if they have the same
+"averaged-scaled-integerized" ranking
+values.</p> 
+
+<p>The final calculation step is to normalize
+the "averaged-scaled-integerized" ranking
+levels so that the normalized ranking levels
+are consecutive, namely 1, 2, 3, etc. (so that
+no ranking levels are skipped).</p> 
+
+<p>The result is a ranking that identifies
+which choice is first-most popular, which
+choice is second-most popular, and so on down
+to which choice is least popular.&nbsp; Ties
+can occur at any level.</p> 
+
+<h3>Calculation time</h3>
+
+<p>The full algorithm used to calculate
+VoteFair popularity ranking results  has a
+calculation time that is less than or equal to 
+the following polynomial function:</p> 
+
+<p>T = A + ( B * N ) + ( C * ( N * N ) )</p>
+
+<p>where T is the calculation time, N is the
+number of choices, and A and B and C are
+constants.&nbsp; (In mathematical notation, N *
+N would be written as N squared.)&nbsp; This
+function includes the calculation time required
+for the Choice-Specific Pairwise-Score (CSPS)
+pre-sort calculations.</p>  
+
+<p>This calculation time contrasts with the slow execution
+times  of the "NP-hard" approach, in which
+every sequence score is calculated in order to
+find the sequence with the highest score.&nbsp;
+If every sequence score were calculated (from
+scratch), the calculation time would be 
+proportional to:</p> 
+
+<p>N! * N * N</p>
+
+<p>where N is the number of choices, N! is N
+factorial (2 * 3 * 4 * ... * N), and N * N
+equals N squared.&nbsp; Note that N factorial
+equals the number of possible sequences, and N
+squared times one-half approximately equals the
+number of pairwise counts that are added to
+calculate each sequence score.</p>  
+
+<p>This clarification about calculation time is
+included because there is an academically
+common &mdash; yet mistaken &mdash; belief that
+calculating the "Condorcet-Kemeny method" is
+"NP-hard" and cannot be calculated in a time
+that is proportional to a polynomial function
+of N (the number of choices).</p>
+
+
+
+<p>&nbsp;</p>
+
+<p>The VoteFair ranking calculation methods are in the public domain,
+but copyright protection (see below) applies to the above description
+and to the software that implements VoteFair ranking.</p>
+
+<!-- End top content -->
+<!-- Begin transition to right sidebar -->
+
+</div></td>
+<td>&nbsp;</td>
+<td valign="top" align="right">
+<div class="rightsidebar">
+
+<!-- End transition to right sidebar -->
+<!-- Begin right sidebar -->
+
+<p>Open-source <b>VoteFair ranking software</b> at
+<a href="http://search.cpan.org/~fobes/Voting-VoteFairRanking-5.01/lib/Voting/VoteFairRanking.pm">CPAN</a>
+and
+<a href="http://github.com/cpsolver/VoteFair-ranking">GitHub</a></p>
+
+<p><a href="http://www.BanSingleMarkBallots.org">Declaration of Election-Method Reform Advocates</a></p>
+
+<p><a href="http://www.youtube.com/watch?v=4Wk3EHjfP4E">YouTube video of Richard's 2009 Ignite presentation titled <i>YIP movie rating and other creative solutions</i></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/ehu.html"><i>Ending The Hidden Unfairness In U.S. Elections</i><br /><img src="http://www.SolutionsCreative.com/ehufrontsm.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.amazon.com/Creative-Problem-Solving-Tips-ebook/dp/B002IT6RQM"><i>23 Creative Problem Solving Tips</i><br />(Kindle ebook)<br /><img src="http://www.votefair.org/cpst23frontsm.gif" alt="23 Creative Problem Solving Tips" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/cpst.html"><i>The Creative Problem Solver's Toolbox</i><br /><img src="http://www.SolutionsCreative.com/coverlow.jpg" alt="The Creative Problem Solver's Toolbox" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.NegotiationTool.com">NegotiationTool.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com">SolutionsCreative.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com/author.html#video">Video of Richard Fobes Zydeco dancing</a></p>
+
+<!-- End right sidebar -->
+<!-- Begin transition to wide content -->
+
+</div>
+</td></tr></table>
+<div class="content">
+
+<!-- End transition to wide content -->
+
+<!-- ContentForPage overview.html -->
+<!-- Begin wide content -->
+
+<br />
+
+
+<p>&nbsp;</p>
+
+
+<!-- End wide content -->
+
+<!-- FooterForPage overview.html -->
+<!-- Begin inserted footer -->
+
+<p>&nbsp;</p>
+
+
+<hr width="70%" align="center" />
+
+<p align="center">Send feedback to Richard Fobes at
+<img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img><br />
+or use the <a href="http://www.VoteFair.org/testimonials.html">Testimonials page</a></p>
+
+<p align="center">&copy; Copyright 2011, Richard Fobes at VoteFair.org</p>
+
+<p align="center"><a href="#top"><img src="bullet.gif" alt="Top of Page" width="20" height="20"></img></a> <a href="#top">Top of Page</a></p>
+</div>
+<p>&nbsp;</p>
+
+<!-- End inserted footer -->
+</body>
+</html>

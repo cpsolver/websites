@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+   <meta name="description" content="Skit titled The Pairwise Counting Solution" />
+   <meta name="keywords" content="VoteFair, pairwise counting solution, skit, play, theatre" />
+   <meta name="author" content="Richard Fobes" />
+   <meta http-equiv="copyright" content="2011 Richard Fobes" />
+   <meta http-equiv="distribution" content="global" />
+   <link rel="stylesheet" href="stylesheet.css" type="text/css" />
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+   <title>The Pairwise Counting Solution (a skit)
+</title>
+</head>
+<!-- Begin top of page -->
+
+<body><a name="top"></a>
+
+<table align="left" border="0" rules="none" frame="void" class="headingbackgroundcolor" cellpadding="5" cellspacing="0" width="100%">
+<tr><td align="center">
+<a href="http://www.votefair.org/index.html"><img src="vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></a></td>
+
+<td align="left">
+<h1 class="fontserif"><font class="fontcolorondark">VoteFair&nbsp; ranking</font></h1>
+<p class="byline"><font class="fontcolorondark">Just one ballot mark isn't enough for fair results</font></p>
+</td><td align="right">
+
+<table align="left" border="1" rules="none" frame="void" class="yellowbackground" cellpadding="5" cellspacing="0">
+
+<tr><td width="5"></td><td><form method="post" name="formNewSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi"><input type="hidden" name="action" value="newsurvey" /><input type="submit" name="action-newsurvey" value="Create survey" /></form></td><td width="5"></td></tr>
+
+<tr><td width="5"></td><td><table border="1" cellpadding="3" cellspacing="2" rules="all"><tr align="left"><td align="left"><form method="post" name="formAccessExistingSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">Voting&nbsp;ID:<br /><input type="text" name="votingid" value ="" size="20" maxlength="20" /><br /><input type="hidden" name="javascriptballot" value="yes" /><input type="hidden" name="action" value="showactions" /><input type="submit" name="requestaccesssurvey" value="Access survey" /></form></td></tr></table></td><td width="5"></td></tr>
+
+</table>
+</td></tr></table>
+
+<!-- End top of page -->
+<!-- Begin navigation level one -->
+
+<div style="clear: both;"></div>
+<div class="navmenu1">
+<ul>
+<li><a href="http://www.VoteFair.org/surveys.html"><span class="fontbigred">Free</span> Survey/Poll/Election service</a></li>
+<li><a href="http://www.VoteFair.org/americanidol.html">American Idol poll</a></li>
+<li><a href="http://www.VoteFair.org/elections.html">Government elections</a></li>
+<li class="navtabcurrentli1"><a href="http://www.VoteFair.org/overview.html">About VoteFair ranking</a></li>
+<li><a href="http://www.VoteFair.org/testimonials.html">Testimonials &amp; Contact</a></li>
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level one -->
+
+<h2 class="titlebetweenmenulevels">About VoteFair ranking</h2>
+
+<!-- Begin navigation level two -->
+
+<div class="navmenu2">
+<ul>
+<li><a href="http://www.VoteFair.org/overview.html">Overview</a></li>
+<li><a href="http://www.VoteFair.org/votefaq.html">FAQ</a></li>
+<li><a href="http://www.VoteFair.org/compare.html">Comparison</a></li>
+<li><a href="http://www.VoteFair.org/pressrelease.html">Press release</a></li>
+<li><a href="http://www.VoteFair.org/poem.html">Poem</a></li>
+<li><a href="http://www.VoteFair.org/votefair_marble_machine.html">Marble machine</a></li>
+<!-- NavigationCurrentPage pairwise_counting_skit.html -->
+<li class="navtabcurrentli2"><div>Skit</div></li>
+<li><a href="http://www.VoteFair.org/calculation_details.html">Calculation details</a></li>
+<li><a href="http://www.VoteFair.org/instant_pairwise_elimination.html">Instant Pairwise Elimination</a></li>
+<li><a href="http://www.VoteFair.org/representative_instant_pairwise_elimination.html">RIPE</a></li>
+
+</ul>
+<div style="clear: both;"></div>
+</div>
+
+<!-- End navigation level two -->
+<!-- Begin transition to top content -->
+
+<table width="100%">
+<tr>
+<td valign="top">
+<div class="content">
+
+<!-- End transition to top content -->
+
+<!-- ContentForPage pairwise_counting_solution.html -->
+<!-- Begin top content -->
+
+<h1 align="center">&ldquo;The Pairwise Counting Solution&rdquo; (a skit)</h1>
+
+<p align="center">
+<font color="red">
+This skit (very short play) entertainingly reveals the unfairness<br />
+of using the &ldquo;standard&rdquo;, simplistic, two-choice vote-counting method<br />
+for more than two choices.&nbsp; It also demonstrates how to use<br />
+<b>pairwise counting</b> when there are three choices.</font></p>
+
+<p align="center">
+Written by Richard Fobes
+</p>
+
+<p style="margin-left:auto;margin-right:auto; text-align:center;"><img src="http://www.VoteFair.org/ice_cream_scene.jpg" alt="ice-cream scene" height="400" width="650" /><br />Drawing by Brian Crabaugh</p>
+
+<p>
+(This skit takes about ten minutes to perform (or it can be lengthened), uses a bare stage, and requires 14 actors.&nbsp; It requires props including signs, a table, clear buckets, and 30 balls, as described below.)
+</p>
+
+<p>
+From stage right (the viewer's left) enter a person carrying a sign that says "vanilla" and "vanille", followed by person number one and person number two.&nbsp; The vanilla sign carrier is dressed in white (or off-white), and the other two people are wearing vanilla-colored (white or off-white or light-colored) blazers.&nbsp; (The numbering of people is used in this written description to identify the actors and their roles; the numbers are not relevant to the audience.)
+</p>
+
+<p>
+They stop in the middle of the stage, and person number one and person number two pretend to get vanilla ice cream from the sign carrier, and eat spoonfuls of the ice cream, and make gestures of enjoyment such as rubbing their tummy.
+</p>
+
+<p>
+Moments later, from stage left enter a "strawberry" sign carrier carrying a sign that says "strawberry" and "fraise", followed by person number three, person number four, and person number five.&nbsp; The strawberry sign carrier (probably female) is dressed in pink (or red), and the other three people are wearing strawberry-colored (red or pink) blazers.
+</p>
+
+<p>
+They stop near the first group, while the first group watches them.&nbsp; Person number three, person number four, and person number five pretend to get strawberry ice cream from the sign carrier, and similarly eat spoonfuls of it while indicating enjoyment.
+</p>
+
+<p>
+Briefly the two groups begin to display indications of being annoyed by the other group.
+</p>
+
+<p>
+Moments later, from stage right enter a "chocolate" sign carrier carrying a sign that says "chocolate" and "chocolat", followed by person number six, person number seven, person number eight, and person number nine.&nbsp; The chocolate sign carrier is dressed in a chocolate-like color (brown or tan), and the other four people are wearing chocolate-colored (brown or tan) blazers.
+</p>
+
+<p>
+They stop near the other groups, while the other groups watch them.&nbsp; Person number six, person number seven, person number eight, and person number nine pretend to get chocolate ice cream from the sign carrier, and similarly eat spoonfuls of it while indicating enjoyment.
+</p>
+
+<p>
+(Although visually it might be dramatic to have only females in the strawberry group, only European-descendent males in the vanilla group, and dark-skinned people in the chocolate group, this kind of segregation should be avoided because later actions involve secondary preferences that would seem unnatural if the groups are segregated.)
+</p>
+
+<p>
+Moments later each of the nine numbered people begin to look annoyed at each of the other two groups, and then begin displaying fists and other nonverbal ways of saying "I don't like you".&nbsp; In contrast, the sign-carrying people do not show aggression, but do try to attract attention by moving their signs (and perhaps verbally encouraging interest in their flavor of ice cream).
+</p>
+
+<p>
+(This skit can be done nonverbally using only pantomime, or it can be done verbally.&nbsp; If it is done verbally, the actors and the director should develop characterizations for all the actors, and from those characterizations more meaningful dialogue can be developed.&nbsp; For this reason, dialogue suggestions are not provided here.)
+</p>
+
+<p>
+The groups intermingle to form a large mass while showing signs of aggression toward people with different-colored blazers.
+</p>
+
+<p>
+Moments later, at front-and-center stage, two of the numbered people from different groups accidentally bump into each other, back-to-back.&nbsp; Those two react with more signs of aggression, and this increases the aggression among the numbered people.&nbsp; The sign-carrying people continue to avoid showing aggression, yet mildly try to attract attention for their ice-cream flavor.
+</p>
+
+<p>
+The four people wearing chocolate-colored blazers (person number six, person number seven, person number eight, and person number nine) migrate to center stage, and as a group they confront the two people wearing vanilla-colored blazers (person number one and person number two) who have moved toward stage left.&nbsp; Meanwhile the strawberry group has reformed toward stage right.&nbsp; The sign carriers stand near their group members.
+</p>
+
+<p>
+The four people wearing chocolate-colored blazers appear to be ready to fight the two people wearing vanilla-colored blazers, and the vanilla group backs away.&nbsp; At this point the three people wearing strawberry-colored blazers, and more reluctantly the strawberry sign carrier, cross in front of the people wearing chocolate-colored blazers and join the people wearing vanilla-colored blazers as if to back them up or defend them.
+</p>
+
+<p>
+At this point the five people wearing either vanilla-colored blazers or strawberry-colored blazers count themselves as five people and show this count on their fingers, and count the people wearing chocolate-colored blazers as four people and show that count with fingers, and begin to act more aggressively toward the people wearing chocolate-colored blazers, and the chocolate group backs away.
+</p>
+
+<p>
+Moments later the chocolate sign carrier entices one of the people wearing a vanilla-colored blazer (person number one) to taste some chocolate ice cream.&nbsp; Person number one likes it, and appears to defect to the chocolate group.
+</p>
+
+<p>
+A moment later the people wearing chocolate-colored blazers count themselves plus person number one to be five people, and count the remaining people as four people, and show these counts on their fingers, and act aggressively toward those four people.&nbsp; The person carrying the vanilla sign moves close to person number two.
+</p>
+
+<p>
+A moment later, a referee dressed in a sports-based referee's uniform enters from stage left, and blows a whistle (and perhaps waves a referee's flag) and commands attention.
+</p>
+
+<p>
+The referee uses hand signals to separate the three groups, putting the chocolate group towards stage right, putting the strawberry group adjacent to them, and putting the vanilla group in the next position.&nbsp; The sign holders are in front of their group members.&nbsp; The numbered people are now in one line, in numerical order, with person number nine towards stage right and person number one towards stage left.&nbsp; The area towards stage left is kept empty.
+</p>
+
+<p>
+The referee motions the three sign holders to follow him/her to positions at center stage.&nbsp; Then the referee goes offstage left and, with assistance from a second referee also wearing a referee's uniform, carries a table onstage, to a position at stage left where everyone in the audience can easily see.
+</p>
+
+<p>
+On the table are six clear plastic buckets lined up in a row, with each pair of buckets separated from the other two pairs of buckets.&nbsp; Between each pair of buckets is some kind of pedestal.&nbsp; Currently the pedestals are empty, but later a ball will be placed on each pedestal.
+</p>
+
+<p>
+Also on the table, toward the stage-left end, is a large clear bucket that contains 30 or more colored balls.&nbsp; They can be rubber balls, tennis balls, colored golf balls, or any similar size, but they must all be of the same color and size.
+</p>
+
+<p>
+The referee labels the six buckets using objects that are also on the table.&nbsp; This can be done using signs that are hung on the lip of each bucket (so that balls in the bottom can be seen), or they can be colored ribbons in the colors brown, red, and white.&nbsp; Alternatively the referee could mark the six buckets with the letters "C" (for chocolate) and "S" (for strawberry) and "V" (for vanilla).&nbsp; This labeling must be visible to the audience.&nbsp; From the perspective of the audience, starting at the left (stage right), the buckets are labeled chocolate, strawberry, chocolate, vanilla, strawberry, and vanilla.
+</p>
+
+<p>
+The referee picks up one ball from the large bucket, displays it to the three sign carriers, and places it on the first pedestal.&nbsp; Then the referee picks up another ball, displays it, and places it on the second pedestal.&nbsp; Then the referee picks up a third ball, displays it, and places it on the third and last pedestal.
+</p>
+
+<p>
+The referee motions the sign carriers to stay where they are, and goes stage right to person number nine, takes their hand, leads them to center stage, and positions person number nine to face the three sign carriers.
+</p>
+
+<p>
+The referee uses hand gestures (and possibly dialogue) to ask which flavor is the person's first choice, which flavor is the person's second choice, and which flavor is the person's third choice.&nbsp; This can be done by counting one, two, and three on the referee's fingers and then pointing left and right at the three choices.
+</p>
+
+<p>
+Of course person number nine, who is wearing a brown blazer, points to the chocolate sign carrier as their first choice.
+</p>
+
+<p>
+The referee motions the chocolate sign carrier to stand behind the table behind the first (stage-right-most) bucket, which is labeled chocolate.&nbsp; The referee points to the ball and then points to the bucket.&nbsp; The chocolate sign carrier puts the ball into that bucket.
+</p>
+
+<p>
+The referee motions the chocolate sign carrier to move to stand behind the other bucket that is labeled chocolate.&nbsp; The referee points to the ball and then points to the bucket.&nbsp; The chocolate sign carrier puts the ball into that bucket.
+</p>
+
+<p>
+The referee motions the chocolate sign carrier to step backward (two or three steps).
+</p>
+
+<p>
+The referee comes back to person number nine and uses hand gestures (and maybe spoken words) to ask which of the remaining two choices is the person's second choice.&nbsp; Person number nine waves their hand to indicate that they do not want to make another choice.&nbsp; The referee walks over to the remaining ball on the pedestal and points to the two buckets.&nbsp; Person number nine waves their hand again to indicate they do not want to make another choice.&nbsp; The referee takes the ball off the pedestal and puts it into the large bucket, but without letting go of the ball.&nbsp; Person number nine appears to recognize that they are wasting an opportunity to express a preference, and reluctantly points to the vanilla sign carrier.
+</p>
+
+<p>
+The referee walks closer to the vanilla sign carrier and motions that person to stand behind the first (stage-right-most) vanilla bucket (which from the audience's perspective is second from the left).&nbsp; The referee points to the pedestal and gestures that there is nothing there, and perhaps points to the first ball in the first chocolate bucket.
+</p>
+
+<p>
+The referee motions the vanilla sign carrier to stand behind the other vanilla bucket, and the vanilla sign carrier moves to that position.&nbsp; The referee points to the ball and points to the vanilla bucket.&nbsp; The vanilla sign carrier puts the ball into that bucket.
+</p>
+
+<p>
+The referee motions the vanilla sign carrier to step backward, next to the chocolate sign carrier.
+</p>
+
+<p>
+The referee motions the strawberry sign carrier to stand behind the first strawberry bucket.&nbsp; The referee points to the pedestal, which is empty, and gestures in an appropriate way, such as shrugging shoulders.
+</p>
+
+<p>
+The referee motions the strawberry sign carrier to stand behind the other strawberry bucket.&nbsp; Similarly the referee indicates that there is no ball on the associated pedestal.&nbsp; Then the referee motions the strawberry sign carrier to step backward.
+</p>
+
+<p>
+The referee (or the second referee) removes three balls from the large bucket and places them on the three pedestals.
+</p>
+
+<p>
+While walking toward person number nine the referee motions the three sign carriers to go back to their earlier position at center stage.&nbsp; The referee puts his/her left hand on the shoulder of person number nine and points to the side of person number one, or wherever there is room on the stage for the numbered people to accumulate.&nbsp; Person number nine goes there.
+</p>
+
+<p>
+The referee either motions to person number eight, or goes to person number eight and takes them by the hand.&nbsp; The referee positions person number eight in front of the three sign carriers.
+</p>
+
+<p>
+The same sequence is repeated for person number eight as occurred for person number nine, except that person number eight does not hesitate to indicate a second choice, and indicates strawberry as their second choice.&nbsp; In this case the strawberry sign carrier is the second sign carrier to go to the table, so the strawberry sign carrier puts the one remaining ball into the pairwise-associated strawberry bucket.&nbsp; In this case the vanilla sign carrier is unable to put any balls into any vanilla bucket.
+</p>
+
+<p>
+For each of the remaining numbered people the same sequence is repeated, except that the referee stops telling the numbered people (the "voters") and sign carriers what to do, because they now know what to do.&nbsp; However, different people have different preferences, so the movement of balls into buckets varies.&nbsp; Always the rule is that if a sign carrier can move a ball into a pairwise-associated bucket he or she does so, and if a sign carrier reaches a pedestal that is associated with one of their buckets and there is no longer a ball on that pedestal then the sign carrier does nothing except indicate disappointment or displeasure.
+</p>
+
+<p>
+The table below summarizes the preferences of all the numbered people.
+</p>
+
+<table cellpadding="3" border="2">
+<tr><td> <b>Person</b> </td><td> <b>First choice</b> </td><td> <b>Second choice</b> </td></tr>
+
+<tr><td> person number 9 </td><td> chocolate </td><td> vanilla </td></tr>
+
+<tr><td> person number 8 </td><td> chocolate </td><td> strawberry </td></tr>
+
+<tr><td> person number 7 </td><td> chocolate </td><td> vanilla </td></tr>
+
+<tr><td> person number 6 </td><td> chocolate </td><td> vanilla </td></tr>
+
+<tr><td> person number 5 </td><td> strawberry </td><td> vanilla </td></tr>
+
+<tr><td> person number 4 </td><td> strawberry </td><td> vanilla </td></tr>
+
+<tr><td> person number 3 </td><td> strawberry </td><td> vanilla </td></tr>
+
+<tr><td> person number 2 </td><td> vanilla </td><td> strawberry </td></tr>
+
+<tr><td> person number 1 </td><td> vanilla </td><td> chocolate </td></tr>
+</table>
+
+<p>To make this skit more entertaining, the three sign carriers can do a playful trick with each ball after removing it from the pedestal and before putting it into the bucket.&nbsp; Also, the second referee can take over the job of putting each set of three balls on the three pedestals, and doing so in an entertaining way, perhaps by juggling them for a moment.</p>
+
+<p>
+At the end of this process, after all the numbered people have voted, the small buckets have the following number of balls.
+</p>
+
+<table cellpadding="3" border="2">
+<tr><td> <b>Bucket position</b> </td><td> <b>Bucket Label</b> </td><td> <b>Ball Count</b> </td></tr>
+
+<tr><td> 1 (stage-right-most) </td><td> chocolate </td><td> 5 </td></tr>
+
+<tr><td> 2 </td><td> strawberry </td><td> 4 </td></tr>
+
+<tr><td> 3 </td><td> chocolate </td><td> 4 </td></tr>
+
+<tr><td> 4 </td><td> vanilla </td><td> 5 </td></tr>
+
+<tr><td> 5 </td><td> strawberry </td><td> 4 </td></tr>
+
+<tr><td> 6 (stage-left-most) </td><td> vanilla </td><td> 5 </td></tr>
+</table>
+
+<p>(This is a total of 27 balls.&nbsp; The extra balls in the large bucket allow for a few balls to be dropped.)</p>
+
+<p>
+The referee points to the first bucket, which is labeled chocolate, and motions the chocolate sign carrier to stand behind the table behind that bucket.
+</p>
+
+<p>
+The referee points to the second bucket, which is labeled strawberry, and motions the strawberry sign carrier to stand behind the table behind that bucket.
+</p>
+
+<p>
+The referee looks into the chocolate bucket and uses his/her fingers to count five balls, with the counting process visible to the audience, and then shows this finger count to the people onstage.&nbsp; (Ideally the audience also should be able to see that there are five balls in the clear bucket.)&nbsp; The referee looks into the strawberry bucket and finger-counts four balls, and holds up four fingers.
+</p>
+
+<p>
+The referee walks to the side of the chocolate sign carrier and holds up that person's arm in triumph.&nbsp; The five numbered people who preferred chocolate over strawberry cheer, and wave their hands in triumph.
+</p>
+
+<p>
+The referee motions the strawberry sign carrier to step backward.&nbsp; The referee motions the chocolate sign carrier to move to stand behind the other chocolate bucket.&nbsp; The referee motions the vanilla sign carrier to stand behind the table behind the first vanilla bucket.
+</p>
+
+<p>
+The referee looks into the chocolate bucket and finger-counts four balls, and holds up four fingers.&nbsp; The referee looks into the vanilla bucket and finger-counts five balls, and holds up five fingers.
+</p>
+
+<p>
+The referee walks to the side of the vanilla sign carrier and holds up that person's arm in triumph.&nbsp; The five people who preferred vanilla over chocolate cheer and wave.
+</p>
+
+<p>
+The referee motions the chocolate sign carrier to step backward.&nbsp; The referee motions the vanilla sign carrier to stand behind the other vanilla bucket.&nbsp; The referee motions the strawberry sign carrier to come forward and stand behind the other strawberry bucket.
+</p>
+
+<p>
+The referee looks into the strawberry bucket and finger-counts four balls, and holds up four fingers.&nbsp; The referee looks into the vanilla bucket and finger-counts five balls, and holds up five fingers.
+</p>
+
+<p>
+The referee walks to the side of the vanilla sign carrier and holds up that person's arm in triumph.&nbsp; The five people who preferred vanilla over strawberry cheer and wave.
+</p>
+
+<p>
+The referee motions the strawberry sign carrier to step backward.&nbsp; The referee goes behind the table and stands next to the vanilla sign carrier.&nbsp; Based on a nudge from the referee the two people move behind the middle pedestal, and the referee points to the vanilla bucket and again raises the vanilla sign-carrier's arm in triumph.&nbsp; Then the referee pulls the vanilla sign carrier to the stage-left-most pedestal and points at the vanilla bucket and again raises the vanilla sign-carrier's arm in triumph.
+</p>
+
+<p>
+The referee takes from the table either a sash that says something like "FAVORITE" or "BEST" or "FAVORI" or "MEILLEUR" and puts the sash over the head and onto the opposite shoulder, or the referee takes from the table some kind of ribbon or sign and attaches it to the sign-carrier's vanilla sign.
+</p>
+
+<p>
+The referee takes the vanilla sign carrier over to the numbered people and gestures to the sash or added sign.&nbsp; Person number one and person number two, who are wearing white blazers, jump up and down and come to the side of the vanilla sign carrier.&nbsp; Person number three, person number four, and person number five, who are wearing strawberry-colored blazers, have gathered together and thumb their noses (and make other appropriate disparaging gestures) at the people wearing chocolate-colored blazers.&nbsp; Person number six, person number seven, person number eight, and person number nine, who are wearing chocolate-colored blazers, thumb their noses (and make other appropriate disparaging gestures) at the people wearing strawberry-colored blazers.
+</p>
+
+<p>
+Then the numbered people start a party by going to their favorite sign carrier to get and eat ice cream.
+</p>
+
+<p>
+Then the numbered people go to the sign carrier who represents their second choice (as indicated above in the table) and get more ice cream.
+</p>
+
+<p>
+In the meantime the referee pushes the table offstage and (optionally with the assistance of the nonspeaking referee) brings onstage a sign or banner that says:
+</p>
+
+<p>
+"The choice with the most first-choice votes is not necessarily the most popular; and the choice with the fewest first-choice votes is not necessarily the least popular.&nbsp; Pairwise counting overcomes this unfairness."
+</p>
+
+<p>
+(A second sign in French might be appropriate.)
+</p>
+
+<p>
+In the meantime the vanilla sign carrier has run out of vanilla ice cream, so someone puts a sign on that sign-carrier's sign that says something like "ALL OUT" (or the equivalent in French).&nbsp; Then the chocolate and strawberry sign carriers each attach to their sign a sign that says something like "STILL AVAILABLE" or "ENCORE DISPONIBLE".
+</p>
+
+<p>
+(End of skit)
+</p>
+
+<p>&nbsp;</p>
+
+<p>To help others learn how to count votes in a way that is fair, please create a video of your production of this skit, and then post it on YouTube!&nbsp;
+Then, <a href="http://www.votefair.org/testimonials.html">please send the URL to this VoteFair.org website</a> so that a link to your video can be added to this page.&nbsp;
+Thanks!</p>
+
+<p>&nbsp;</p>
+
+<p>&copy; Copyright 2011 by Richard Fobes at VoteFair.org.&nbsp; Richard Fobes is the author of <i>Ending The Hidden Unfairness In U.S. Elections</i> and the inventor of VoteFair ranking as described at VoteFair.org.&nbsp; You have permission to print copies of this skit and/or re-publish this skit if you include this full copyright notice and if you do not change the voter preferences.</p>
+
+<p>&nbsp;</p>
+
+<p>Clarification:&nbsp; If the "voters" (numbered people) in this skit change their preferences (either their first choice or their second choice, or both)
+the outcome can be that each of the three choices (chocolate, strawberry, and vanilla) wins only one of its pairwise comparisons, and none of them
+win both of their pairwise comparisons.&nbsp; To handle these cases, nine balls &mdash; instead of just three balls &mdash;
+need to be distributed into six buckets (which can be done by having each sign carrier pull two levers instead of depositing nine balls),
+and the six buckets need to be labeled differently, and the single bucket with the most balls
+will indicate both which choice is most popular and which choice is second-most popular.&nbsp; For details, see the
+<a href="http://www.votefair.org/votefair_marble_machine.html">instructions for building the VoteFair marble machine</a>.</p>
+
+
+<!-- End top content -->
+<!-- Begin transition to right sidebar -->
+
+</div></td>
+<td>&nbsp;</td>
+<td valign="top" align="right">
+<div class="rightsidebar">
+
+<!-- End transition to right sidebar -->
+<!-- Begin right sidebar -->
+
+<p>Open-source <b>VoteFair ranking software</b> at
+<a href="http://search.cpan.org/~fobes/Voting-VoteFairRanking-5.01/lib/Voting/VoteFairRanking.pm">CPAN</a>
+and
+<a href="http://github.com/cpsolver/VoteFair-ranking">GitHub</a></p>
+
+<p><a href="http://www.BanSingleMarkBallots.org">Declaration of Election-Method Reform Advocates</a></p>
+
+<p><a href="http://www.youtube.com/watch?v=4Wk3EHjfP4E">YouTube video of Richard's 2009 Ignite presentation titled <i>YIP movie rating and other creative solutions</i></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/ehu.html"><i>Ending The Hidden Unfairness In U.S. Elections</i><br /><img src="http://www.SolutionsCreative.com/ehufrontsm.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.amazon.com/Creative-Problem-Solving-Tips-ebook/dp/B002IT6RQM"><i>23 Creative Problem Solving Tips</i><br />(Kindle ebook)<br /><img src="http://www.votefair.org/cpst23frontsm.gif" alt="23 Creative Problem Solving Tips" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.SolutionsCreative.com/cpst.html"><i>The Creative Problem Solver's Toolbox</i><br /><img src="http://www.SolutionsCreative.com/coverlow.jpg" alt="The Creative Problem Solver's Toolbox" height="146" width="97"></img></a></p>
+
+<p><a href="http://www.NegotiationTool.com">NegotiationTool.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com">SolutionsCreative.com</a></p>
+
+<p><a href="http://www.SolutionsCreative.com/author.html#video">Video of Richard Fobes Zydeco dancing</a></p>
+
+<!-- End right sidebar -->
+<!-- Begin transition to wide content -->
+
+</div>
+</td></tr></table>
+<div class="content">
+
+<!-- End transition to wide content -->
+
+<!-- ContentForPage pairwise_counting_solution.html -->
+<!-- Begin wide content -->
+
+
+
+<!-- End wide content -->
+
+<!-- FooterForPage pairwise_counting_solution.html -->
+<!-- Begin inserted footer -->
+
+<p>&nbsp;</p>
+
+
+<hr width="70%" align="center" />
+
+<p align="center">Send feedback to Richard Fobes at 
+<img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img><br />
+or use the <a href="http://www.VoteFair.org/testimonials.html">Testimonials page</a></p>
+
+<p align="center">&copy; Copyright 2011, Richard Fobes at VoteFair.org</p>
+
+<p align="center"><a href="#top"><img src="bullet.gif" alt="Top of Page" width="20" height="20"></img></a> <a href="#top">Top of Page</a></p>
+</div>
+<p>&nbsp;</p>
+
+<!-- End inserted footer -->
+</body>
+</html>
