@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    font-family: Calibri, Verdana, Helvetica, Arial, sans-serif;
+    line-height: 1.3;
+    font-size: 11pt;
+}
+
+p, table, tr, td {
+    font-size: 11pt;
+    line-height: 1.3;
+}
+
+.content {
+	max-width: 700px
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, dir, menu, div, 
+dt, dd, address, blockquote, pre, br, hr { display: block }
+
+b, strong, i, em, cite, var, tt, code, kbd, samp, 
+img, span { display: inline }
+
+img { margin:0;padding:0; }
+
+li { display: list-item }
+
+h1 {
+    text-align: center;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    font-weight: bold;
+    font-family: Calibri, Verdana, Helvetica, Arial, sans-serif;
+}
+
+h2, h3, h4 {
+    text-align: left;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    font-weight: bold;
+    font-family: Calibri, Verdana, Helvetica, Arial, sans-serif;
+}
+
+h1 { font-size: xx-large }
+h2 { font-size: x-large }
+h3 { font-size: large }
+
+.fontbigbold, .fontbigboldred, .fontbigq, .fontbiga { font-size:120%;font-weight:bold }
+.fontbigred { font-size:120%; }
+.fontsmaller { font-size:85%; }
+
+b, strong { font-weight: bolder }  /* relative to parent */
+i, cite, em, var, address { font-style: italic }
+pre, tt, code, kbd, samp { font-family: monospace }
+
+pre { white-space: pre }
+
+address { margin-left: 2em }
+blockquote {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+ul, dir { list-style: disc }
+li { margin-left: 1em }
+ol { list-style: decimal }
+navmenu, navmenu1, navmenu2 { margin: 0 }     /* tight formatting */
+
+dt { margin-bottom: 0 }
+dd { margin-top: 0; margin-left: 1em }
+
+hr { border-top: solid }
+
+a:link img { border: none }
+a:visited img { border: none }
+a:active img { border: none }
+a:hover img { border: none }
+
+
+/* Colors */
+
+/* parchment = FAEDD1 */
+
+/* heading, magenta = B26CEF (hue = 272) */
+/* tabs = CFA3F5  */
+
+/* dark edge of tabs = A219E6 */
+/* text on tabs = 192A4D */
+
+/* color picker tool:  http://hslpicker.com */
+
+body { background-color:#FAEDD1; }
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, dir, menu, div, 
+dt, dd, address, blockquote, pre, br, hr { color: black }
+
+.headingbackgroundcolor { background-color:#B26CEF; }
+
+.fontcolorondark { color:#FFFFFF; }
+.fontserifcolorondark { font-style:serif;color:#FFFFFF; }
+
+.titlebetweenmenulevels { background-color:#B26CEF;font-family: Cambria, Constantia, Palatino, Georgia, serif; }
+
+.fontbigred { color:red; }
+.fontbigboldred { color:red; }
+.fontbigq { color:red; }
+.fontbiga { color:green; }
+
+a:link { color: #0000ff }          /* unvisited link */
+a:visited { color: 8114B8 }
+a:active { color: 00ff00 }
+a:hover { color: #993333 }
+
+
+/* Single-level navigation */
+
+.navmenu ul {float:left;list-style-type:none;margin:0 0 0 0;padding:0px;width:100%;background:#B26CEF;border-bottom:3px solid #FAEDD1;}
+
+.navmenu ul li {float:left;background:#CFA3F5;margin-left:5px;margin-right:5px;margin-top:10px;margin-bottom:0;border-top:1px solid #A219E6;border-left:1px solid #A219E6;border-right:1px solid #A219E6;border-bottom:2px solid #B26CEF;}
+
+.navmenu ul li.navtabcurrentli {background:#FAEDD1;border-top:1px solid #A219E6;border-left:1px solid #A219E6;border-right:1px solid #A219E6;border-bottom:3px solid #FAEDD1;}
+
+.navmenu ul li a {float:left;padding-left:10px;padding-right:10px;font:12px Arial;text-decoration:none;font-weight:bold;color:#192A4D;line-height:30px;}
+
+.navmenu ul li div {float:left;padding-left:10px;padding-right:10px;font:12px Arial;text-decoration:none;font-weight:bold;color:#192A4D;line-height:30px;}
+
+.navmenu ul li.navtabcurrentli div {background:#FAEDD1;font:14px;font-weight:bold;color:#192A4D;}
+
+.navmenu ul li a:hover {text-decoration:underline;}
+
+
+/* Special formatting */
+
+.byline {font:10px;font-style:italic;margin-left:auto;margin-right:auto;text-align:center;color:#FFFFFF;}
+
+
+/* Right sidebar */
+
+.rightsidebar {display:block;margin-top:18px;margin-bottom:18px;margin-left:4px;margin-right:4px;padding-top:18px;padding-bottom:18px;padding-left:4px;padding-right:4px;width:150px;}
+
+.rightsidebar p {text-align:center;}
+
+
+/* Adjustments */
+
+.content {padding-left:2em;padding-right:2em;padding-top:0;padding-bottom:0;margin:0 0 0 0;}
+.contactemailadr {display:block;margin:0 0 0 0;padding:0 0 0 0;}
+.fontserif {font-style:serif;color:#FFFFFF;font-family: Cambria, Constantia, Palatino, Georgia, serif; }
+.aligncenter {align: center;}
+.alignright {align: right;}
+.valigntop{valign: top;}
+.textaligncenter {text-align: center;}
+.aligntopright {align: right; valign: top;}

@@ -1,0 +1,77 @@
+BODY {
+    margin: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.1;
+    color: black; 
+    font-size: small;
+}
+
+P, TABLE, TR, TD {
+    font-size: small;
+}
+
+CITE {
+    font-size: medium;
+}
+
+H1, H2, H3, H4, H5, H6, P, UL, OL, DIR, MENU, DIV, 
+DT, DD, ADDRESS, BLOCKQUOTE, PRE, BR, HR { display: block }
+
+B, STRONG, I, EM, CITE, VAR, TT, CODE, KBD, SAMP, 
+IMG, SPAN { display: inline }
+
+LI { display: list-item }
+
+H1 {
+    text-align: center;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+H2, H3, H4 {
+    text-align: left;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+H1 { font-size: x-large }
+H2 { font-size: large }
+H3 { font-size: medium }
+
+B, STRONG { font-weight: bolder }  /* relative to the parent */
+I, CITE, EM, VAR, ADDRESS { font-style: italic }
+PRE, TT, CODE, KBD, SAMP { font-family: monospace }
+
+PRE { white-space: pre }
+
+ADDRESS { margin-left: 2em }
+BLOCKQUOTE {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+UL, DIR { list-style: disc }
+LI { margin-left: 1em }
+OL { list-style: decimal }
+MENU { margin: 0 }              /* tight formatting */
+
+DT { margin-bottom: 0 }
+DD { margin-top: 0; margin-left: 1em }
+
+HR { border-top: solid }        /* 'border-bottom' could also have been used */
+
+A:link { color: blue }          /* unvisited link */
+A:visited { color: red }        /* visited links */
+A:active { color: lime }        /* active links */
+A:hover { color: #993333 }
+
+/* setting the anchor border around IMG elements requires contextual selectors */
+
+A:link IMG { border: 1px solid blue }
+A:visited IMG { border: 1px solid red }
+A:active IMG { border: 1px solid lime }
+A:hover IMG { color: #993333 }

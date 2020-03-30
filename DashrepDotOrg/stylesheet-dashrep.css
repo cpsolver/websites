@@ -1,0 +1,110 @@
+/*  CSS stylesheet for www.Dashrep.com  */
+
+/*  (c) Copyright 2008 by Richard Fobes at Dashrep.com  */
+
+
+
+
+
+/* Establish font size for em specs elsewhere */
+
+body{font-size:100%}
+
+
+
+/* Global */
+
+*{line-height:120%}
+
+img{border:0}
+
+hr{color:black}
+
+*{font-family:"Trebuchet MS", "Lucida Sans Unicode", Verdana, sans-serif}
+
+body{width:800px;background-color:#E8E8FF}
+
+
+table{display:table;border-collapse:collapse}
+
+tr{display:table-row}
+
+thead{display:table-header-group}
+
+tbody{display:table-row-group}
+
+tfoot{display:table-footer-group}
+
+col{display:table-column}
+
+colgroup{display:table-column-group}
+
+td, th{display:table-cell}
+
+caption{display:table-caption}
+
+
+
+
+
+/* ----  Headings  ---- */
+
+
+
+h1, h2, h3, h4 {
+
+    font-family: "Palatino Linotype", "Times New Roman", "Georgia", "Occidental", serif;
+
+    font-weight: bold;
+
+}
+
+
+
+h1 {
+
+    color:#002070;
+
+}
+
+
+
+h2 {
+
+    color:#002070;
+
+}
+
+
+
+h3 {
+
+    color:#002070;
+
+}
+
+
+
+h4 {
+
+    color:#002070;
+
+}
+
+
+
+/* ----  Tables ---- */
+
+
+
+classTableWithLines {
+
+    display:table;
+
+    border-collapse:separate;
+
+    color:#000070;
+
+    padding-left: 3em;
+
+}
