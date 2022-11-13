@@ -1,0 +1,334 @@
+@font-face { font-family: Lato-Regular; src: url('fonts/Lato-Regular.ttf'); } 
+@font-face { font-family: Lato-Bold; src: url('fonts/Lato-Bold.ttf'); }
+h1 { font-size: 100px; margin: 0px 30px; font-family: Lato-Bold;text-align: center;}
+h2 { font-size: 32px; margin: 0px 30px; font-family: Lato-Bold;text-align: center;}
+h3 { font-size: 22px; margin: 0px 0px 10px; font-family: Lato-Bold; color: #000}
+h4 { font-size: 20px; margin: 0px 0px 10px; font-family: Lato-Bold; color:#000;}
+p { font-size: 18px; margin:10px; font-family: Lato-Regular;color: #000; line-height: 26px;}
+li { font-size: 18px; margin:5px; font-family: Lato-Regular;color: #000;  line-height: 26px;}
+table { border-collapse: collapse;}
+td { font-size: 18px; margin:5px; font-family: Lato-Regular;color: #000;  line-height: 26px; border: 1px solid #ddd; padding: 8px; text-align: left;}
+tr:nth-child(even){ background-color: #f2f2f2 ;}
+.table-res{ overflow-x:auto;}
+.tally{ border-collapse: collapse; width: 100%;}
+.tally td, .tally th { border: 1px solid #ddd; padding: 8px;}
+.tally tr:nth-child(even){ background-color: #f2f2f2;}
+.tally tr:hover { background-color: #ddd;}
+.tally th { padding-top: 12px; padding-bottom: 12px; text-align: left;background-color: #0f77bb; color: white;}
+.count { text-align: center;}
+.tallyname { text-align: left; font-weight: bold; color: white; background-color: #606060;}
+.text-white{color: #fff;}
+body{margin:0px;}
+.section1, .section2, .section3, .section4, .footing{
+   text-align: left;
+   background-size: cover;
+   background-position: center;
+   padding: 4rem 0rem;
+   color: #fff;
+}
+.footing{
+   position: relative;
+   background-image: url('img/bkgd_footing.jpg');
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.img-overlay{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0px;
+   left: 0px;
+}
+.section1 h1{
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+}
+.des{
+   position: relative;
+   justify-content: center;
+   align-items: center;
+}
+a, a:hover{
+   color: inherit;
+}
+.img-overlay-blue{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   top: 0px;
+   left: 0px;
+   background-color: #0f77bbc9;
+}
+.width-pc{
+   padding-left: 20%;
+   padding-right: 20%;
+}
+.btn{
+   background-color: #0f77bb;
+   border-radius: 8px;
+   padding: 11px 30px 13px;
+   color: #fff;
+   text-decoration: none;
+   margin: 8px 0px;
+   transition: all 0.2s ease;
+   overflow-x: hidden;
+   overflow-y: hidden;
+   height: auto;
+   position: relative;
+   z-index: 999;
+}
+.btn:hover{
+   background-color: #10649a;
+   color: #fff;
+}
+.text-left{
+   text-align: left
+}
+.bg-white {
+   background-color: #f0f0f0e8;
+   margin: 10px 10px 0px;
+   padding: 15px;
+   border-radius: 8px;
+}
+.text-center{
+   text-align: center;
+}
+.media {
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-align: start;
+   -ms-flex-align: start;
+   align-items: flex-start;
+}
+.media-body {
+   -webkit-box-flex: 1;
+   -ms-flex: 1;
+   flex: 1;
+   width: 100%;
+}
+.to-white {
+   color: #ffffff;
+   transition-property: color ;
+   transition-delay: 4s;
+   transition-duration: 4s;
+}
+.almost-white {
+   color: #f0f0f0;
+}
+.gld {
+   background-color: #ffd700;
+}
+.frame_letter {
+   border: 0;
+}
+.que p{
+   margin-right: 0px;
+   margin-left: 0px;
+}
+.centered {
+   text-align: center;
+}
+.centered-offset {
+   margin-left: 20% !important;
+}
+.centered-offset-left {
+   margin-left: 5% !important;
+}
+.img-fluid{
+   max-width: 100%;
+}
+.intro-image {
+   background-color: hsla(215,0%,95%,0.9);
+   background-image: url(https://www.rankedchoiceoregon.org/img/intro_vote_image.jpg);
+   background-size: 700px 500px;
+   background-repeat: no-repeat;
+   vertical-align: middle;
+   position: relative;
+   background-size: cover;
+   background-position: center;
+   padding: 3rem 0rem;
+   border-radius: 8px;
+   margin: 80px 10px 10px 10px;
+}
+.intro-text {
+   font-size: 50px;
+   font-weight: bold;
+   color: hsla(255,0%,20%,1.0);
+}
+.intro-byline {
+   font-size: 30px;
+   color: hsla(255,0%,20%,1.0);
+   text-align: center;
+   font-weight: bold;
+   line-height: 100%;
+}
+.nav-area {
+   z-index: 999;
+   position: fixed;
+   width: 100%;
+   top: 0px;
+}
+.nav {
+   width: 100%;
+   background-color: #4d4d4d;
+}
+.nav-link {
+   text-decoration: none;
+   font-weight: bold;
+}
+.nav  .nav-header {
+   display: inline;
+}
+.nav  .nav-header  .nav-title {
+   display: inline-block;
+   font-size: 22px;
+   color: #fff;
+   padding: 8px 10px 0px 10px;
+}
+.nav  .nav-btn {
+   display: none;
+}
+.nav  .nav-links {
+   display: inline;
+   float: right;
+   font-size: 18px;
+}
+.nav .nav-links  a {
+   display: inline-block;
+   padding: 19px 15px 20px 15px;
+   text-decoration: none;
+   color: #efefef;
+   font-family: Lato-Regular;
+   font-size: 16px;
+   font-weight: normal;
+}
+.nav  .nav-links  a:hover {
+   background-color: rgba(0, 0, 0, 0.3);
+}
+.nav  #nav-check {
+   display: none;
+}
+.nav-active {
+   background-color: hsla(215,0%,45%,0.9);
+   color: white;
+   font-weight: bold;
+}
+
+@media only screen and (max-width: 1380px) {
+   .width-pc{
+      padding-left: 3%;
+      padding-right: 3%;
+   }
+   .btn{
+      width: 75vw;
+   }
+   .tally td {
+      font-size: 14px;
+      margin:3px;
+      line-height: 14px;
+   }
+   .tally td, .tally th {
+      padding: 4px;
+   }
+   .tally th {
+      padding-top: 7px;
+      padding-bottom: 7px;
+   }
+}
+
+@media (max-width:980px) {
+   .intro-image {
+      background-image: url(img/intro_vote_image_mobile.jpg);
+      background-size: cover;
+   }
+}
+
+@media only screen and (max-width: 768px) {
+   .centered-offset{
+      margin-left: 0% !important;
+   }
+   .section1 {
+      padding: 3rem 0rem;
+   }
+   h1 {
+      font-size: 58px;
+   }
+   .btn {
+      padding: 11px 13px 13px;
+   }
+   .img-fluid {
+      max-width: 100% !important;
+      height: auto;
+   }
+   .media-body {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      width: 88%;
+   }
+}
+
+@media (max-width:768px) {
+   .intro-text {
+      font-size: 37px;
+      padding: 13px 10px 6px 10px;
+   }
+   .nav  .nav-btn {
+      display: inline-block !important;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+   }
+   .nav-btn {
+      display: inline-block;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+   }
+   .nav .nav-btn label {
+      display: inline-block;
+      width: 47px;
+      height: 37px;
+      padding: 18px 1px 0px 21px;
+   }
+   .nav  .nav-btn  label:hover,.nav  #nav-check:checked ~ .nav-btn  label {
+      background-color: rgba(0, 0, 0, 0.3);
+   }
+   .nav  .nav-btn  label  span {
+      display: block;
+      width: 25px;
+      height: 6px;
+      border-top: 2px solid #eee;
+   }
+   .nav  .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color: #333;
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 55px;
+      left: 0px;
+      width: 219px;
+      height: 0px;
+   }
+   .nav  .nav-links  a {
+      display: block;
+      width: 100%;
+      padding: 11px 23px 11px 26px;
+   }
+   .nav  .nav-header  .nav-title {
+      padding-left: 70px;
+      float: right;
+   }
+   .height-cust {
+      height: 322px !important;
+      overflow: hidden;
+   }
+}
