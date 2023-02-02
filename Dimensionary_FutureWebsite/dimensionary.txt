@@ -1,0 +1,23 @@
+A "dimensionary" is an interactive digital tool that stores and retrieves words and terms according to generalized "dimensions" as explained in The Creative Problem Solver's Toolbox.
+
+As an example of retrieval, when asked "What is equivalent to a lizard as feathers are equivalent to a bird?" it answers with "scales."
+
+As another example, when asked "What is equivalent to crows as herd is equivalent to cows?" it answers with "murder."  (A group of crows is a "murder of crows.")
+
+Here are some examples of dimensions:
+
+* singular versus plural (one versus many)
+
+* up versus down (vertical dimension)
+
+* time (before versus after)
+
+* distance (close versus far)
+
+* temperature (hotter versus cooler)
+
+... and MANY MANY more, many of which do not have names!
+
+A useful resource for understanding and compiling dimensions is "Roget's International Thesaurus" (not to be confused with "Roget's Thesaurus.")
+
+The full dimensionary would be especially useful as a source of information to artificial intelligence systems.  Specifically it would allow the AI system to better understand feelings, psychology, the physical world, the social world, the business world, the political world, etc.
