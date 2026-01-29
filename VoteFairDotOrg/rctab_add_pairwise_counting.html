@@ -1,0 +1,395 @@
+<!DOCTYPE html lang="en-US">
+
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8"/>
+<title xml:lang="en-US">RCTab Add Elimination of Pairwise Losing Candidates"</title>
+
+</head>
+<body>
+
+<h1>New <i>RCTab</i> Option Named &ldquo;<i>Eliminate Pairwise Losing Candidates</i>&rdquo;</h1>
+
+<p>This document describes a <b>new counting option</b> for the open-source <b>RCTab software</b>, which is maintained by the Ranked Choice Voting Resource Center (RCVRC).</p>
+
+<p>This new option <b>eliminates pairwise losing candidates when they occur</b>.&nbsp; A pairwise losing candidate is a candidate who would lose every one-on-one contest against every continuing (not-yet-eliminated) candidate.</p>
+
+
+<h2>A few quick clarifications</h2>
+
+<ul>
+<li>When there are just <b>two</b> remaining candidates, the standard RCTab counting method is used.&nbsp; (Both methods yield the same result.)</li>
+
+<li>When a counting round doesn't have a pairwise losing candidate, the standard RCTab counting method is used.</li>
+
+<li>As a reminder, the default RCTab counting method assumes the candidate with the shortest line of supporting voters is always least popular.</li>
+
+<li>Pairwise counting is <b>delayed</b> until there are relatively few not-yet-eliminated candidates.&nbsp; This delay <b>simplifies</b> the process of manually counting paper ballots during an <b>audit</b>.</li>
+
+</ul>
+
+
+<h2>Why is eliminating pairwise losing candidates so valuable?</h2>
+
+<ul>
+
+<li>This refinement is <b>easy for voters to understand</b> using a sports metaphor.&nbsp; (See below)</li>
+
+<li>The winner is virtually always supported by <b>more than half</b> the voters.&nbsp; This fairness is not affected by the number of candidates, nor their similarities, nor their differences.</li>
+
+<li>The increased fairness will <b>speed up adoption</b> of ranked choice voting, especially by reducing valid criticisms from fans of competing vote-counting methods.</li>
+
+<li>Although the vote-counting process becomes slightly more complicated, the results will <b>simplify voting</b> from the voter's perspective.</li>
+
+<li>This counting refinement enables a voter to rank candidates in the voter's <b>honest order of preference</b>, without concern about how other voters will rank the candidates.&nbsp; (To achieve this advantage, the new overvote rule named &ldquo;<i>count when single continuing</i>&rdquo; also must be chosen.)</li>
+
+<li>This counting refinement <b>defeats advanced vote-marking tactics</b> that otherwise allow savvy voters to increase their influence on who wins (using the unrefined RCTab counting method).</li>
+
+</ul>
+
+
+<h2>Further explanations and specifications</h2>
+
+<ul>
+
+<li>A simple sports metaphor makes it easy for voters to understand the fairness of eliminating pairwise losing candidates.&nbsp; When there is a soccer team that loses against every other soccer team still in the playoffs, that pairwise losing soccer team does not deserve to win the playoffs, and clearly deserves to be eliminated.&nbsp; Similarly, when there is an election in which there is a candidate who loses every one-on-one contest against every other candidate, that pairwise losing candidate clearly does not deserve to get elected.</li>
+
+<li>The fans of Condorcet voting methods correctly criticize the RCTab counting rules as too easily failing to elect the Condorcet winner in elections that have a Condorcet winner.&nbsp; (A Condorcet winner is the candidate who wins every one-on-one contest against every other candidate.)&nbsp; Eliminating pairwise losing candidates when they occur almost always elects the Condorcet winner.&nbsp; (If the Condorcet winner does not win, there are valid reasons that candidate does not deserve to win.)</li>
+
+<li>The words &ldquo;<i>pairwise losing candidate</i>&rdquo; are used instead of &ldquo;<i>Condorcet losing candidate</i>&rdquo; because an election can have only one Condorcet losing candidate, yet the election can have multiple pairwise losing candidates.</li>
+
+<li>When an election is dominated by three highly promoted candidates, the voter can rank their favorite candidate as their first choice, without concern about how other voters will be marking their ballots.&nbsp; This advantage applies whether the voter's favorite is a less-promoted candidate or one of the three highly promoted candidates.</li>
+
+<li>In the controversial 2022 Alaska congressional special election, when counting reached the top three candidates, Sarah Palin (a Republican) was a pairwise losing candidate.&nbsp; If she had been eliminated as the pairwise losing candidate, the final count between Mary Peltola (the Democrat) and Nick Begich (a second Republican) would have correctly identified Begich to be more popular than Peltola.&nbsp; Instead, Begich was eliminated early because he had the fewest transferred votes at that top-three round.&nbsp; In hindsight, some voters who ranked Palin as their first choice realized they should have voted tactically by ranking Begich first.&nbsp; This vote-counting refinement would have correctly identified the most popular candidate as Begich, without the need for tactical voting.</li>
+
+<li>This counting refinement prevents a voter's ballot from getting &ldquo;stuck&rdquo; on the voter's favorite candidate if that favorite candidate is pairwise disliked by the majority of other voters.</li>
+
+<li>In the controversial 2009 Burlingtion (Vermont) mayoral election, Kurt Wright (the Republican) was a pairwise losing candidate during the top-three counting round.&nbsp; If Wright had been eliminated as the pairwise losing candidate, the winner would have been Andy Montroll (the Democrat) instead of Bob Kiss (the Progressive).&nbsp; The ballots revealled that Montroll would have won against both Bob Kiss and Kurt Wright if one-on-one contests had been done (without the vote-splitting effect of a third candidate).</li>
+
+<li>Mathematical measurements confirm that tactical voting becomes more difficult, and less effective, when pairwise losing candidates are eliminated when they occur.</li>
+
+<li>The fans of STAR voting correctly criticize RCTab counting rules as creating a "center squeeze effect" that gives an advantage to extremist candidates, even when there is a clearly more-popular centrist candidate.&nbsp; Eliminating pairwise losing candidates eliminates the center squeeze effect.</li>
+
+<li>Portland (Oregon) might have chosen this better counting rule when we adopted ranked choice voting for our mayoral and city-council elections.&nbsp; If the winning candidate, Keith Wilson, had not achieved widespread name recognition, the likely winner of our first mayoral election (without this pairwise counting option) could have been one of the two strongly disliked former city-council members, or possibly Liv Osthus who had achieved name recognition as a stripper.&nbsp; Specifically, a majority of Portland voters would have been likely to rank Wilson above one of the two strongly disliked former city-council members, yet the other three name-recognized candidates might have received more first-choice ranks if Wilson had not worked so hard to get ranked as first choice on a sufficient number of ballots.</li>
+
+<li>The delay in looking for pairwise losing candidates is specified as the number of candidates who remain in the contest, which can range from 7 to 3.&nbsp; The number 2 is not valid because that would specify only the final counting round (between the final two remaining candidates).</li>
+
+<li>The delay in looking for pairwise losing candidates reduces how much election data needs to be published.&nbsp; Consider that pairwise counts must be supplied for every combination of every candidate pair involved in pairwise counting.&nbsp; (Seven candidates yield 42 pairwise counts.)</li>
+
+</li>
+
+<p>The big picture is that voting is a form of communication between competing groups of voters who otherwise would resolve our conflicts through physical fighting.&nbsp; Improving this currently primitive communication process will yield higher levels of democracy.&nbsp; In turn, higher levels of democracy will yield less fighting, and more cooperation.&nbsp; That higher level of civilization will make it much easier to reduce unnecessary economic suffering, increase healthcare and education, and protect our fragile planet.</p>
+
+
+
+<h2>Technical description of rules for eliminating pairwise losing candidates</h2>
+
+<p>The remainder of this document specifies technical details about how this counting refinement works.</p>
+
+
+
+<h2>About the &ldquo;<i>Test Deck</i>&rdquo; Ballot Data</h2>
+
+<p>Some of the sample ballots specified below come from the following document written by the Ranked Choice Voting Resource Center (RCVRC).</p>
+
+<p><a href="https://docs.google.com/document/d/1xJdGmyVVqXwja6oRQ6DHN2ttMQ1ehUMzcftLyQKTWpo/edit">https://docs.google.com/document/d/1xJdGmyVVqXwja6oRQ6DHN2ttMQ1ehUMzcftLyQKTWpo/edit</a></p>
+
+<p>Ballots numbered 40, 41, and 42 are added to create cases where the pairwise losing candidate is not also the candidate with the fewest transferred votes.</p>
+
+<p>The notation used here is:<br />
+A, B, C, D, E are candidates<br/>
+&ldquo;>&rdquo; means &ldquo;is ranked above&rdquo;<br />
+&ldquo;=&rdquo; means &ldquo;is ranked the same as&rdquo;</p>
+
+
+
+<h2>Detailed Example, First Counting Round</h2>
+
+<p>ballot 1: A>B=C=D=E<br />
+ballot 2: A>B=C=D=E<br />
+ballot 3: A>B>C>D=E<br />
+ballot 4: A>B>C>D=E<br />
+ballot 5: A>B>C>D=E<br />
+ballot 6: A>B>C>D=E<br />
+ballot 7: A>B>C>D=E<br />
+ballot 8: B>A=C=D=E<br />
+ballot 9: B>A=C=D=E<br />
+ballot 10: B>C>D>A=E<br />
+ballot 11: B>C>D>A=E<br />
+ballot 12: B>C>D>A=E<br />
+ballot 13: C>D>B>A=E<br />
+ballot 14: C>A=B=D=E<br />
+ballot 15: C>A=B=D=E<br />
+ballot 16: D>C>A>B=E<br />
+ballot 17: A=B=C=D=E&nbsp; (undervote)<br />
+ballot 40: C>A>B>D>E<br />
+ballot 41: D>A>C>B>E<br />
+ballot 42: D>C>B>A>E</p>
+
+<p>6 votes for candidate <b>A</b><br />
+5 votes for candidate <b>B</b><br />
+4 votes for candidate <b>C</b><br />
+3 votes for candidate <b>D</b><br />
+0 votes for candidate <b>E</b><br />
+Active vote count is 19</p>
+
+<p>0 Inactive Ballots by Overvote<br />
+0 Inactive Ballots by Exhausted Choices<br />
+1 Undervote:&nbsp; (ballot 17)<br />
+Total vote count is 20</p>
+
+<p>Let's assume the rules for this election specify that pairwise counting is not done until there are 4 remaining candidates. This means pairwise counting is not yet being done.</p>
+
+<p>Candidate <b>E</b> is <b>eliminated</b> because has zero votes.</p>
+
+
+
+<h2>Detailed Example, Second Counting Round</h2>
+
+<p>ballot 1: A>B=C=D<br />
+ballot 2: A>B=C=D<br />
+ballot 3: A>B>C>D<br />
+ballot 4: A>B>C>D<br />
+ballot 5: A>B>C>D<br />
+ballot 6: A>B>C>D<br />
+ballot 7: A>B>C>D<br />
+ballot 8: B>A=C=D<br />
+ballot 9: B>A=C=D<br />
+ballot 10: B>C>D>A<br />
+ballot 11: B>C>D>A<br />
+ballot 12: B>C>D>A<br />
+ballot 13: C>D>B>A<br />
+ballot 14: C>A=B=D<br />
+ballot 15: C>A=B=D<br />
+ballot 16: D>C>A>B<br />
+ballot 17: A=B=C=D&nbsp; (undervote)<br />
+ballot 40: C>A>B>D<br />
+ballot 41: D>A>C>B<br />
+ballot 42: D>C>B>A</p>
+
+<p>7 votes for candidate <b>A</b><br />
+5 votes for candidate <b>B</b><br />
+4 votes for candidate <b>C</b><br />
+3 votes for candidate <b>D</b><br />
+Active vote count is 19</p>
+
+<p>O Inactive Ballots by Overvote<br />
+0 Inactive Ballots by Exhausted Choices<br />
+1 Undervote:&nbsp; (ballot 17)<br />
+Total vote count is 20</p>
+
+<p>Four candidates remain, so pairwise counting begins.&nbsp; (The option to start at 5 remaining candidates or 3 remaining candidates would also be popular choices.) These pairwise counts remain the same for all the remaining counting rounds.</p>
+
+<p>Pairwise counts:<br />
+In pair <b>A</b> versus <b>B</b>, A has 10 votes and B has 7 votes, so <b>A</b> wins and <b>B loses</b>.<br />
+In pair <b>A</b> versus <b>C</b>, A has 8 votes and C has 9 votes, so <b>A loses</b> and <b>C</b> wins.<br />
+In pair <b>A</b> versus <b>D</b>, A has 8 votes and D has 7 votes, so <b>A</b> wins and <b>D loses</b>.<br />
+In pair <b>B</b> versus <b>C</b>, B has 10 votes and C has 7 votes, so <b>B</b> wins and <b>C loses</b>.<br />
+In pair <b>B</b> versus <b>D</b>, B has 6 votes and D has 4 votes, so <b>B</b> wins and <b>D loses</b>.<br />
+In pair <b>C</b> versus <b>D</b>, C has 12 votes and D has 3 votes, so <b>C</b> wins and <b>D loses</b>.<br />
+(Ballots that rank both candidates the same do not contribute to winning or losing.)</p>
+
+<p>Candidate D has three losses, which means D loses every pairwise contest, which means D is a pairwise losing candidate.</p>
+
+<p>Candidate <b>D</b> is <b>eliminated</b> as a pairwise losing candidate.&nbsp; (Candidate D also has the fewest transferred votes.)</p>
+
+
+
+<h2>Detailed Example, Third Counting Round</h2>
+
+<p>ballot 1: A>B=C<br />
+ballot 2: A>B=C<br />
+ballot 3: A>B>C<br />
+ballot 4: A>B>C<br />
+ballot 5: A>B>C<br />
+ballot 6: A>B>C<br />
+ballot 7: A>B>C<br />
+ballot 8: B>A=C<br />
+ballot 9: B>A=C<br />
+ballot 10: B>C>A<br />
+ballot 11: B>C>A<br />
+ballot 12: B>C>A<br />
+ballot 13: C>B>A<br />
+ballot 14: C>A=B<br />
+ballot 15: C>A=B<br />
+ballot 16: C>A>B<br />
+ballot 17: A=B=C&nbsp; (undervote)<br />
+ballot 40: C>A>B<br />
+ballot 41: A>C>B<br />
+ballot 42: C>B>A</p>
+
+<p>8 votes for candidate <b>A</b><br />
+5 votes for candidate <b>B</b><br />
+6 votes for candidate <b>C</b><br />
+Active vote count is 19</p>
+
+<p>0 Inactive Ballots by Overvote<br />
+0 Inactive Ballots by Exhausted Choices<br />
+1 Undervote:&nbsp; (ballot 17)<br />
+Total vote count is 20</p>
+
+<p>Pairwise counts, with candidate D omitted:<br />
+In pair <b>A</b> versus <b>B</b>, A has 10 votes and B has 7 votes, so <b>A</b> wins and <b>B loses</b>.<br />
+In pair <b>A</b> versus <b>C</b>, A has 8 votes and C has 9 votes, so <b>A loses</b> and <b>C</b> wins.<br />
+In pair <b>B</b> versus <b>C</b>, B has 10 votes and C has 7 votes, so <b>B</b> wins and <b>C loses</b>.</p>
+
+<p>None of the three candidates loses both pairwise counts, which means there is no pairwise losing candidate.</p>
+
+<p>Candidate <b>C</b> is <b>eliminated</b> because has fewest transferred votes.</p>
+
+
+
+<h2>Detailed Example, Fourth Counting Round</h2>
+
+<p>ballot 1: A>B<br />
+ballot 2: A>B<br />
+ballot 3: A>B<br />
+ballot 4: A>B<br />
+ballot 5: A>B<br />
+ballot 6: A>B<br />
+ballot 7: A>B<br />
+ballot 8: B>A<br />
+ballot 9: B>A<br />
+ballot 10: B>A<br />
+ballot 11: B>A<br />
+ballot 12: B>A<br />
+ballot 13: B>A<br />
+ballot 14: A=B&nbsp; (now exhausted)<br />
+ballot 15: A=B&nbsp; (now exhausted)<br />
+ballot 16: A>B<br />
+ballot 17: A=B&nbsp; (undervote)<br />
+ballot 40: A>B<br />
+ballot 41: A>B<br />
+ballot 42: B>A</p>
+
+<p>10 votes for candidate <b>A</b><br />
+7 votes for candidate <b>B</b><br />
+Active vote count is 17</p>
+
+<p>0 Inactive Ballots by Overvote<br />
+2 Inactive Ballots by Exhausted Choices&nbsp; (ballots 14 and 15)<br />
+1 Undervote:&nbsp; (ballot 17)<br />
+Total vote count is 20</p>
+
+<p><b>Pairwise counting is not done</b> because there are only two continuing candidates.&nbsp; If pairwise counting were done, the only relevant pairwise count would be for pair <b>A</b> versus <b>B</b>, in which A has 10 votes and B has 7 votes, and A wins, and B loses.<br />
+
+<p>Candidate <b>A wins</b> because candidate A has more than half the number of active votes.&nbsp; Also because candidate A is the only remaining candidate after eliminating candidate B which has the fewest votes.</p>
+
+<p>This is the end of the example that specifies how pairwise losing candidates are eliminated.</p>
+
+
+<p>&nbsp;</p>
+
+
+
+<style>
+
+table { border-collapse:collapse; border-spacing:0; empty-cells:show }
+td, th { vertical-align:top; font-size:12pt;}
+h1, h2, h3, h4, h5, h6 { clear:both;}
+ol, ul { margin:0; padding:0;}
+li { list-style: none; margin:0; padding:0;}
+
+body {
+    background-color:#cce6ff;
+    margin: 4em;
+    font-family: Calibri, Verdana, Helvetica, Arial, sans-serif;
+    line-height: 1.3;
+    font-size: 11pt;
+    margin-top:2em;
+    margin-bottom:2em;
+}
+
+p, li, table, tr, td {
+    font-size:1.5em;
+    line-height: 1.3;
+    padding-right:1em;
+    margin:0;
+    border:0;
+    padding:0;
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, dir, menu, div, 
+dt, dd, address, blockquote, pre, br, hr { display: block }
+
+b, strong, i, em, cite, var, tt, code, kbd, samp, 
+img, span { display: inline }
+
+img { margin:0;padding:0; }
+
+li {
+    display: list-item;
+    list-style-type: disc;
+}
+
+ol li {
+    list-style-type: decimal;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    font-weight: bold;
+    font-family: Calibri, Verdana, Helvetica, Arial, sans-serif;
+}
+
+h2, h3, h4 {
+    text-align: left;
+    margin-top: 3em;
+    margin-bottom: 0em;
+    font-weight: bold;
+    font-family: Calibri, Verdana, Helvetica, Arial, sans-serif;
+}
+
+h1 { font-size: xx-large }
+h2 { font-size: x-large }
+h3 { font-size: x-large }
+
+.fontbigbold, .fontbigboldred, .fontbigq, .fontbiga { font-size:120%;font-weight:bold }
+.fontbigred { font-size:120%; }
+.fontsmaller { font-size:85%; }
+
+b, strong { font-weight: bolder }  /* relative to the parent */
+i, cite, em, var, address { font-style: italic }
+pre, tt, code, kbd, samp { font-family: monospace }
+
+pre { white-space: pre }
+
+address { margin-left: 2em }
+blockquote {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+ul, dir { list-style: disc }
+li { margin-left: 1em }
+ol { list-style: decimal }
+navmenu, navmenu1, navmenu2, navmenu3 { margin: 0 }              /* tight formatting */
+
+dt { margin-bottom: 0 }
+dd { margin-top: 0; margin-left: 1em }
+
+hr { border-top: solid }        /* 'border-bottom' could also have been used */
+
+a:link img { border: none }
+a:visited img { border: none }
+a:active img { border: none }
+a:hover img { border: none }
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, dir, menu, div, 
+dt, dd, address, blockquote, pre, br, hr { color: black }
+
+.fontred { color:red; }
+
+a:link { color: blue }          /* unvisited link */
+a:visited { color: red }        /* visited links */
+a:active { color: lime }        /* active links */
+a:hover { color: #993333 }
+
+
+</style>
+
+</body>
+</html>
