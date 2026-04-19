@@ -11,7 +11,9 @@
 
 <p>This document describes a <b>new counting option</b> for the open-source <b>RCTab software</b>, which is maintained by the Ranked Choice Voting Resource Center (RCVRC).</p>
 
-<p>This new option <b>eliminates pairwise losing candidates when they occur</b>.&nbsp; A pairwise losing candidate is a candidate who would lose every one-on-one contest against every continuing (not-yet-eliminated) candidate.</p>
+<p>This new option <b>eliminates pairwise losing candidates when they occur</b>.&nbsp; A pairwise losing candidate is a candidate who would <b>lose every one-on-one contest</b> against every other continuing (not-yet-eliminated) candidate.</p>
+
+<p>The code is here: <a href="https://github.com/cpsolver/RCTabPlus/tree/feature_issue_984_eliminate_pairwise_losing_candidates">https://github.com/cpsolver/RCTabPlus/tree/feature_issue_984_eliminate_pairwise_losing_candidates</a></p>
 
 
 <h2>A few quick clarifications</h2>
@@ -21,9 +23,9 @@
 
 <li>When a counting round doesn't have a pairwise losing candidate, the standard RCTab counting method is used.</li>
 
-<li>As a reminder, the default RCTab counting method assumes the candidate with the shortest line of supporting voters is always least popular.</li>
+<li>As a reminder, the default RCTab counting method assumes the candidate with the shortest line of supporting voters is <b>always</b> least popular.</li>
 
-<li>Pairwise counting is <b>delayed</b> until there are relatively few not-yet-eliminated candidates.&nbsp; This delay <b>simplifies</b> the process of manually counting paper ballots during an <b>audit</b>.</li>
+<li>Pairwise counting is <b>delayed</b> until there are fewer not-yet-eliminated candidates.&nbsp; This delay <b>simplifies</b> the process of <b>manually counting paper ballots</b> during an <b>audit</b>.</li>
 
 </ul>
 
@@ -32,17 +34,17 @@
 
 <ul>
 
-<li>The fairness of this refinement is <b>easy for voters to understand</b> using a sports metaphor.&nbsp; (See below)</li>
+<li>The winner is <b>virtually always</b> supported by <b>more than half</b> the voters.&nbsp; This fairness is not affected by the number of candidates, nor their similarities, nor their differences.&nbsp; The standard RCTab counting method does <b>not always</b> achieve this higher level of fairness.</li>
 
-<li>The winner is virtually always supported by <b>more than half</b> the voters.&nbsp; This fairness is not affected by the number of candidates, nor their similarities, nor their differences.</li>
+<li>The fairness of this refinement is <b>easy for voters to understand</b> using a sports metaphor.&nbsp; (See below)</li>
 
 <li>The increased fairness will <b>speed up adoption</b> of ranked choice voting, especially by reducing valid criticisms from fans of competing vote-counting methods.</li>
 
-<li>Although the vote-counting process becomes slightly more complicated, the change will <b>simplify voting</b> from the voter's perspective.</li>
+<li>Although the vote-counting process becomes slightly more complicated if a manual recount is needed, the change will <b>simplify voting</b> from the voter's perspective.</li>
 
 <li>This counting refinement enables a voter to rank candidates in the voter's <b>honest order of preference</b>, without concern about how other voters will rank the candidates.&nbsp; (To achieve this advantage, the new overvote rule named &ldquo;<i>count when single continuing</i>&rdquo; also must be chosen.)</li>
 
-<li>This counting refinement <b>defeats advanced vote-marking tactics</b> that otherwise allow savvy voters to increase their influence on who wins (using the unrefined RCTab counting method).</li>
+<li>This counting refinement will allow a <b>second Republican</b> and <b>second Democrat</b> to also appear on the general-election ballot.&nbsp; In the meantime, the current limit of one nominee from each party is easy to exploit using money-based tactics during primary elections.</li>
 
 </ul>
 
@@ -53,19 +55,21 @@
 
 <li>A simple sports metaphor makes it easy for voters to understand the fairness of eliminating pairwise losing candidates.&nbsp; When there is a soccer team that loses against every other soccer team still in the playoffs, that pairwise losing soccer team does not deserve to win the playoffs, and clearly deserves to be eliminated.&nbsp; Similarly, when there is an election in which there is a candidate who loses every one-on-one contest against every other candidate, that pairwise losing candidate clearly does not deserve to get elected.</li>
 
-<li>The fans of Condorcet voting methods correctly criticize the RCTab counting rules as too easily failing to elect the Condorcet winner in elections that have a Condorcet winner.&nbsp; (A Condorcet winner is the candidate who wins every one-on-one contest against every other candidate.)&nbsp; Eliminating pairwise losing candidates when they occur almost always elects the Condorcet winner.&nbsp; (When the Condorcet winner does not win, there are valid reasons that candidate does not deserve to win.)</li>
+<li>This counting refinement prevents a voter's ballot from getting &ldquo;stuck&rdquo; supporting a candidate who cannot win, while the voter's next-favorite candidate is eliminated.</li>
 
-<li>When an election is dominated by three highly promoted candidates, the voter can rank their favorite candidate as their first choice, without concern about how other voters will be marking their ballots.&nbsp; This advantage applies whether the voter's favorite is a less-promoted candidate or one of the three highly promoted candidates.</li>
+<li>The fans of Condorcet voting methods correctly criticize the RCTab counting rules as too easily failing to elect the Condorcet winner in elections that have a Condorcet winner.&nbsp; (A Condorcet winner is the candidate who wins every one-on-one contest against every other candidate.)&nbsp; Eliminating pairwise losing candidates when they occur almost always elects the Condorcet winner.&nbsp; (When the Condorcet winner does not win, there are valid reasons that candidate does not deserve to win.)</li>
 
 <li>In the controversial 2022 Alaska congressional special election, when counting reached the top three candidates, Sarah Palin (a Republican) was a pairwise losing candidate.&nbsp; If she had been eliminated as the pairwise losing candidate, the final count between Mary Peltola (the Democrat) and Nick Begich (a second Republican) would have correctly identified Begich to be more popular than Peltola.&nbsp; Instead, Begich was eliminated early because he had the fewest transferred votes at that top-three round.&nbsp; In hindsight, some voters who ranked Palin as their first choice realized they should have voted tactically by ranking Begich first.&nbsp; This vote-counting refinement would have correctly identified the most popular candidate as Begich, without the need for tactical voting.</li>
 
-<li>This counting refinement prevents a voter's ballot from getting &ldquo;stuck&rdquo; on the voter's favorite candidate if that favorite candidate is pairwise disliked by the majority of other voters.</li>
+<li>The Alaska election demonstrated that voters should be able to rank their favorite candidate as their first choice, without concern about how other voters will be marking their ballots.</li>
 
 <li>In the controversial 2009 Burlingtion (Vermont) mayoral election, Kurt Wright (the Republican) was a pairwise losing candidate during the top-three counting round.&nbsp; If Wright had been eliminated as the pairwise losing candidate (in this counting round), the winner would have been Andy Montroll (the Democrat) instead of Bob Kiss (the Progressive).&nbsp; The ballot data revealled that Montroll would have won against both Bob Kiss and Kurt Wright if one-on-one contests had been done.</li>
 
 <li>The fans of STAR voting correctly criticize RCTab counting rules as creating a "center squeeze effect" that gives an advantage to extremist candidates, even when there is a clearly more-popular centrist candidate.&nbsp; Eliminating pairwise losing candidates eliminates the center squeeze effect.</li>
 
 <li>Mathematical measurements confirm that tactical voting becomes more difficult, and less effective, when pairwise losing candidates are eliminated when they occur.</li>
+
+<li>This counting refinement <b>defeats advanced vote-marking tactics</b> that otherwise allow <b>savvy voters</b> to gain increased influence over who wins.</li>
 
 <li>Portland (Oregon) might have chosen this better counting rule when we adopted ranked choice voting for our mayoral and city-council elections.&nbsp; If the winning candidate, Keith Wilson, had not achieved widespread name recognition, the likely winner of our first mayoral election (without this pairwise counting option) could have been one of the two strongly disliked former city-council members, or possibly Liv Osthus who had achieved name recognition as a stripper.&nbsp; Specifically, a majority of Portland voters would have been likely to rank Wilson above one of the two strongly disliked former city-council members, yet the other three name-recognized candidates might have received more first-choice ranks if Wilson had not worked so hard to get ranked as first choice on a sufficient number of ballots.</li>
 
@@ -93,7 +97,7 @@
 
 <h2>Software already written</h2>
 
-<p>Election software that implements this refinement is already available at <a href="https://github.com/cpsolver/RCTabPlus/tree/feature_eliminate_pairwise_losing_candidates">https://github.com/cpsolver/RCTabPlus/tree/feature_eliminate_pairwise_losing_candidates</a>.&nbsp; This software can be used as-is in a real election, or it can be used as a reference by an election system vendor that has been contracted to add this vote-counting refinement to their ranked choice voting software.</p>
+<p>Election software that implements this refinement is already available at <a href="https://github.com/cpsolver/RCTabPlus/tree/feature_issue_984_eliminate_pairwise_losing_candidates">https://github.com/cpsolver/RCTabPlus/tree/feature_issue_984_eliminate_pairwise_losing_candidates</a>.&nbsp; This software can be used as-is in a real election, or it can be used as a reference by an election system vendor that has been contracted to add this vote-counting refinement to their ranked choice voting software.</p>
 
 
 
