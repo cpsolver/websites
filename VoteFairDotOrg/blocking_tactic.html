@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranked Choice Voting Plus Defeats Blocking Tactic</title>
+<style>
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #cfe8f7; /* deep light blue */
+    color: #0a2f5c; /* dark blue */
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  #page_wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 20px 60px 20px;
+  }
+
+  #site_header {
+    text-align: center;
+    padding: 20px 0 10px 0;
+  }
+
+  #main_heading {
+    font-size: 2.4em;
+    font-weight: 800;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.5px;
+  }
+
+  #main_heading span.highlight_word {
+    color: #d0021b; /* red highlight */
+  }
+
+  #intro_paragraph {
+    font-size: 1.1em;
+    max-width: 720px;
+    margin: 0 auto 30px auto;
+  }
+
+  #red_divider {
+    width: 80px;
+    height: 4px;
+    background-color: #d0021b;
+    border: none;
+    margin: 0 auto 34px auto;
+    border-radius: 2px;
+  }
+
+  #video_section {
+    margin-bottom: 50px;
+  }
+
+  #video_wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    background-color: #08213f;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(10, 47, 92, 0.25);
+  }
+
+  #video_wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  #video_caption {
+    text-align: center;
+    font-size: 0.95em;
+    margin-top: 12px;
+    color: #0a2f5c;
+    font-style: italic;
+  }
+
+  #links_section_heading {
+    font-size: 1.8em;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  #links_section_subheading {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 34px auto;
+    font-size: 1em;
+  }
+
+  #links_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .link_card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 3px 10px rgba(10, 47, 92, 0.15);
+    border-top: 4px solid #d0021b;
+  }
+
+  .link_card_title {
+    font-size: 1.15em;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #0a2f5c;
+  }
+
+  .link_card_text {
+    font-size: 0.95em;
+    margin: 0 0 18px 0;
+    color: #0a2f5c;
+  }
+
+  .link_button {
+    display: inline-block;
+    text-align: center;
+    background-color: #f6c445; /* deep/pale yellow */
+    color: #0a2f5c;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: background-color 0.15s ease-in-out;
+  }
+
+  .link_button:hover {
+    background-color: #ffdd80; /* pale yellow on hover */
+  }
+
+  #site_footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid #a9d4ee;
+    font-size: 0.85em;
+    color: #0a2f5c;
+  }
+
+  .text_red_emphasis {
+    color: #d0021b; /* red text*/
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .text_gold_emphasis {
+    color: hsl(51, 100%, 30%);  #ffd700; /* gold*/
+    font-style: italic;
+    font-weight: bold;
+  }
+
+
+  /* Tablet: two columns */
+  @media (max-width: 800px) {
+    #links_grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    #main_heading {
+      font-size: 2em;
+    }
+  }
+
+  /* Phone: one column */
+  @media (max-width: 500px) {
+    #links_grid {
+      grid-template-columns: 1fr;
+    }
+
+    #main_heading {
+      font-size: 1.6em;
+    }
+
+    #page_wrapper {
+      padding: 16px 14px 40px 14px;
+    }
+
+    #links_section_heading {
+      font-size: 1.4em;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+  <div id="page_wrapper">
+
+    <header id="site_header">
+      <h1 id="main_heading">Ranked Choice Voting <span class="text_gold_emphasis">Plus</span> Defeats <span class="text_red_emphasis">Blocking Tactic</span></h1>
+      <p id="intro_paragraph">
+        Billionaires and multi-millionaires use the <span class="text_red_emphasis">blocking tactic</span>
+        to block <span class="text_gold_emphasis">reform-minded candidates</span>
+        from reaching our general elections.&nbsp;
+        Here you will learn how the <span class="text_red_emphasis">blocking tactic</span> works,
+        and how to defeat it using the <span class="text_gold_emphasis">plus</span>
+        version of ranked choice voting.
+      </p>
+      <hr id="red_divider">
+    </header>
+
+    <section id="video_section">
+      <div id="video_wrapper">
+        <iframe
+          src="https://player.vimeo.com/video/1220218257?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;"
+          title="Ranked Choice Voting Plus Defeats Blocking Tactic">
+        </iframe>
+      </div>
+      <p id="video_caption">This ten-minute animated video explains the blocking tactic and how to defeat it.</p>
+    </section>
+
+    <section id="links_section">
+      <h2 id="links_section_heading">Learn more</h2>
+      <p id="links_section_subheading">
+        Here are links to resources where you can learn about
+        <span class="text_gold_emphasis">plus</span> versions of ranked choice voting,
+        and why they are better than the <b>basic</b> version of ranked choice voting.
+      </p>
+
+      <div id="links_grid">
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Captioned version</h3>
+            <p class="link_card_text">Here's the same video with always-visible captions.</p>
+          </div>
+          <a class="link_button" href="#">Not yet available</a>
+        </div>
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Social media</h3>
+            <p class="link_card_text">The <b>r/EndFPTP</b> (<i>end first-past-the-post</i>)
+            subreddit (within Reddit) gives you access to election-method reform experts.&nbsp;
+            Expect controversy because many better election systems are possible.</p>
+          </div>
+          <a class="link_button" href="https://www.reddit.com/r/EndFPTP/">r/EndFPTP subreddit</a>
+        </div>
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Election-methods wiki</h3>
+            <p class="link_card_text"><b>Electowiki</b> describes the math behind
+            proposed better election methods, including new methods
+            that are not yet in Wikipedia because there is almost no funding for
+            academic research about better election methods.</p>
+          </div>
+          <a class="link_button" href="https://electowiki.org/wiki/Category:Ranked_voting_methods">Electowiki</a>
+        </div>
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">RCTab Plus election software</h3>
+            <p class="link_card_text">Election-grade software that adds two options
+            to the RCTab software supported by the Ranked Choice Voting Resource Center.&nbsp;
+            These options implement a simple <span class="text_gold_emphasis">plus</span>
+            version of ranked choice voting.</p>
+          </div>
+          <a class="link_button" href="https://github.com/cpsolver/RCTabPlus#rctabplus">RCTab Plus software</a>
+        </div>
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Insightful Solutions</h3>
+            <p class="link_card_text">Graphics and videos
+            first published on Substack that show
+            insightful solutions to worldwide problems,
+            including flawed election systems.</p>
+          </div>
+          <a class="link_button" href="https://votefair.org/insightful_solutions.html">Insightful Solutions</a>
+        </div>
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">VoteFair.org website</h3>
+            <p class="link_card_text">The parent website for this webpage.&nbsp;
+            It has been promoting election-method reform for three decades.</p>
+          </div>
+          <a class="link_button" href="https://votefair.org/">VoteFair.org</a>
+        </div>
+
+      </div>
+    </section>
+
+    <footer id="site_footer">
+      <p>&copy; Copyright 2026 by Richard Fobes at VoteFair.org</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
