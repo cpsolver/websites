@@ -1,499 +1,508 @@
 <!DOCTYPE html>
-<html xml:lang="en" lang="en">
+<html lang="en">
 <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-   <meta name="description" content="VoteFair ranking, an advanced method of voting created by Richard Fobes who is the author of The Creative Problem Solver's Toolbox" />
-   <meta name="keywords" content="VoteFair ranking, fair vote, voting, election reform, elections, election methods, proposed Constitutional Amendment, Richard Fobes" />
-   <meta name="author" content="Richard Fobes" />
-   <meta http-equiv="copyright" content="2004 through 2023 Richard Fobes" />
-   <meta http-equiv="distribution" content="global" />
-   <link rel="stylesheet" href="stylesheet.css" type="text/css" />
-   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-   <title>VoteFair Ranking Service
-</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranked Choice Voting Plus Defeats Blocking Tactic</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <meta name="description" content="VoteFair ranking, an advanced method of voting created by Richard Fobes who is the author of The Creative Problem Solver's Toolbox" />
+  <meta name="keywords" content="VoteFair ranking, fair vote, voting, election reform, elections, election methods, Richard Fobes" />
+  <meta name="author" content="Richard Fobes" />
+  <meta http-equiv="copyright" content="2004 through 2026 Richard Fobes" />
+  <meta http-equiv="distribution" content="global" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <title>VoteFair Ranking Service</title>
+<style>
+
+/* hue values from old webpage:
+120°
+209.5°
+240°
+
+224°
+221.0°
+60°
+216.6°
+215.4°
+*/
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: hsl(210, 65%, 85%);
+    color: hsl(215, 78%, 20%);
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  /* ===== Site masthead bar ===== */
+
+  #masthead_bar {
+    background-color: hsl(215, 78%, 40%);
+    color: hsl(0, 0%, 100%);
+    padding: 24px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  #masthead_inner {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    padding-left: 90px;
+  }
+
+  #logo_placeholder {
+    width: 67px;
+    height: 55px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: hsl(215, 78%, 20%);
+    font-size: 0.7em;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.1;
+    position: absolute;
+    left: 0;
+    top: 20px;
+  }
+
+  #masthead_text {
+    text-align: center;
+  }
+
+  #site_name {
+    font-size: 1.3em;
+    font-weight: 800;
+    margin: 0;
+    color: hsl(0, 0%, 100%);
+    letter-spacing: 0.3px;
+  }
+
+  #site_byline {
+    font-size: 0.85em;
+    margin: 2px 0 0 0;
+    color: hsl(0, 0%, 100%);
+    font-weight: 400;
+  }
+
+  #old_website_link {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: hsl(0, 0%, 100%);
+    font-size: 0.85em;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  #old_website_link:hover {
+    color: hsl(60, 90%, 65%);
+  }
+
+  #page_wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 20px 60px 20px;
+  }
+
+  #site_header {
+    text-align: center;
+    padding: 20px 0 10px 0;
+  }
+
+  #main_heading {
+    font-size: 2.4em;
+    font-weight: 800;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.5px;
+  }
+
+  #main_heading span.highlight_word {
+    color: hsl(354, 92%, 42%);
+  }
+
+  #intro_paragraph {
+    font-size: 1.7em;
+    max-width: 720px;
+    margin: 0 auto 30px auto;
+    text-align: justify;
+  }
+
+  #red_divider {
+    width: 80px;
+    height: 4px;
+    background-color: hsl(354, 92%, 42%);
+    border: none;
+    margin: 0 auto 34px auto;
+    border-radius: 2px;
+  }
+
+  #video_section {
+    margin-bottom: 50px;
+  }
+
+  #video_wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    background-color: hsl(215, 78%, 14%);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px hsla(213, 78%, 20%, 0.25);
+  }
+
+  #video_wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  #video_caption {
+    text-align: center;
+    font-size: 0.95em;
+    margin-top: 12px;
+    color: hsl(215, 78%, 20%);
+    font-style: italic;
+  }
+
+  .links_section_heading {
+    font-size: 1.8em;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .links_section_subheading {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 34px auto;
+    font-size: 1em;
+  }
+
+  .links_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .link_card {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 3px 10px hsla(213, 78%, 20%, 0.15);
+    border-top: 4px solid hsl(354, 92%, 42%);
+  }
+
+  .link_card_title {
+    font-size: 1.15em;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: hsl(215, 78%, 20%);
+  }
+
+  .link_card_text {
+    font-size: 0.95em;
+    margin: 0 0 18px 0;
+    color: hsl(215, 78%, 20%);
+  }
+
+  .link_button {
+    display: inline-block;
+    text-align: center;
+    background-color: hsl(60, 90%, 65%);
+    color: hsl(215, 78%, 20%);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: background-color 0.15s ease-in-out;
+  }
+
+  .link_button:hover {
+    background-color: hsl(45, 90%, 78%);
+  }
+
+  #site_footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid hsl(220, 65%, 75%);
+    font-size: 0.85em;
+    color: hsl(215, 78%, 20%);
+  }
+
+  .text_red_emphasis {
+    color: hsl(350, 100%, 30%);
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .text_gold_emphasis {
+    color: hsl(51, 100%, 30%);  #ffd700; /* gold*/
+    font-style: italic;
+    font-weight: bold;
+  }
+
+
+  /* Tablet: two columns */
+  @media (max-width: 800px) {
+    .links_grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    #main_heading {
+      font-size: 2em;
+    }
+  }
+
+  /* Phone: one column */
+  @media (max-width: 500px) {
+    .links_grid {
+      grid-template-columns: 1fr;
+    }
+
+    #main_heading {
+      font-size: 1.6em;
+    }
+
+    #page_wrapper {
+      padding: 16px 14px 40px 14px;
+    }
+
+    .links_section_heading {
+      font-size: 1.4em;
+    }
+
+    #masthead_inner {
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 0;
+    }
+
+    #old_website_link {
+      position: static;
+      transform: none;
+      margin-top: 4px;
+    }
+
+    #logo_placeholder {
+      width: 55px;
+      height: 45px;
+      font-size: 0.6em;
+      position: static;
+    }
+
+    #site_name {
+      font-size: 1.1em;
+    }
+  }
+
+</style>
 </head>
-<!-- Begin top of page -->
+<body>
 
-<body><a name="top"></a>
+  <div id="masthead_bar">
+    <div id="masthead_inner">
+      <div id="logo_placeholder">
+        <img src="http://www.votefair.org/vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></div>
+      <div id="masthead_text">
+        <p id="site_name">VoteFair Ranking</p>
+        <p id="site_byline">Just one ballot mark isn't enough for fair results</p>
+      </div>
+      <a id="old_website_link" href="http://www.votefair.org/previous_main_page.html">Old Website</a>
+    </div>
+  </div>
 
-<table align="left" border="0" rules="none" frame="void" class="headingbackgroundcolor" cellpadding="5" cellspacing="0" width="100%">
-<tr>
+  <div id="page_wrapper">
 
-<td align="center">
-<a href="http://www.votefair.org/index.html"><img src="vflogo.gif" border="0" alt="VoteFair!" width="134" height="110"></img></a></td>
+    <header id="site_header">
+      <h1 id="main_heading">Ranked Choice Voting <span class="text_gold_emphasis">Plus</span><br> Defeats the <span class="text_red_emphasis">Blocking Tactic</span></h1>
+      <p id="intro_paragraph">
+        Billionaires and multi-millionaires use the <span class="text_red_emphasis">blocking tactic</span>
+        to block <span class="text_gold_emphasis">reform-minded candidates</span>
+        from reaching our general elections.&nbsp;
+        In this video you will learn how the <span class="text_red_emphasis">blocking tactic</span> works,
+        and how to defeat it using the <span class="text_gold_emphasis">plus</span>
+        version of ranked choice voting.
+      </p>
+      <hr id="red_divider">
+    </header>
 
-<td align="left">
-<h1 class="fontserif"><font class="fontcolorondark">VoteFair&nbsp; ranking</font></h1>
-<p class="byline"><font class="fontcolorondark">Just one ballot mark isn't enough for fair results</font></p>
-</td>
+    <section id="video_section">
+      <div id="video_wrapper">
+        <iframe
+          src="https://player.vimeo.com/video/1220218257?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;"
+          title="Ranked Choice Voting Plus Defeats Blocking Tactic">
+        </iframe>
+      </div>
+      <p id="video_caption">This ten-minute animated video explains the blocking tactic and how to defeat it.</p>
+    </section>
 
+    <section class="links_section">
+      <h2 class="links_section_heading">Learn more</h2>
+      <p class="links_section_subheading">
+        Here are links to resources where you can learn about
+        <span class="text_gold_emphasis">plus</span> versions of ranked choice voting,
+        and why they are better than the <b>basic</b> version of ranked choice voting.
+      </p>
 
-<td align="right">
-
-<h2 style="padding: 10px 10px 10px 10px; margin-right: 20px; text-align: center;background-color: #eeee00;"><a href="surveys.html">VoteFair Ranking service</a></h2>
+      <div class="links_grid">
 
 <!--
-
-<table align="left" border="1" rules="none" frame="void" class="yellowbackground" cellpadding="5" cellspacing="0">
-
-<tr><td width="5"></td>
-
-<td><form method="post" name="formNewSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi"><input type="hidden" name="action" value="newsurvey" /><input type="submit" name="action-newsurvey" value="Create survey" /></form></td>
-
-<td width="5"></td></tr>
-
-<tr><td width="5"></td><td><table border="1" cellpadding="3" cellspacing="2" rules="all"><tr align="left"><td align="left"><form method="post" name="formAccessExistingSurvey" action="http://www.VoteFair.org/cgi-bin/votefairgenballot.cgi">Voting&nbsp;ID:<br /><input type="text" name="votingid" value ="" size="20" maxlength="20" /><br /><input type="hidden" name="javascriptballot" value="yes" /><input type="hidden" name="action" value="showactions" /><input type="submit" name="requestaccesssurvey" value="Access survey" /></form></td></tr></table></td><td width="5"></td></tr>
-
-</table>
-
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Captioned version</h3>
+            <p class="link_card_text">Here's the same video with always-visible captions.</p>
+          </div>
+          <a class="link_button" href="#">Not yet available</a>
+        </div>
 -->
 
-</td>
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Social media</h3>
+            <p class="link_card_text">The <b>r/EndFPTP</b> (<i>end first-past-the-post</i>)
+            subreddit (within Reddit) gives you access to election-method reform experts.&nbsp;
+            Expect controversy because many better election systems are possible.</p>
+          </div>
+          <a class="link_button" href="https://www.reddit.com/r/EndFPTP/">r/EndFPTP subreddit</a>
+        </div>
 
-</tr></table>
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Election-methods wiki</h3>
+            <p class="link_card_text"><b>Electowiki</b> describes the math behind
+            proposed better election methods, including new methods
+            that are not yet in Wikipedia because there is no governmental funding for
+            academic research about better election methods.</p>
+          </div>
+          <a class="link_button" href="https://electowiki.org/wiki/Category:Ranked_voting_methods">Electowiki</a>
+        </div>
 
-<!-- End top of page -->
-<!-- Begin navigation level one -->
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">RCTab Plus election software</h3>
+            <p class="link_card_text">Election-grade software that adds two options
+            to the RCTab software supported by the Ranked Choice Voting Resource Center.&nbsp;
+            These options implement a simple <span class="text_gold_emphasis">plus</span>
+            version of ranked choice voting.</p>
+          </div>
+          <a class="link_button" href="https://github.com/cpsolver/RCTabPlus#rctabplus">RCTab Plus software</a>
+        </div>
 
-<div style="clear: both;"></div>
+    </section>
+
+    <section class="links_section">
+      <h2 class="links_section_heading">Yet more links</h2>
+      <p class="links_section_subheading">
+        Here are links to additional information from the VoteFair guy.
+      </p>
+
+      <div class="links_grid">
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title"><i>The Creative Problem Solver's Toolbox</i></h3>
+            <p class="link_card_text">The how-to book on creative problem solving,
+            written by the VoteFair guy.&nbsp;
+            This book has been published around the world in ten languages.</p>
+          </div>
+          <a class="link_button" href="https://www.amazon.com/Creative-Problem-Solvers-Toolbox-Solutions-ebook/dp/B00JPQ6158/ref=sr_1_1">Amazon listing of CPST</a>
+        </div>
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Insightful Solutions</h3>
+            <p class="link_card_text">Graphics and videos
+            first published on Substack that show
+            insightful solutions to worldwide problems,
+            including flawed election systems.</p>
+          </div>
+          <a class="link_button" href="https://votefair.org/insightful_solutions.html">Insightful Solutions</a>
+        </div>
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Overdue economic reforms</h3>
+            <p class="link_card_text">What economic reforms are needed most?&nbsp;
+            Here are suggestions for increasing business income taxes on businesses
+            that drain a state's economy, and decreasing business income taxes
+            on businesses that strengthen the state's economy by selling to distant customers.</p>
+          </div>
+          <a class="link_button" href="https://votefair.org/econ">VoteFair.org/econ</a>
+        </div>
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Solutions Creative links</h3>
+            <p class="link_card_text">Videos, writings, books, software,
+            programming language, and more created by the VoteFair guy.</p>
+          </div>
+          <a class="link_button" href="https://solutionscreative.com">SolutionsCreative.com</a>
+        </div>
+
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Old VoteFair.org website</h3>
+            <p class="link_card_text">The older home page for this website,
+            with content that has been promoting election-method reform for three decades.&nbsp;
+            It includes the VoteFair ranking survey service, and
+            the long-ago VoteFair American Idol polls.</p>
+          </div>
+          <a class="link_button" href="https://votefair.org/previous_main_page.html">Older VoteFair.org</a>
+        </div>
 
 <!--
-<div class="navmenu1">
-<ul>
-<li><a href="http://www.VoteFair.org/surveys.html"><span class="fontbigred">Free</span> Survey/Poll/Election service</a></li>
-<li><a href="http://www.VoteFair.org/americanidol.html">American Idol poll</a></li>
-<li><a href="http://www.VoteFair.org/elections.html">Government elections</a></li>
-<li><a href="http://www.VoteFair.org/overview.html">About VoteFair ranking</a></li>
-<li><a href="http://www.VoteFair.org/testimonials.html">Testimonials &amp; Contact</a></li>
-</ul>
-<div style="clear: both;"></div>
-</div>
+        <div class="link_card">
+          <div>
+            <h3 class="link_card_title">Animation software</h3>
+            <p class="link_card_text">The above animated video was created
+            using open-source animation software, which was written recently
+            by the VoteFair guy (with assistance from free access to Claude AI).</p>
+          </div>
+          <a class="link_button" href="https://github.com/cpsolver/svg_animation_tool">Animation software on GitHub</a>
+        </div>
 -->
 
-<!-- End navigation level one -->
+      </div>
+    </section>
 
-<!-- Begin transition to top content -->
-
-<table width="100%">
-<tr>
-<td valign="top">
-<div class="content">
-
-<!-- End transition to top content -->
-
-<!-- ContentForPage index.html -->
-<!-- Begin top content -->
-
-<p>&nbsp;</p>
-
-<h2>VoteFair Ranking Service</h2>
-
-<p>The <a href="surveys.html">VoteFair Ranking service</a> is still available.&nbsp; However, <font color="red">the service will end when funding runs out</font>, which may occur in 2027.</p>
-
-
-<h2>Looking for this website's original home page?</h2>
-
-<p>Here's a link to <a href="http://www.VoteFair.org/index_original.html">this website's original home page</a>, which links to lots of details about VoteFair ranking.</p>
-
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-
-<h2 id="block">Video:&nbsp; Ranked Choice Voting Plus Defeats Blocking Tactic</h2>
-
-<p>This ten-minute video explains the blocking tactic, and how to defeat it using
-the plus version of ranked choice voting.&nbsp; The biggest campaign contributors
-(billionaires and multi-millionaires) use the blocking tactic
-to block reform-minded candidates from reaching our general elections.</p>
-
-<div style="width: 70%; aspect-ratio: 1 / 1; position: relative; margin: 0 auto;">
-<iframe src="https://player.vimeo.com/video/1220218257?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Ranked Choice Voting Plus Defeats Blocking Tactic"></iframe>
-</div>
-<script src="https://player.vimeo.com/api/player.js"></script>
-
-<p>Same video, with always-visible subtitles</p>
-
-<div style="width: 30%; aspect-ratio: 1 / 1; position: relative; margin: 0 auto;">
-<iframe src="https://player.vimeo.com/video/1221353421?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Subtitled: Ranked Choice Voting Plus Defeats Blocking Tactic"></iframe>
-</div>
-<script src="https://player.vimeo.com/api/player.js"></script>
-
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-
-<h2><i>The Goat Spitting Secret: This Comedy Unmasks Why Congress Is Dysfunctionally Nutty</i></h2>
-
-<p>
-This ebook explains ranked choice voting and why it will yield widespread economic prosperity.
-&nbsp; It's available for the
-<a href="https://www.amazon.com/Goat-Spitting-Secret-Congress-Dysfunctionally-ebook/dp/B0D34DKCST/ref=sr_1_2?keywords=richard+fobes&qid=1234&sprefix=richard+fobes&sr=8-2">Amazon Kindle</a>,
-<b>Apple Books</b>,
-and via
-<a href="https://store.bookbaby.com/book/the-goat-spitting-secret">Bookbaby</a>.</p>
-
-<p>If you can't easily afford the $4.99 price, here's a free PDF version: <a href="https://votefair.org/goat/spitting/secret/GoatSpittingSecret.pdf">VoteFair.org/gss</a></p>
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-
-<h2><a href="http://www.VoteFair.org/taker_tactics.html">Why A Better Vote-Counting System Will Yield Widespread Economic Prosperity</a></h2>
-
-<p>Here's why both Republicans and Democrats will benefit from election-method reform:  <a href="http://www.VoteFair.org/taker_tactics.html">Why A Better Vote-Counting System Will Yield Widespread Economic Prosperity</a>.</p>
-
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-
-<h2>Video: Insights from the VoteFair Guy about Election-Method Reform</h2>
-
-<div style="width: 80%; aspect-ratio: 16 / 9; position: relative; margin: 0 auto;">
-<iframe src="https://player.vimeo.com/video/690734251?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Insights from the VoteFair Guy about Election-Method Reform"></iframe>
-</div>
-<script src="https://player.vimeo.com/api/player.js"></script>
-
-<p>We are stuck in a bad feedback loop that steals money from us, the majority of voters, while it financially rewards the biggest election-campaign contributors. Learn how these campaign contributors exploit our primitive elections using the money tactics of blocking, splitting, and concentration. And learn how better election methods are being hidden from us. Most importantly, learn the simple steps that will take us to full democracy and widespread economic prosperity.</p>
-
-<p><a href="https://vimeo.com/690734251">Link to video at Vimeo.com</a></p>
-
-<p>Links to infographics in this video:</p>
-<ul>
-<li><a href="http://votefair.org/money_versus_votes.jpg">Money Versus Votes</a></li>
-<li><a href="http://votefair.org/ballot_second_nominees.png">Ballot with second nominees</a></li>
-<li><a href="http://votefair.org/full_versus_partial_democracy.png">Full versus Partial Democracy</a></li>
-<li><a href="http://votefair.org/clone_iia_success_rates.png">Scatter plot with CI and IIA success rates</a></li>
-<li><a href="http://votefair.org/venn_diagram_categories_single_winner.png">Categorization of Single-Winner Methods</a></li>
-</ul>
-
-<p>Scroll down to see the Map to Full Democracy infographic.</p>
-
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-
-<h2><a href="http://www.VoteFair.org/map_to_full_democracy.jpg">Map to Full Democracy</a></h2>
-
-<p>Here's a map that summarizes what needs to change to reach full democracy.</p>
-
-<p>
-<a href="http://www.VoteFair.org/map_to_full_democracy.jpg">
-<img src="http://www.VoteFair.org/map_to_full_democracy.jpg" border="0" alt="Map to Full Democracy" width="90%"></img></a></p>
-
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-
-<h2><a href="http://www.VoteFair.org/wage_gap_tax.html">Less-corrupt business tax rates</a></h2>
-
-<p>Here are two infographics that reveal how less-corrupt business tax rates will increase the flow of money coming into a city or state.&nbsp; Election-method reform will make this change become possible.</p>
-
-<p>
-<img src="http://www.VoteFair.org/tax_takers_more_than_makers.jpg" border="0" alt="Tax the Takers More Than the Makers, overview" width="90%"></img></p>
-
-<p>
-<img src="http://www.VoteFair.org/tax_takers_makers_categories.png" border="0" alt="Tax the Takers More Than the Makers, categories" width="90%"></img></p>
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-
+    <footer class="site_footer">
+      <p>&copy; Copyright 2004 through 2026 by Richard Fobes at VoteFair.org</p>
 <!--
-
-<h2><a href="http://www.VoteFair.org/wage_gap_tax.html">Wage Gap Tax</a></h2>
-
-<p>If elections were fair, what would change?&nbsp;
-The huge wage gap between essential workers and their managers
-in large corporations would be reduced.&nbsp; But instead of
-trying to do this by penalizing businesses that fail to pay the minimum wage,
-we should tax large businesses according to the size of the gap
-between the lower half of their employees and the upper half of their employees.&nbsp;
-A proposal to accomplish this change is presented as the
-<a href="http://www.VoteFair.org/wage_gap_tax.html">Wage Gap Tax</a>.&nbsp; Please take a look at this long-overdue reform.</p>
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-
-<h2><a href="https://www.rankedchoiceoregon.org">Ranked Choice (voting) Oregon</a></h2>
-
-<p>If you live in Oregon please sign up to support the Ranked Choice Oregon ballot initiative, which will adopt <a href="https://www.rankedchoiceoregon.org">an improved version of &ldquo;ranked choice&rdquo; voting for use in Oregon elections</a>. It eliminates &ldquo;pairwise losing candidates&rdquo; and then, when an elimination round does not have that kind of losing candidate, it eliminates the candidate using simple &ldquo;ranked choice&rdquo; vote counting. This improvement avoids the mistake that was made in Burlington Vermont.</p>
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
+      <p>Contact: <img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img></p>
 -->
+    </footer>
 
-<!--
+  </div>
 
-<h2><a href="https://github.com/cpsolver/VoteFair-ranking-cpp">Open-source VoteFair Ranking software now available in C/C++ language under MIT license</a></h2>
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-<h2><a href="https://electowiki.org/wiki/Instant_Pairwise_Elimination">Instant Pairwise Elimination (IPE) is simple, yet better than IRV</a></h2>
-
-<p>This new vote-counting method gives much better results than &ldquo;instant-runoff voting&rdquo; (IRV),
-and it's almost as easy to understand.&nbsp; Here is its description:</p>
-
-<p>&ldquo;Voters rank the candidates using up to 7 ranking levels (or 5 ranking levels if ovals are marked on a paper ballot and space is limited).&nbsp; During counting, each elimination round eliminates the candidate who has the largest pairwise opposition count, which is determined by counting on each ballot the number of not-yet-eliminated candidates who are ranked above that candidate, and adding those numbers across all the ballots.&nbsp; The last remaining candidate wins.&rdquo;</p>
-
-<p>Read more about <a href="https://electowiki.org/wiki/Instant_Pairwise_Elimination">Instant Pairwise Elimination (IPE)</a></p>
-
-<p>And there is a &ldquo;proportional&rdquo; variation of this method called
-<a href="http://www.VoteFair.org/representative_instant_pairwise_elimination.html">Representative Instant Pairwise Elimination (RIPE)</a>.&nbsp;
-We're overdue for RIPE elections!</p>
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
--->
-
-<!--
-
-<h2><a href="http://www.VoteFair.org/presidential_election_2016_clinton_trump.html">Wild Election Results Brought To You By Single-Mark Ballots</a></h2>
-
-<p><a href="http://www.VoteFair.org/presidential_election_2016_clinton_trump.html">Secret revealed! The humorous yet insightful story of how we ended up with Trump & Clinton.</a></p>
-
-<p><a href="http://www.VoteFair.org/presidential_election_2016_clinton_trump.html">Read it now ...</a></p>
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
--->
-
-<h2><i>Ending The Hidden Unfairness In U.S. Elections</i></h2>
-
-<p>
-This ebook describes what's wrong with existing vote-counting methods, and why VoteFair ranking will lead to widespread economic prosperity.&nbsp; It's available for the
-<a href="http://www.amazon.com/exec/obidos/tg/detail/-/0963222120">Amazon Kindle</a>
-and the
-<a href="http://www.barnesandnoble.com/w/ending-the-hidden-unfairness-in-u-s-elections-richard-fobes/1007847655">Barnes & Noble Nook</a>,
-and it's on <b>Apple Books</b> and more.&nbsp; (The cost, at $2.99, is as low as allowed by book distributors.)</p>
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-<!--
-
-<h2>Declaration of Election-Method Reform Advocates</h2>
-
-<p><a href="http://www.votefair.org/bansinglemarkballots/index.html">
-<img src="constitution.jpg" border="0" alt="U.S. Constitution" width="120" height="80"></img></a><br />
-<span class="fontbigbold">Please read <s>and &ldquo;sign&rdquo;</s></span>
-the
-<span class="fontbigbold"><a href="http://www.votefair.org/bansinglemarkballots/index.html"><i>Declaration of Election-Method Reform Advocates</i></a>!</span>&nbsp;
-This document, which has been signed by election-method experts from around the world,
-clearly explains the unfairness of the election methods that are used in Democracies around the world.</p>
-
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
--->
-
-<!--
-
-<h2>Tax the takers more than the makers</h2>
-
-<p>If elections were fair &mdash; which they aren't because governmental elections use single-mark ballots &mdash; what would change?&nbsp; One change
-would be to make taxes fairer, simplify the tax code, and eliminate tax loopholes.&nbsp;
-A proposal that would implement such changes by increasing taxes for &ldquo;taker&rdquo; businesses and reducing taxes
-for &ldquo;maker&rdquo; businesses is presented as the <a href="http://www.SolutionsCreative.com/tax_takers_more_than_makers.html">Tax The Takers More Than Makers Taxation Reform</a>.&nbsp;
-
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
-<h2>What are the &ldquo;99%&rdquo; and &ldquo;Occupy Wall Street&rdquo; movements overlooking?</h2>
-
-<p>The &ldquo;Occupy Wall Street&rdquo; and &ldquo;99%&rdquo; movements realize that money has excessive influence in politics,
-but they have not yet realized that the 1% easily outvotes the 99% because elections use single-mark ballots,
-and that this unfairness allows the 1% to take advantage of vote splitting that happens &mdash;
-either unintentionally or planned &mdash; in <b>primary</b> elections.&nbsp;
-The unfairness is hidden because single-mark ballots do not collect enough information to reveal
-which candidate is really the most popular, and because the winner of every <b>primary</b> election 
-is always from the correct political party.</p>
-
-<p>The way to solve this unfairness is to ban single-mark ballots from Congressional elections!</p>
-
-
-<p>&nbsp;</p>
-<hr width="80%" />
-<p>&nbsp;</p>
-
--->
-
-<!--
-<h2><font color="red">What's wrong with current voting methods?</font></h2>
-
-<p>We currently use <b>primitive</b> voting methods!&nbsp;
-In particular, most elections and contests fail to ask voters to indicate a
-<b>second choice</b>, <b>third choice</b>,
-and so on when there are more than two choices.</p>
-
-
-
-<table border="0" cellspacing="5" cellpadding="2">
-<tr>
-<td>
-
-<img src="oopballot.gif" border="0" alt="1-2-3 ballot" width="232" height="184" align="left"></img>
-
-</td>
-<td>
-
-<p>A fully fair voting method needs to ask: "In addition to your
-<b>first choice</b>, who is your <b>second choice</b>, <b>third choice</b>, and so on?" &nbsp;
-These secondary preferences can be collected on paper or on a website using
-<b>1-2-3 ballots</b>
-like the one shown here &mdash; and the intelligent ballots on this website.</p>
-
-</td>
-</tr>
-
-<tr>
-<td colspan="2">
-
-<br />
-
-<h3><font color="red">After you collect full preference information, how should it be used?</font></h3>
-
-</td>
-</tr>
-
-<tr>
-<td>
-
-<img src="results.gif" border="0" alt="Order-Of-Preference results" width="249" height="203" align="left"></img>
-
-</td>
-
-<td>
-
-<p>The preference information needs to be analyzed so that every preference of
-every voter is taken into account! &nbsp;
-Only 
-<a href="fairvoting.html"><span class="fontbigbold">VoteFair ranking</span></a>
-does this.</p>
-
-</td>
-</tr>
-<tr>
-<td colspan="2">
-
-</td>
-</tr>
-</table>
-
--->
-
-<!-- End top content -->
-<!-- Begin transition to right sidebar -->
-
-</div></td>
-<td>&nbsp;</td>
-<td valign="top" align="right">
-<div class="rightsidebar">
-
-<!-- End transition to right sidebar -->
-<!-- Begin right sidebar -->
-
-
-<p><a href="http://www.amazon.com/exec/obidos/tg/detail/-/0963222120"><i>Ending The Hidden Unfairness In U.S. Elections</i></a><br /> <img src="http://www.votefair.org/ehu_cover.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></p>
-
-<p><a href="https://github.com/cpsolver/VoteFair-ranking-cpp/blob/master/rcipe_stv.cpp">Open-source vote-counting software</b> on GitHub</a></p>
-
-<p><a href="http://www.amazon.com/exec/obidos/tg/detail/-/0963222104"><i>The Creative Problem Solver's Toolbox</i></a></p>
-
-<p><a href="http://www.SolutionsCreative.com">More from the VoteFair guy</a></p>
-
-<!-- End right sidebar -->
-<!-- Begin transition to wide content -->
-
-</div>
-</td></tr></table>
-<div class="content">
-
-<!-- End transition to wide content -->
-
-<!-- ContentForPage index.html -->
-<!-- Begin wide content -->
-
-
-<!--
-
-<p>
-For more information about VoteFair ranking,
-explore the other web pages listed in the navigation outline (in the
-<a href="#top">upper</a>
-right).</p>
-
-<p>&nbsp;</p>
-
-<table border="0" cellspacing="5" cellpadding="2">
-<tr>
-<td>
-<a href="http://www.amazon.com/exec/obidos/tg/detail/-/0963222120"><img src="ehufrontsm.gif" alt="Ending The Hidden Unfairness In U.S. Elections" height="146" width="97"></img></a>
-</td>
-<td>
-<a href="http://www.amazon.com/exec/obidos/tg/detail/-/0963222104"><img src="coverlow.jpg" alt="The Creative Problem Solver's Toolbox" height="146" width="97"></img></a>
-</td>
-<td>
-VoteFair ranking was invented by Richard Fobes who is the author of 
-<i><a href="http://www.amazon.com/exec/obidos/tg/detail/-/0963222104">The Creative Problem Solver's Toolbox</a></i>
-and
-<i><a href="http://www.amazon.com/exec/obidos/tg/detail/-/0963222120">Ending The Hidden Unfairness In U.S. Elections</a></i>. &nbsp; Sales of
-these classic and groundbreaking books
-help to make VoteFair ranking available for free at this website.
-</td>
-</tr>
-</table>
-
--->
-
-<!-- End wide content -->
-
-<!-- FooterForPage index.html -->
-<!-- Begin inserted footer -->
-
-<!--
-
-<p>&nbsp;</p>
-
-<hr width="70%" align="center" />
-
--->
-
-<p align="center">Send feedback to Richard Fobes at 
-<img src="addressvf.gif" class="contactemailadr" alt="Email address, non-machine-readable to reduce spam" width="143" height="17"></img></p>
-
-<p align="center">&copy; Copyright 2004 through 2027, Richard Fobes at VoteFair.org</p>
-
-<p align="center"><a href="#top">Top of Page</a></p>
-</div>
-<p>&nbsp;</p>
-
-<!-- End inserted footer -->
 </body>
 </html>
